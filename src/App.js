@@ -1,26 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 import './App.css';
-import {Link, Switch, Route} from "react-router-dom";
+import {Switch, Route, useLocation} from "react-router-dom";
 import LoginSection from "./Page/LoginSection/LoginSection";
+import Board from "./Page/Board/Board";
+import RegistrationForm from "./Page/RegistrationForm/RegistrationFrom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { FormDataContextProvider } from "./hooks/Context/FormDataContextProvider";
+import ResetPasswordSection from "./Page/ResetPassword/ResetPasswordSection";
 
 
 function App() {
 
-  // const [isLogin, setIsLogin] = useState(false);
+ 
+  const location = useLocation()
 
   return (
     <div className="app">
-      
-           <Switch>
-              <Route exact path="/">
-                    <LoginSection />
-              </Route>
-              <Route path="/resetPassword">
-                    {/* <ResetPasswordSection /> */}
-              </Route>
-
-           </Switch>
-           
+      <TransitionGroup>
+         <CSSTransition timeout={400} classNames="fade" key={location.key}>
+            <Switch location={location}>
+               <Route exact path="/">
+                  <FormDataContextProvider>
+                     <LoginSection />
+                  </FormDataContextProvider>
+               </Route>
+               <Route path="/createAcount">
+                  <div>
+                     <FormDataContextProvider>
+                        <LoginSection />
+                     </FormDataContextProvider>
+                     <RegistrationForm />
+                  </div>
+               </Route>
+               <Route path="/resetPassword">
+                  <ResetPasswordSection />
+               </Route>
+               <Route path="/board/:userId">
+                  <Board />
+               </Route>
+             
+            </Switch>
+         </CSSTransition>
+      </TransitionGroup>  
         
     </div>
   );
