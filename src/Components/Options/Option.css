@@ -8,7 +8,19 @@
     border-radius: .5rem;
     box-shadow: 0px 3px 10px 2px #CFD1D5;
     padding: 1rem;
+    animation: open .5s ease-in-out;
 }  
+
+@keyframes open {
+    from {
+        opacity: 0;
+        /* transform: translateX(10px); */
+    }
+    to {
+        opacity: 1;
+        /* transform: translateX(0); */
+    }
+}
 
 .menu__container {
     right: calc(-48px * 3); 

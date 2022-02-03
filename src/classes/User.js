@@ -19,8 +19,10 @@ class User {
     profileImg;
     wasLoged;
     hasAccess;
+    images = [];
+    friends = [];
 
-    constructor(name, lastname, dateOfBirth, sex, email, password, profileImg=defaultPicture, wasLoged=false, hasAccess=false, id=uuid()) {
+    constructor(name, lastname, dateOfBirth, sex, email, password, profileImg=defaultPicture, wasLoged=false, hasAccess=false, id=uuid(), friends=[]) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -31,6 +33,8 @@ class User {
         this.profileImg = profileImg;
         this.wasLoged = wasLoged;
         this.hasAccess = hasAccess;
+        this.images.push(profileImg);
+        this.friends = friends
     }
 
     addPost(body) {
@@ -74,6 +78,10 @@ class User {
         return this.profileImg;
     }
 
+    getAllImages() {
+        return this.images;
+    }
+
     getName() {
         return this.name;
     }
@@ -84,6 +92,10 @@ class User {
 
     getFullName() {
         return `${this.name} ${this.lastname}`;
+    }
+
+    getAllFriends() {
+        return this.friends;
     }
 }
 

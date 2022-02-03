@@ -91,7 +91,12 @@ function Navbar() {
                 {searchUsers.searchUser && 
                     <div className='foundUsers__container'>
                         <div className='arrow-back' onClick={handleArrowBack}><i className="fas fa-arrow-left"></i></div>
-                        {foundUsers.map(user => (<FacebookItem key={user.id} img={user.getProfileImg()} text={user.getFullName()} />))}
+                        {foundUsers.map(currentUser => (
+                            // dodaj tutaj możliwość odwiedzania profili ale nie przelogowywania na inne profile jak jest teraz
+                            <Link to={`/board/${user.id}/profile/${currentUser.id}`}>
+                                <FacebookItem key={currentUser.id} img={currentUser.getProfileImg()} text={currentUser.getFullName()} />
+                            </Link>
+                        ))}
                     </div>
                 }
           </div>
@@ -125,7 +130,9 @@ function Navbar() {
               </ul>
           </div>
           <div className='nav__menu'>
-              <Link to={`/board/${user.id}/profile`} className={`${location.pathname === `/board/${user.id}/profile` && "active"}`}>
+              <Link to={`/board/${user.id}/profile`}
+                    className={`${location.pathname === `/board/${user.id}/profile` && "active"}`}
+              >
                   <FacebookItem img={user.getProfileImg()} text={user.getName()} size="small"
                                 />
               </Link>
