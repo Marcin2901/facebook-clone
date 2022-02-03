@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./RegistrationForm.css";
 import { Link, Redirect } from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import User from "../../classes/User";
+import { SaveDataContext  } from "../../hooks/Context/SaveDataContextProvider";
 
 function RegistrationForm() {
 
+    const {saveData, usersDataName} = useContext(SaveDataContext);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -36,6 +38,7 @@ function RegistrationForm() {
         const {name, lastname, dateOfBirth, sex, email, password} = formData;
         verifyEmail(email) && 
         userDatabase.push(new User(name, lastname, dateOfBirth, sex, email, password))
+        saveData(usersDataName, userDatabase);
     }
 
     function verifyEmail(email) {
@@ -46,7 +49,6 @@ function RegistrationForm() {
         return alreadyInDatabase;
     }
     
-
     return (
         <div className="form__modal">
             <form className="registration--form">

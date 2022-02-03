@@ -2,10 +2,12 @@ import React, { useContext, useState } from "react";
 import "./LoginForm.css";
 import {Link, Redirect} from "react-router-dom";
 import {FormDataContext} from "../../hooks/Context/FormDataContextProvider";
+import {SaveDataContext} from "../../hooks/Context/SaveDataContextProvider";
 
 function LoginForm(props) {
 
     const {formData, handleChange} = useContext(FormDataContext);
+    const {saveData, usersDataName} = useContext(SaveDataContext);
     const {userDatabase} = props
 
     const [isLogin, setIsLogin] = useState();
@@ -18,6 +20,7 @@ function LoginForm(props) {
         if(user) {
             user.wasLoged = true;
             formData.hasAccess ? user.hasAccess = true : user.hasAccess = false;
+            saveData(usersDataName, userDatabase);
         }
      }
 

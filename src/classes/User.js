@@ -20,8 +20,8 @@ class User {
     wasLoged;
     hasAccess;
 
-    constructor(name, lastname, dateOfBirth, sex, email, password, profileImg=defaultPicture, wasLoged=false, hasAccess=false) {
-        this.id = uuid();
+    constructor(name, lastname, dateOfBirth, sex, email, password, profileImg=defaultPicture, wasLoged=false, hasAccess=false, id=uuid()) {
+        this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
@@ -72,6 +72,14 @@ class User {
 
     getProfileImg() {
         return this.profileImg;
+    }
+
+    getName() {
+        return this.name;
+    }
+
+    getLastname() {
+        return this.lastname
     }
 
     getFullName() {

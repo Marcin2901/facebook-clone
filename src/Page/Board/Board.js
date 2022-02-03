@@ -1,15 +1,41 @@
 import React from 'react';
-import {useParams} from "react-router"
+import "./Board.css";
+import {useParams} from "react-router";
 import users from '../../DemoDatabase/userDatabase';
+import Navbar from "../Navbar/Navbar";
+import {Switch, Route} from "react-router-dom";
 
 function Board() {
 
   const {userId} = useParams()
+  const currentUser = users.find(user => user.id === userId);
 
   return (
-    <div>
-        <h1>{`to jest to: ${userId}`}</h1>
-        <h1>I am here</h1>
+    <div className='container'>
+        <Navbar />
+        <div className='container__content'>
+            <Switch>
+                <Route exact path={`/board/${currentUser.id}`}>
+                    <h1>Main Content</h1>
+                </Route>
+                <Route path={`/board/${currentUser.id}/pagesCreator`}>
+                    <h1>Page Creator</h1>
+                </Route>
+                <Route path={`/board/${currentUser.id}/videos`}>
+                    <h1>Videos</h1>
+                </Route>
+                <Route path={`/board/${currentUser.id}/marketplace`}>
+                    <h1>Market Place</h1>
+                </Route>
+                <Route path={`/board/${currentUser.id}/groups`}>
+                    <h1>Your Groups</h1>
+                </Route>
+            </Switch>
+            {/* <Aside />
+            <Main />
+            <Aside /> */}
+
+        </div>
     </div>
     );
 }

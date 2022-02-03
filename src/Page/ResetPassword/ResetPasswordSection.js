@@ -1,11 +1,15 @@
-import React, {useState} from "react" 
+import React, {useContext, useState} from "react" 
 import "./ResetPasswordSection.css";
 import {Link, Redirect} from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
+import {SaveDataContext} from "../../hooks/Context/SaveDataContextProvider";
 
 
 function ResetPasswordSection() {
+    console.log(userDatabase)
     
+    const {saveData, usersDataName} = useContext(SaveDataContext);
+
     const [resetPasswordData, setResetPasswordData] = useState({email: "", verified: false, password1: "", password2: ""});
     //zmien na statey w obkiet
     const [passwordError, setPasswordError] = useState(false);
@@ -33,6 +37,7 @@ function ResetPasswordSection() {
         if(resetPasswordData.password1 === resetPasswordData.password2 && resetPasswordData.password1.length > 4) {
             user.changePassword(resetPasswordData.password1)
             user.setAccess(false)
+            saveData(usersDataName, userDatabase);
             const div = document.createElement('div');
             setTimeout(() => {
                 setPasswordChanged(true);

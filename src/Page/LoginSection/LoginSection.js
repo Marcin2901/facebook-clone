@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import "./LoginSection.css"
 import {Link, Redirect} from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import LoginForm from '../LoginForm/LoginForm';
 import {FormDataContext} from "../../hooks/Context/FormDataContextProvider";
+import {SaveDataContext} from "../../hooks/Context/SaveDataContextProvider";
 
 // przerobić TransitionGroup
 // spróbuj później użyć TransitionGroup i CSSTransition na avatarach żeby zrobić fade jak znikają i się pojawiają
@@ -11,6 +12,7 @@ import {FormDataContext} from "../../hooks/Context/FormDataContextProvider";
 function LoginSection() {
 
     const {formData, handleChange} = useContext(FormDataContext)
+    const {saveData, usersDataName} = useContext(SaveDataContext)
 
     const [refresh, setRefres] = useState(false);
     const [addAccessUser, setAddAccessUser] = useState(false);
@@ -18,9 +20,11 @@ function LoginSection() {
     function removeAvatar(user) {
         setRefres(prevState => !prevState);
         user.wasLoged = false;
+        console.log(saveData, usersDataName)
+        saveData(usersDataName, userDatabase);
     }
 
-
+    // wymyśl coś żeby nie renderować tych pustych diwów z kluczem
     const usersElems = userDatabase.map(user => (
         user.wasLoged && user.hasAccess ?
         <div key={user.id} className='avatar--container'>
@@ -46,7 +50,7 @@ function LoginSection() {
                 <div className='avatar__name'><p>{user.name}</p></div>
             </div>
         </div>:
-        <></>
+        <div key={user.id}></div>
     ))
 
     function addAccess() {
