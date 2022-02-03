@@ -38,7 +38,8 @@
 }
 
 .item--small .item--text {
-    
+    color: #1d2129;
     font-weight: 600;
     margin-right: .3rem;
+    padding-right: .5rem;
 }

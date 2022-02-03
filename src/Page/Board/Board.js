@@ -30,11 +30,10 @@ function Board() {
                 <Route path={`/board/${currentUser.id}/groups`}>
                     <h1>Your Groups</h1>
                 </Route>
+                <Route path={`/board/${currentUser.id}/profile`}>
+                    <h1>Profile</h1>
+                </Route>
             </Switch>
-            {/* <Aside />
-            <Main />
-            <Aside /> */}
-
         </div>
     </div>
     );

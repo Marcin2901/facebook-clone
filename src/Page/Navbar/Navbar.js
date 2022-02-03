@@ -4,6 +4,10 @@ import "./Navbar.css";
 import {UserContext} from "../../hooks/Context/UserContextProvider";
 import FacebookItem from "../../Components/FacebookItem/FacebookItem";
 import userDatabase from "../../DemoDatabase/userDatabase";
+import MenuOption from "../../Components/Options/MenuOption/MenuOption";
+import MessengerOption from '../../Components/Options/MessengerOption/MessengerOption';
+import NotificationsOption from '../../Components/Options/NotificationsOption/NotificationsOption';
+import AccountOption from '../../Components/Options/AccountOption/AccountOption';
 
 function Navbar() {
 
@@ -11,6 +15,25 @@ function Navbar() {
 
   const user = useContext(UserContext);
   const location = useLocation()
+
+  const [openOption, setOpenOption] = useState({
+      menu: false,
+      messenger: false,
+      notifications: false,
+      account: false
+  })
+
+  function handleOption(event) {
+      const {id} = event.target;
+      setOpenOption(prevState => ({
+        menu: false,
+        messenger: false,
+        notifications: false,
+        account: false,
+        [id]: !prevState[id]
+      }))
+  }
+
 
   const [searchUsers, setSearchUsers] = useState({searchUser: ""})
   const [foundUsers, setFoundUsers] = useState([])
@@ -41,7 +64,6 @@ function Navbar() {
 // console.log(location)
   return (
       <nav className='nav'>
-          {user && <>
           <div className='nav__search'>
                 <Link to={`/board/${user.id}`}>
                     <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 64 64" width="48px" height="48px"> 
@@ -103,21 +125,31 @@ function Navbar() {
               </ul>
           </div>
           <div className='nav__menu'>
-              <FacebookItem img={user.getProfileImg()} text={user.getName()} size="small"/>
-              <div className='nav--opt menu'>
+              <Link to={`/board/${user.id}/profile`} className={`${location.pathname === `/board/${user.id}/profile` && "active"}`}>
+                  <FacebookItem img={user.getProfileImg()} text={user.getName()} size="small"
+                                />
+              </Link>
+              <div className='nav--opt menu' onClick={(e) => handleOption(e)}>
+                  <div id='menu' className='nav--opt__click-area'></div>
                   <i className="fas fa-ellipsis-h"></i>
+                  {openOption.menu && <MenuOption />}
               </div>
-              <div className='nav--opt messenger'>
+              <div  className='nav--opt messenger' onClick={(e) => handleOption(e)}>
+                  <div id="messenger" className='nav--opt__click-area'></div>
                   <i className="fab fa-facebook-messenger"></i>
+                  {openOption.messenger && <MessengerOption />}
               </div>
-              <div className='nav--opt notifications'>
+              <div  className='nav--opt notifications' onClick={(e) => handleOption(e)}>
+                  <div id="notifications" className='nav--opt__click-area'></div>
                   <i className="fas fa-bell"></i>
+                  {openOption.notifications && <NotificationsOption />}
               </div>
-              <div className='nav--opt account'>
-                  <i className="fas fa-sort-down"></i>
+              <div  className='nav--opt account' onClick={(e) => handleOption(e)}>
+                  <div id="account" className='nav--opt__click-area'></div>
+                  <i className="fas fa-sort-down"></i> 
+                  {openOption.account && <AccountOption />}
               </div>
           </div>
-          </>}
       </nav>
   )
 }

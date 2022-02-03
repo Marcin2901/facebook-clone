@@ -1,0 +1,28 @@
+.option__container {
+    width: 350px;
+    /* potem usuń height */
+    height: 600px;
+    position: absolute;
+    top: 120%;
+    background-color: #fff;
+    border-radius: .5rem;
+    box-shadow: 0px 3px 10px 2px #CFD1D5;
+    padding: 1rem;
+}  
+
+.menu__container {
+    right: calc(-48px * 3); 
+    width: 500px;
+}
+
+.messenger__container {
+   right: calc(-48px * 2); 
+}
+
+.notifications__container {
+    right: -48px;
+}
+
+.account__container {
+    right: 0;
+}
