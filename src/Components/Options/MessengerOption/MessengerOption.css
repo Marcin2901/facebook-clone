@@ -1,6 +1,27 @@
 .messenger__container {
-    min-height: 400px;
+    height: 90vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
+
+/* do scrolbara dla wszystkich na przyszłość */
+.messenger__container::-webkit-scrollbar {
+    width: 10px;
+    background-color: #fff;
+    border-radius: 1rem;
+  }
+  
+  .messenger__container::-webkit-scrollbar-thumb {
+      border-radius: 1rem;
+      background-color: #fff;
+  }
+
+.messenger__container:hover::-webkit-scrollbar-thumb {
+    background-color: #aaacb3;
+}
+
+/* koniec scrollbara */
+
 
 .messenger--header {
     display: flex;

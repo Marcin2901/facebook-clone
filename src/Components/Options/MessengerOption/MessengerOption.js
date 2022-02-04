@@ -20,6 +20,26 @@ function MessengerOption() {
                 </div>
             </header>
             <SearchBar linkTo={"messages"}/>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
+            <h2>Marcin</h2>
         </div>
     )
 }

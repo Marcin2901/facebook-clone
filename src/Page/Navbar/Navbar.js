@@ -86,7 +86,11 @@ function Navbar() {
                   <div id='menu' className='nav--opt__click-area tooltip' onClick={(e) => handleOption(e)}>
                       <span className='tooltiptext'>Menu</span>
                   </div>
-                  <i className="fas fa-ellipsis-h"></i>
+                  <div className='menu-i-wrapper'>
+                     <i className="fas fa-ellipsis-h"></i>
+                     <i className="fas fa-ellipsis-h"></i>
+                     <i className="fas fa-ellipsis-h"></i>
+                  </div>
                   {openOption.menu && <MenuOption />}
               </div>
               <div  className={`nav--opt messenger ${openOption.messenger && "active"}`}>

@@ -22,7 +22,7 @@
   }
 }
 
-.option__container header  i {
+.option__container header  i, .option__container .create--menu  i {
   font-size: 1.4rem;
   background-color: rgb(228, 230, 235);
   width: 40px;
@@ -36,7 +36,7 @@
 
 .menu__container {
   right: calc(-48px * 3);
-  width: 500px;
+  width: 600px;
 }
 
 .messenger__container {
