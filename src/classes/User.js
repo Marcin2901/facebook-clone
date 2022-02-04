@@ -21,8 +21,11 @@ class User {
     hasAccess;
     images = [];
     friends = [];
+    notifications = []
 
-    constructor(name, lastname, dateOfBirth, sex, email, password, profileImg=defaultPicture, wasLoged=false, hasAccess=false, id=uuid(), friends=[]) {
+    constructor(name, lastname, dateOfBirth, sex, email, password,
+                profileImg=defaultPicture, wasLoged=false, hasAccess=false,
+                id=uuid(), friends=[], notifications=[]) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -34,7 +37,8 @@ class User {
         this.wasLoged = wasLoged;
         this.hasAccess = hasAccess;
         this.images.push(profileImg);
-        this.friends = friends
+        this.friends = friends;
+        this.notifications = notifications;
     }
 
     addPost(body) {
@@ -97,6 +101,20 @@ class User {
     getAllFriends() {
         return this.friends;
     }
+
+    addNotification(notification) {
+        this.notifications.push(notification);
+    }
+
+    getAllNotifications() {
+        return this.notifications;
+    }
+
+    getNotification(index) {
+        return this.notifications[index];
+    }
+
+
 }
 
 export default User;

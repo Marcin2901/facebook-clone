@@ -1,0 +1,74 @@
+.notifications--header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.notifications--header i {
+    background-color: #fff !important;
+    font-size: 1rem !important;
+    color: var(--second-text-colr);
+    transition: background-color .2s ease;
+    cursor: pointer;
+}
+
+.notifications--header i:hover {
+    background-color: var(--grey-background-color) !important;
+}
+
+.notifications--buttons {
+    display: flex;
+    gap: .5rem;
+}
+
+.notif--btn {
+    font-size: .9rem;
+    color: var(--text-color);
+    font-weight: 600;
+    background-color: var(--grey-background-color);
+    padding: .7rem 1rem;
+    margin: 0;
+    border-radius: 2rem;
+    transition: background-color .2s ease;
+    cursor: pointer;
+}
+
+.notif--btn:hover {
+    background-color: var(--grey-background-color-m);
+}
+
+.notif--btn.active {
+    background-color: #E7F3FF;
+    border-radius: 1.2rem;
+    color: var(--primary-color) !important;
+}
+
+.notificationds--info {
+    display: flex;
+    justify-content: space-between;
+    margin: .5rem 0;
+}
+
+.notificationds--info a {
+    color: var(--primary-color);
+}
+
+
+.notifications__content--info {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--second-text-colr);
+    margin: 2rem 0 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+

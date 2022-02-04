@@ -20,3 +20,46 @@ code {
     monospace;
 }
 
+:root {
+  --primary-color: #1877f2 ;
+  --primary-color-m: #055ed4;
+  --secondary-color: #42b72a;
+  --secondary-color-m: #259310;
+  --background-color: #f0f2f5;
+  /* tak jak search input */
+  --grey-background-color: #F0F2F5;  
+  /* tak jak ikony po prawej w navie */
+  --grey-background-color-m: #dddfe2;
+  --text-color: #050505;
+  --firs-text-color: #777980;
+  --second-text-colr: #606770;
+  --therd-text-color: #4b4f56;
+  --border-color: #bbbdc1;;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: var(--therd-text-color);
+  color: #fff;
+  font-size: .9rem;
+  text-align: center;
+  border-radius: 6px;
+  padding: .3rem .5rem .5rem;
+  position: absolute;
+  top: 110%;
+  right: 20%;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+

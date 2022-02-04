@@ -1,0 +1,23 @@
+.messenger--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.messenger--header__content {
+    display: flex;
+}
+
+.messenger--header i {
+    background-color: #fff !important;
+    font-size: 1rem !important;
+    color: var(--second-text-colr);
+    transition: background-color .2s ease;
+    cursor: pointer;
+}
+
+.messenger--header i:hover {
+    background-color: var(--grey-background-color) !important;
+}

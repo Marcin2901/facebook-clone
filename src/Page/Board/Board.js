@@ -36,8 +36,11 @@ function Board() {
                     <h1>Your Groups</h1>
                     {/* <GroupPage /> */}
                 </Route>
-                <Route path={`/board/${currentUser.id}/profile`}>
+                <Route exact path={`/board/${currentUser.id}/profile`}>
                     <ProfilePage />
+                </Route>
+                <Route path={`/board/${currentUser.id}/profile/:findUserId`}>
+                     <ProfilePage />
                 </Route>
             </Switch>
         </div>

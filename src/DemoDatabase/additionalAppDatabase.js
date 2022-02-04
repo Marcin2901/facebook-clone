@@ -17,7 +17,7 @@ export default  [
     },
     {
         name: "Wspomnienia",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yG/r/A1HlI2LVo58.png"
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/y7/r/AYj2837MmgX.png"
     },
     {
         name: "Zapisane",

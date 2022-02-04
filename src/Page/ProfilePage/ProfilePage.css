@@ -40,7 +40,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    /* border: 2px solid green */
 }
 
 .profile--header__hero--bg {
@@ -53,17 +52,50 @@
     border-radius: 0 0 .5rem .5rem;
 }
 
-.profile--header__hero img {
+.profile-img--box {
+    position: absolute;
     width: 180px;
     height: 180px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 12%);
+    background-color: #777980;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.profile-img--box img:hover {
+    opacity: .8;
+}
+
+.profile--header__hero img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid #fff;
+    transition: opacity .2s ease-in-out;
+}
+
+.profile-img--btn {
     position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
+    top: 72%;
+    left: 74%;
+    z-index: 100;
+    height: 40px;
+    width: 40px;
+    font-size: 1.2rem;
+    background-color: #dddfe2;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.profile-img--btn:hover {
+    background-color: #bbbdc1;
 }
 
 
@@ -140,6 +172,11 @@
     gap: 1rem;
 }
 
+.profile__nav--buttons  .fa-facebook-messenger {
+    font-size: 1.1rem !important;
+}
+
+
 .profile__nav--buttons .login--btn {
     display: flex;
     align-items: center;
@@ -207,6 +244,12 @@ main {
     margin: 1rem 0;
 }
 
+.profile--main__aside h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+
+}
+
 .profile--main__aside > div img {
     width: 100px;
     height: 100px;
@@ -218,19 +261,43 @@ main {
 
 }
 
-.images__aside {
-
+.presentation--box {
+    background-color: #F0F2F5;
+    text-align: center;
+    font-size: .9rem;
+    font-weight: 600;
+    border-radius: .4rem;
+    padding: .5rem;
+    margin: 1rem 0 .5rem;
+    cursor: pointer;
+    transition: background-color .1s ease-in-out;
 }
 
-.friends__aside {
-
+.presentation--box:hover {
+    background-color: #dddfe2;
 }
 
-.friends__aside--container {
+.image--container, .friends__aside--container {
     display: flex;
-    gap: .5rem;
     flex-wrap: wrap;
+    gap: .5rem;
 }
+
+.friend-tile {
+    text-align: center;
+}
+
+.flex-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.aside--link {
+    color: #1877f2 !important;
+    font-size: 1.1rem;
+}
+
 
 
 

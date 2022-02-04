@@ -170,7 +170,7 @@ li.active {
     position: relative;
 }
 
-li.active ::after {
+li.active::after {
     position: absolute;
     content: "";
     width: 100%;
@@ -190,11 +190,6 @@ li.active i {
 }
 
 
-
-
-
-
-
 /* nav-menu */
 .nav__menu {
     display: flex;
@@ -205,6 +200,15 @@ li.active i {
 
 .nav__menu i {
     font-size: 1.1rem;
+}
+
+.nav__menu .active {
+    color: var(--primary-color);
+    background-color: #E7F3FF;
+}
+
+.nav__menu .active:hover {
+    background-color: #E7F3FF;
 }
 
 .nav--opt {
@@ -218,6 +222,7 @@ li.active i {
     border-radius: 50%;
     cursor: pointer;
     position: relative;
+    transition: background-color .3s ease;
 }
 
 .account i {
@@ -246,4 +251,13 @@ a.active h4{
     color: #1877F2 !important;
 }
 
+.nav__main--ul .tooltip .tooltiptext {
+    top: 120%;
+    right: 50%;
+    transform: translateX(50%);
+}
 
+.nav__menu .tooltip .tooltiptext {
+    right: 50%;
+    transform: translateX(50%);
+}

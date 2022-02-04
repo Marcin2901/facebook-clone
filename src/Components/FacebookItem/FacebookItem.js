@@ -3,14 +3,18 @@ import "./FacebookItem.css";
 
 function FacebookItem(props) {
 
-  const {img, text, size} = props  
+  const {img, text, size, icon, alternativeText} = props  
 
   
 
   return (
       <div className={`item ${size==="small" ? "item--small" : "item--normal"}`}>
-          <img src={img} />
-          <h4 className='item--text'>{text}</h4>
+          {img && <img src={img} /> }
+          {icon && icon}
+          <div className='with-alternative-text'>
+               <h4 className='item--text'>{text}</h4>
+               {alternativeText && alternativeText}
+          </div>
       </div>
   )
 }

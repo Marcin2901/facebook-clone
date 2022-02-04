@@ -1,0 +1,61 @@
+
+
+.option__container i {
+    font-size: 1.4rem;
+    background-color: rgb(228, 230, 235);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(0px);
+}
+
+.account--opt {
+    border-bottom: 1px solid #dddfe2;
+    padding-bottom: .5rem;
+    margin-bottom: .5rem;
+}
+
+.account--opt img {
+    width: 60px;
+    height: 60px;
+    margin-right: .5rem;
+}
+
+.account--opt-span {
+    font-size: .9rem;
+}
+
+
+.account--set {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: .5rem;
+    margin: .5rem 0;
+    transition: background-color .3s ease-in-out;
+}
+
+.account--set:hover {
+    background-color: #E4E6EB;
+}
+
+.account--set .fa-chevron-right {
+    position: absolute;
+    right: 0;
+    background-color: transparent;
+}
+
+.account--set h4, .account--opt:nth-of-type(2) h4 {
+    font-size: .9rem;
+}
+
+small {
+    display: block;
+    text-align: center;
+    margin-top: .5rem;
+}
+
