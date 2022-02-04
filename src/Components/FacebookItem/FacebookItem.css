@@ -37,6 +37,12 @@
     border-radius: 50%;
 }
 
+.item--big img {
+    width: 60px;
+    height: 60px;
+    margin-right: 1rem;
+}
+
 .item--small .item--text {
     color: #1d2129;
     font-weight: 600;

@@ -8,7 +8,7 @@ function FacebookItem(props) {
   
 
   return (
-      <div className={`item ${size==="small" ? "item--small" : "item--normal"}`}>
+      <div className={`item ${(size==="small" && "item--small")} ${(size==="big" && "item--big")}`}>
           {img && <img src={img} /> }
           {icon && icon}
           <div className='with-alternative-text'>

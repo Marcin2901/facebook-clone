@@ -51,7 +51,7 @@
     z-index: 2;
 }
 
-.nav__search input {
+.search-input input {
     height: 40px;
     max-width: 235px;
     background-color: #F0F2F5;
@@ -62,11 +62,11 @@
     z-index: 2;
 }
 
-.nav__search input:focus {
+.search-input input:focus {
     padding: 0 1rem 0 1rem;
 }
 
-.nav__search input:focus ~ .fa-search {
+.search-input input:focus ~ .fa-search {
     opacity: 0;
 }
 

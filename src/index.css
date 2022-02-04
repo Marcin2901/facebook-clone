@@ -39,6 +39,7 @@ code {
 
 .tooltip {
   position: relative;
+  z-index: 3;
 }
 
 .tooltip .tooltiptext {
@@ -55,7 +56,7 @@ code {
   right: 20%;
   opacity: 0;
   transition: opacity .3s ease-in-out;
-  z-index: 1;
+
 }
 
 .tooltip:hover .tooltiptext {

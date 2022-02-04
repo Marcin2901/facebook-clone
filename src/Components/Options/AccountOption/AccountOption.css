@@ -1,17 +1,5 @@
 
 
-.option__container i {
-    font-size: 1.4rem;
-    background-color: rgb(228, 230, 235);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(0px);
-}
-
 .account--opt {
     border-bottom: 1px solid #dddfe2;
     padding-bottom: .5rem;

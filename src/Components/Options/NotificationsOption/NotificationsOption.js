@@ -11,10 +11,10 @@ function NotificationsOption() {
 
     return ( 
         <div className="option__container notifications__container">
-            <div className="notifications--header">
+            <header className="notifications--header">
                 <h2>Powiadomienia</h2>
                 <i className="fas fa-ellipsis-h"></i>
-            </div>
+            </header>
             <div className="notifications--buttons"> 
             {/* dodaj onClicki na przycisku w sumie to nie onClicki tylko nwm Link i zmana active czy coś */}
                 <button className="notif--btn btn active">Wszystkie</button>
