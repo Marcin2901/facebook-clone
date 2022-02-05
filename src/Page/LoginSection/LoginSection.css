@@ -1,6 +1,6 @@
 .login {
    background-color: #f0f2f5;
-   min-height: 100vh;
+   min-height: max-content;
    display: flex;
    justify-content: space-evenly;
    align-items: center;

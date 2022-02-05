@@ -60,7 +60,7 @@ function ResetPasswordSection() {
     }
 
     return (
-        <section className="login">
+        <section className="reset--section">
 
             <div className="reset__container">
                 <h1>Zresetuj hasło</h1>

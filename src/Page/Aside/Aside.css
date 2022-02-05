@@ -1,7 +1,8 @@
 .aside__container {
     background-color: transparent;
-    /* później zmień */
     position: fixed;
+    top: 60px;
+    left: 0;
     width: 360px;
     height: 100vh;
     display: flex;
@@ -13,7 +14,3 @@
 .aside__container h4 {
     font-size: .9rem;
 }
-
-/* .aside__container .item {
-    display: ;
-} */

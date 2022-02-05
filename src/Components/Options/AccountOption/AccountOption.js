@@ -1,6 +1,7 @@
 import React, {useContext} from "react"
 import "../Option.css";
 import "./AccountOption.css";
+import {Link} from "react-router-dom";
 import FacebookItem from "../../FacebookItem/FacebookItem";
 import {UserContext} from "../../../hooks/Context/UserContextProvider";
 
@@ -35,7 +36,9 @@ function AccountOption() {
                  <FacebookItem icon={<i class="fas fa-moon"></i>} text={"Wyświetlanie i ułatwienie dostępu"}/>
                  <i class="fas fa-chevron-right"></i>
            </div>
-           <FacebookItem icon={<i class="fas fa-sign-out-alt"></i>} text={"Wyloguj się"}/>
+           <Link to={"/"}>
+               <FacebookItem icon={<i class="fas fa-sign-out-alt"></i>} text={"Wyloguj się"}/>
+           </Link>
            <small>Facebook &copy; 2022</small>
         </div>
     )

@@ -1,0 +1,110 @@
+.contacts__container {
+    background-color: transparent;
+    position: fixed;
+    top: 50px;
+    right: 5px;
+    width: 360px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem .5rem;
+    overflow-y: auto;
+}
+
+.contacts--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Segoe UI Historic;
+    color: #656768;
+    margin-top: .5rem;
+}
+
+.contacts--header h3 {
+    font-size: 1rem;
+    margin-left: .5rem;
+}
+
+.contacts--opt {
+    display: flex;
+    gap: 1rem;
+}
+
+.contacts--opt i {
+    background-color: inherit !important;
+    font-size: 1rem !important;
+    color: var(--second-text-colr);
+    transition: background-color .2s ease;
+    padding: .5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.contacts--opt i:hover {
+    background-color: var(--grey-background-color-m) !important;
+}
+
+.contacts--opt .fa-search {
+    position: static;
+    transform: none;
+}
+
+.contacts__content {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.contacts__content .item {
+    position: relative;  
+    padding: .5rem;
+    border-radius: .3rem; 
+}
+
+.contacts__content .item::after {
+    position: absolute;
+    content: "";
+    top: 65%;
+    left: 10%;
+    width: 7px;
+    height: 7px;
+    background-color: rgb(49, 162, 76);
+    border-radius: 50%;
+    border: 3px solid #F0F2F5;;
+    z-index: 1000;
+}
+
+
+.contacts__container::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+    border-radius: 1rem;
+  }
+  
+.contacts__container::-webkit-scrollbar-thumb {
+      border-radius: 1rem;
+      background-color: transparent;
+  }
+
+.contacts__container:hover::-webkit-scrollbar-thumb {
+    background-color: #aaacb3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

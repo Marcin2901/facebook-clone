@@ -22,7 +22,9 @@
   }
 }
 
-.option__container header  i, .option__container .create--menu  i {
+.option__container header i,
+.option__container .create--menu  i,
+.account__container i {
   font-size: 1.4rem;
   background-color: rgb(228, 230, 235);
   width: 40px;
