@@ -1,0 +1,15 @@
+.video {
+    display: flex;
+}
+
+.video main {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.video main h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}

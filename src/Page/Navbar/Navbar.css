@@ -106,8 +106,7 @@ li.active i {
 
 .menu-i-wrapper {
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column; 
 }
 
 .menu-i-wrapper i {

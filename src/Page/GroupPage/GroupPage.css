@@ -1,0 +1,15 @@
+.group--page {
+    display: flex;
+}
+
+.group--page main {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.group--page main h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}

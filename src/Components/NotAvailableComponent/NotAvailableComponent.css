@@ -1,0 +1,6 @@
+.not-available {
+    background-color: #fff;
+    box-shadow: var(--border-shadow);
+    border-radius: .5rem;
+    padding: 2rem;
+}

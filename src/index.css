@@ -34,7 +34,9 @@ code {
   --firs-text-color: #777980;
   --second-text-colr: #606770;
   --therd-text-color: #4b4f56;
-  --border-color: #bbbdc1;;
+  --border-color: #bbbdc1;
+
+  --border-shadow: 0px 0px 10px 1px #CFD1D5;
 }
 
 .tooltip {
@@ -62,5 +64,32 @@ code {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.icon--item {
+  font-size: 1.4rem;
+  background-color: rgb(228, 230, 235);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(0px);
+  cursor: pointer;
+}
+
+.icon--item:hover {
+  background-color: #dddfe2;
+}
+
+.info--box {
+  text-align: center;
+  font-size: 2rem;
+  color: orange;
+  border: 3px solid orange;
+  border-radius: .5rem;
+  box-shadow: 0px 0px 15px 1px orange;
+  padding: .5rem 1rem;
 }
 

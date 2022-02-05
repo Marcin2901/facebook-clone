@@ -1,0 +1,45 @@
+.componetn--aside {
+    width: 360px;
+    height: calc(100vh - 56px); 
+    background-color: #fff;
+    padding: .5rem 1rem;
+    box-shadow: var(--border-shadow);
+ }
+ 
+ .component--aside-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin-top: .5rem;
+ }
+ 
+ .component--aside-header h1 {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     font-size: 1.6rem;
+     font-weight: 700;
+     margin-top: -.5rem;
+ }
+ 
+ .componetn--aside__aside i {
+     margin-right: .3rem;
+ }
+ 
+ .btn--wrapper {
+     border-bottom: 1px solid #bbbdc1;
+     padding: 1rem 0;
+     margin: .5rem 0 1rem;
+ }
+ 
+/* .componetn--aside__input--wrapper {
+    
+ }
+  */
+ .componetn--aside__btn--wrapper:hover {
+     background-color: #dddfe2;
+ }
+ 
+ .component--aside__content {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;   
+ }
