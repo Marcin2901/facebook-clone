@@ -15,8 +15,11 @@ function Board() {
 
   const {userId} = useParams()
   const currentUser = users.find(user => user.id === userId);
+  console.log(userId)
+  console.log(currentUser)
 
 //   popraw search component żeby wyszukiwał odpowiednie wartości w zależności od położena
+//   dokończ demo dla PageCreator, VideoPage, MarketPlacePage, GroupPage
 
   return (
     <div className='container'>

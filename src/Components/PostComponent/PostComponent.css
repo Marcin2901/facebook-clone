@@ -1,0 +1,53 @@
+.post {
+    background-color: #fff;
+    box-shadow: 2px 2px 10px 1px #bbbdc1;
+    border-radius: .5rem;
+    margin: 2rem 0;
+}
+
+.post .item {
+    width: max-content;
+    padding-right: 1rem;
+    transition: all .5s ease;
+}
+
+.post .item:hover {
+    background-color: #fff;
+    transform: scale(1.05);
+}
+
+.post .item:hover h4 {
+    text-decoration: underline;
+}
+
+.post .item img {
+    margin-right: .3rem;
+}
+
+.post--content {
+    padding: .5rem;
+}
+
+.post--date {
+    font-size: .8rem;
+    color: var(--firs-text-color);
+}
+
+.post--text {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: .9rem;
+    letter-spacing: 1px;
+    margin: .5rem .3rem;
+}
+
+.post--img {
+    width: 99%;
+    margin: 0 auto;
+}
+
+.post--img img {
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+    box-shadow: 0px 0px 5px grey;
+}

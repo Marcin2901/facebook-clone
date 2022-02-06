@@ -2,14 +2,9 @@ import React, {useContext} from 'react';
 import "./ProfilePage.css";
 import { UserContext } from '../../hooks/Context/UserContextProvider';
 import {Link, useParams} from "react-router-dom";
-import userDatabase from "../../DemoDatabase/userDatabase"
+import userDatabase from "../../DemoDatabase/userDatabase";
+import PostComponent from "../../Components/PostComponent/PostComponent"
 
-
-// if (document.body.scrollTop <= 0 ) {
-//     alert ("scrolling down")
-// } else {
-//     alert ("scrolling up")
-// }
 
 
 function ProfilePage() {
@@ -17,20 +12,7 @@ function ProfilePage() {
     const user = useContext(UserContext);
     const {findUserId} = useParams()
     const watchedUser = userDatabase.find(currentUser => currentUser.id === findUserId && user.id !== findUserId)
-
-
-    //to działa jak coś
-    // let user = useContext(UserContext);
-    // let observer;
-
-    // const {findUserId} = useParams()
-    // findUserId && checkUser();
-
-    // function checkUser() {
-    //     observer = {...user}
-    //     user = userDatabase.find(user => user.id === findUserId)
-    // }
-
+  
     const [scrollDirection, setScrollDirection] = React.useState(false)
     React.useEffect(() => {
         // true jeśli scroll up i false jeśli scroll down
@@ -159,12 +141,19 @@ function ProfilePage() {
                                 <div className='post-creator__opt'><i className="fas fa-flag"></i>Wydarzenie z życia</div>
                             </div>
                         </div>
-                        <div className='post'></div>
-                        <div className='post'></div>
-                        <div className='post'></div>
-                        <div className='post'></div>
-                        <div className='post'></div>
-                        <div className='post'></div>
+                        { watchedUser ? 
+                          watchedUser.getAllPosts().length > 0 && 
+                          watchedUser.getAllPosts().map(post => (
+                              <PostComponent key={post.getId()} author={post.getAuthor()} date={post.getDate()} 
+                                             text={post.getBody()} img={post.getImg()} userId={post.userId} />
+                              ))
+                          :
+                          user.getAllPosts().length > 0 && 
+                          user.getAllPosts().map(post => (
+                             <PostComponent key={post.getId()} author={post.getAuthor()} date={post.getDate()} 
+                                            text={post.getBody()} img={post.getImg()} userId={post.userId} />
+                          ))
+                        }
                     </div>
                 </main>
             </div> 

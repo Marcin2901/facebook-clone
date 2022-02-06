@@ -5,15 +5,18 @@ export default  [
     },
     {
         name: "Grupy",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png"
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/mk4dH3FK0jT.png",
+        link: "groups"
     },
     {
         name: "Marketplace",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/ys/r/9BDqQflVfXI.png"
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/ys/r/9BDqQflVfXI.png",
+        link: "marketplace"
     },
     {
         name: "Watch",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yG/r/A1HlI2LVo58.png"
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yG/r/A1HlI2LVo58.png",
+        link: "videos"
     },
     {
         name: "Wspomnienia",

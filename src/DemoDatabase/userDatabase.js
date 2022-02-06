@@ -1,6 +1,10 @@
-import User from "../classes/User"
+import Post from "../classes/Post";
+import User from "../classes/User";
+import getData from "./postsDemoDatabase/postDatabase";
 
     let users;
+
+
 
 if(!JSON.parse(localStorage.getItem("users"))) {
      users = [
@@ -24,12 +28,28 @@ if(!JSON.parse(localStorage.getItem("users"))) {
             user1.friends.push(user2.id);
         }
     }
-   
-    localStorage.setItem("users", JSON.stringify(users));
+    
+   const postDatabase = getData();
+    postDatabase.then(data => {
+        for(let user of users) {
+            for(let i=0; i<5; i++) {
+                const post = data.pop();
+                user.addPost(post.body, post.img, post.date)
+            }
+        }
+        localStorage.setItem("users", JSON.stringify(users));
+        console.log(JSON.parse(localStorage.getItem("users")))
+    })
  
 } else {
-    users = JSON.parse(localStorage.getItem("users"))
-    users = users.map(user => new User(user.name, user.lastname, user.dateOfBirth, user.sex, user.email, user.password, user.profileImg, user.wasLoged, user.hasAccess, user.id, user.friends));
+   users = JSON.parse(localStorage.getItem("users"))
+   // users.forEach( user => user.posts.map(post => new Post(post.author, post.body, post.userId, post.dateOfPublic, post.img, post.likes, post.comments, post.id )))
+   users = users.map(user => ( new User(user.name, user.lastname, user.dateOfBirth, user.sex, user.email,
+                                        user.password, user.profileImg, user.wasLoged, user.hasAccess,
+                                        user.posts.map(post => new Post(post.author, post.body, post.userId,
+                                                                        post.dateOfPublic, post.img, post.likes,
+                                                                        post.comments, post.id )),
+                                         user.id, user.friends)));
 }
 
 export default users;

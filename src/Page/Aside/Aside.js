@@ -10,12 +10,14 @@ function Aside() {
     const user = useContext(UserContext)
 
     const appElems = additionalAppDatabase.map((app, index) => (
-        <FacebookItem key={index} img={app.icon} text={app.name} />
+        <Link to={`/board/${user.id}/${app.link}`}>
+            <FacebookItem key={index} img={app.icon} text={app.name} />
+        </Link>
     ))
 
     return (
         <aside className="aside__container">
-            <Link to="">
+            <Link to={`/board/${user.id}/profile`}>
                 <FacebookItem img={user.getProfileImg() } text={user.getFullName()} />
             </Link>
             {appElems}

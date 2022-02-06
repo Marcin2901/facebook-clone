@@ -4,6 +4,8 @@ class Post {
 
     author;
     body;
+    userId;
+    img;
     dateOfPublic;
     dateOfEdit;
     likes;
@@ -12,13 +14,35 @@ class Post {
     // zastanów się jesze nad tymi idkami
     id;
 
-    constructor(author, body) {
+    constructor(author, body, userId, dateOfPublic, img, likes=0, comments=[], id=uuid()) {
         this.author = author;
+        this.userId = userId;
         this.body = body;
-        this.dateOfPublic = new Date();
-        this.likes = 0;
-        this.comments = [];
-        this.id = uuid();
+        this.dateOfPublic = dateOfPublic;
+        this.img = img;
+        this.likes = likes;
+        this.comments = comments;
+        this.id = id;
+    }
+
+    getAuthor() {
+        return this.author;
+    }
+
+    getDate() {
+        return this.dateOfPublic
+    }
+
+    getBody() {
+        return this.body;
+    }
+
+    getImg() {
+        return this.img;
+    }
+
+    getId() {
+        return this.id;
     }
 
     editPost(body) {

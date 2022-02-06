@@ -23,7 +23,6 @@ function LoginSection() {
         console.log(saveData, usersDataName)
         saveData(usersDataName, userDatabase);
     }
-
     // wymyśl coś żeby nie renderować tych pustych diwów z kluczem
     const usersElems = userDatabase.map(user => (
         user.wasLoged && user.hasAccess ?
