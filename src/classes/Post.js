@@ -10,11 +10,10 @@ class Post {
     dateOfEdit;
     likes;
     comments;
-
-    // zastanów się jesze nad tymi idkami
     id;
+    shareQuantity;
 
-    constructor(author, body, userId, dateOfPublic, img, likes=0, comments=[], id=uuid()) {
+    constructor(author, body, userId, dateOfPublic, img, likes=[], comments=[], id=uuid()) {
         this.author = author;
         this.userId = userId;
         this.body = body;
@@ -23,6 +22,7 @@ class Post {
         this.likes = likes;
         this.comments = comments;
         this.id = id;
+        this.shareQuantity = 0;
     }
 
     getAuthor() {
@@ -50,6 +50,10 @@ class Post {
         this.dateOfEdit = new Date();
     }
 
+    getComments() {
+        return this.comments;
+    }
+
     addCommentToPost(author, body) {
         this.comments.push(new Comment(author, body));
     }
@@ -58,9 +62,23 @@ class Post {
         this.comments.find(comment => comment.id === commentId).editComment(body)
     }
     
-    addLike() {
-        this.likes ++;
+    addLike(userId) {
+        this.likes.push(userId);
     }
+
+    
+    subtractLike(userId) {
+        this.likes = this.likes.filter(likeId => likeId !== userId)
+    }
+
+    getLikes() {
+        return this.likes;
+    }
+
+    getShareQuantity() {
+        return this.shareQuantity;
+    }
+
 
 }
 

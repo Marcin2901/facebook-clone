@@ -1,6 +1,6 @@
 
 import Post from "./Post";
-import Comment from "./Comment";
+// import Comment from "./Comment";
 import { v4 as uuid } from 'uuid';
 import defaultPicture from "../DemoDatabase/profile-img.jpg";
 
@@ -42,7 +42,7 @@ class User {
         this.notifications = notifications;
     }
 
-    addPost(author=this.getFullName(), body, img=false, userId=this.getId(), dateOfPublic=new Date()) {
+    addPost(body, img=false, dateOfPublic=new Date(), userId=this.getId(), author=this.getFullName()) {
         this.posts.unshift(new Post(author, body, userId, dateOfPublic, img));
     }
 

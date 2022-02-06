@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import "./CreatePostComponent.css";
 import { UserContext } from '../../hooks/Context/UserContextProvider';
-import {Link, useHistory, useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import FacebookItem from '../FacebookItem/FacebookItem';
 import userDatabase from "../../DemoDatabase/userDatabase";
 
@@ -24,10 +24,10 @@ function CreatePostComponent(props) {
 
   function addPost() {
       props.watchedUser ? 
-      props.watchedUser.addPost(user.getFullName(), postForm.postText, postForm.postImg, user.getId())
+      props.watchedUser.addPost(postForm.postText, postForm.postImg, new Date(), user.getId(), user.getFullName())
       :
-      user.addPost(user.getFullName() ,postForm.postText, postForm.postImg)
-      localStorage.setItem("users", JSON.stringify(userDatabase));
+      user.addPost(postForm.postText, postForm.postImg, new Date(), user.getId(), user.getFullName())
+      localStorage.setItem("users", JSON.stringify(userDatabase))
   }
 
  

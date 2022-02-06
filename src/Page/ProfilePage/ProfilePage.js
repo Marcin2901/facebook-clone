@@ -169,14 +169,12 @@ function ProfilePage() {
                         { watchedUser ? 
                           watchedUser.getAllPosts().length > 0 && 
                           watchedUser.getAllPosts().map(post => (
-                              <PostComponent key={post.getId()} author={post.getAuthor()} date={post.getDate()} 
-                                             text={post.getBody()} img={post.getImg()} userId={post.userId}  />
+                              <PostComponent key={post.getId()} post={post}  />
                               ))
                           :
                           user.getAllPosts().length > 0 && 
                           user.getAllPosts().map(post => (
-                             <PostComponent key={post.getId()} author={post.getAuthor()} date={post.getDate()} 
-                                            text={post.getBody()} img={post.getImg()} userId={post.userId}  />
+                             <PostComponent key={post.getId()} post={post}  />
                           ))
                         }
                     </div>
