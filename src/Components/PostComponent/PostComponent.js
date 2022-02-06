@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./PostComponent.css";
 import FacebookItem from "../FacebookItem/FacebookItem";
 import userDatabase from "../../DemoDatabase/userDatabase";
+import {UserContext} from "../../hooks/Context/UserContextProvider";
 
 function PostComponent(props) {
 
     const userId = props.userId;
+    // const currentUser = useContext(UserContext)
+    // const user = props.watchdUser ? currentUser : userDatabase.find(currentUser => currentUser.id === userId);
     const user = userDatabase.find(currentUser => currentUser.id === userId);
-
-   
+    console.log(user)
     return (
         <div className="post">
             <div className="post--content">

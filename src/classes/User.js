@@ -42,8 +42,8 @@ class User {
         this.notifications = notifications;
     }
 
-    addPost(body, img=false, dateOfPublic=new Date() ) {
-        this.posts.push(new Post(this.getFullName(), body, this.getId(), dateOfPublic, img));
+    addPost(author=this.getFullName(), body, img=false, userId=this.getId(), dateOfPublic=new Date()) {
+        this.posts.unshift(new Post(author, body, userId, dateOfPublic, img));
     }
 
     getAllPosts() {

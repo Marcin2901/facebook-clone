@@ -1,20 +1,30 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import "./ProfilePage.css";
 import { UserContext } from '../../hooks/Context/UserContextProvider';
 import {Link, useParams} from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import PostComponent from "../../Components/PostComponent/PostComponent"
+import CreatePostComponent from '../../Components/CreatePostComponent/CreatePostComponent';
 
 
 
 function ProfilePage() {
-
+    
     const user = useContext(UserContext);
     const {findUserId} = useParams()
     const watchedUser = userDatabase.find(currentUser => currentUser.id === findUserId && user.id !== findUserId)
   
-    const [scrollDirection, setScrollDirection] = React.useState(false)
+    const [developProfile, setDevelopProfile] = useState({
+        changeProfileImg: false,
+        changeBackgroundImg: false,
+        createPost: false
+    })
+
+    const [scrollDirection, setScrollDirection] = useState(false)
     React.useEffect(() => {
+        // zapewnia że strona nie będzie się scrolować do dołu 
+        //to niżej do usunięcia!
+        window.scrollTo(0, 0);
         // true jeśli scroll up i false jeśli scroll down
         window.addEventListener('scroll', () => {(window.onscroll = function(e) {
             setScrollDirection(this.oldScroll > this.scrollY);
@@ -32,6 +42,9 @@ function ProfilePage() {
 
     return (
         <section className='profile--page'>
+            {developProfile.createPost && <CreatePostComponent watchedUser={watchedUser}/>}
+            {/* {developProfile.changeProfileImg && <SetProfileImgComponent />}
+            {developProfile.changeBackgroundImg && <SetBackgroundImgComponent />} */}
             <div className='profile__header--container'>
                 <header className='profile--header'>
                     <div className='profile--header__hero'>
@@ -46,9 +59,11 @@ function ProfilePage() {
                         }
                         <div className='profile--header__hero--bg'></div>
                     </div>
+
                     <div className='profile--header__info'>
                         <h1 className='profile--header__name'>{watchedUser ? watchedUser.getFullName() : user.getFullName()}</h1>
                     </div>
+
                     <nav className='profile--header__nav'>
                         <ul className='profile__nav--ul'>
                             {/* tutaj też pamiętaj żeby rozóżnić czy bierzesz info o sobie czy o obserwowanym profilu */}
@@ -71,11 +86,13 @@ function ProfilePage() {
                             }
                         </div>
                     </nav>
+
                 </header>
             </div>
-            <div className='profile__main--container'>    
-                <main className='profile--main'>
-                   
+
+            <div className='profile__main--container'>  
+
+                <main className='profile--main'>       
                     <aside className='profile--main__aside' style={{top: scrollDirection ? "50px" : "50px"}}>
                         <div className='presentation__aside'>
                             <h2>Prezentacja</h2>
@@ -133,25 +150,33 @@ function ProfilePage() {
                         <div className='post-creator'>
                             <div className='post-creator__top'>
                                 <img src={user.getProfileImg()} />
-                                <div className='post-creator__btn'>{watchedUser ? `Napisz co myślisz na temat: ${watchedUser.getName()}...` : "Co słychać ?"}</div>
+                                <div className='post-creator__btn' onClick={() => setDevelopProfile(prevState => ({...prevState, createPost: true }))}>
+                                    {watchedUser ? `Napisz co myślisz na temat: ${watchedUser.getName()}...` : "Co słychać ?"}
+                                </div>
                             </div>
                             <div className='post-creator__bottom'>
-                                <div className='post-creator__opt'><i className="fas fa-photo-video"></i>Zdjęcie/film</div>
-                                <div className='post-creator__opt'><i className="fas fa-user-tag"></i>Oznacz znajomych</div>
-                                <div className='post-creator__opt'><i className="fas fa-flag"></i>Wydarzenie z życia</div>
+                                <div className='post-creator__opt' onClick={() => setDevelopProfile(prevState => ({...prevState, createPost: true }))}>
+                                    <i className="fas fa-photo-video"></i>Zdjęcie/film
+                                </div>
+                                <div className='post-creator__opt' onClick={() => setDevelopProfile(prevState => ({...prevState, createPost: true }))}>
+                                    <i className="fas fa-user-tag"></i>Oznacz znajomych
+                                </div>
+                                <div className='post-creator__opt' onClick={() => setDevelopProfile(prevState => ({...prevState, createPost: true }))}>
+                                    <i className="fas fa-flag"></i>Wydarzenie z życia
+                                </div>
                             </div>
                         </div>
                         { watchedUser ? 
                           watchedUser.getAllPosts().length > 0 && 
                           watchedUser.getAllPosts().map(post => (
                               <PostComponent key={post.getId()} author={post.getAuthor()} date={post.getDate()} 
-                                             text={post.getBody()} img={post.getImg()} userId={post.userId} />
+                                             text={post.getBody()} img={post.getImg()} userId={post.userId}  />
                               ))
                           :
                           user.getAllPosts().length > 0 && 
                           user.getAllPosts().map(post => (
                              <PostComponent key={post.getId()} author={post.getAuthor()} date={post.getDate()} 
-                                            text={post.getBody()} img={post.getImg()} userId={post.userId} />
+                                            text={post.getBody()} img={post.getImg()} userId={post.userId}  />
                           ))
                         }
                     </div>

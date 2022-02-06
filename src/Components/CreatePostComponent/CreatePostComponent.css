@@ -1,0 +1,130 @@
+.create-post__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: #ffffffcc;
+    animation: fadeIn .5s ease-in-out;
+    z-index: 5;
+}
+
+
+
+.create-post--content {
+    width: 500px;
+    padding: .5rem;
+    background-color: #fff;
+    border-radius: .5rem;
+    box-shadow: var(--border-shadow);
+}
+
+.create-post--content .item:hover {
+    background-color: #fff;
+}
+
+.create-post--header {
+    position: relative;
+    border-bottom: 2px solid #dddfe2;
+    padding: .5rem 0 1rem;
+    margin-bottom: .5rem;
+}
+
+.create-post--header h2 {
+    text-align: center;
+}
+
+.create-post--text {
+    font-size: 1.2rem;
+    width: calc(100% - 1rem);
+    min-height: 150px;
+    margin: .5rem;
+    border: none;
+    outline: none;
+}
+
+.create-post-plus {
+    display: flex;
+    align-items: center;
+    border: 2px solid #dddfe2;
+    border-radius: .5rem;
+    padding: .5rem;
+    margin: .5rem 0;
+}
+
+.create-post-plus h3 {
+   flex-grow: 1;
+   font-size: 1rem;
+}
+
+.create-post-plus i {
+    font-size: 1.4rem;
+    border-radius: .4rem;
+    padding: .5rem 2rem;
+}
+
+.create-post-plus i:hover {
+    background-color: #dddfe2; 
+}
+
+.create-post-plus .fa-images {
+    color: rgb(32, 173, 32)
+}
+
+.create-post-plus .fa-user-tag {
+    color: var(--primary-color);
+}
+
+.create-post-plus .fa-laugh-wink {
+    color: rgb(240, 203, 40)
+}
+
+
+.public-post--btn {
+    width: 100%;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: .7rem;
+}
+
+.public-post--btn:hover {
+    background-color: var(--primary-color-m);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
