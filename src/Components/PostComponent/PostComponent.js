@@ -30,12 +30,21 @@ function PostComponent(props) {
         localStorage.setItem("users", JSON.stringify(userDatabase));
     }
 
-    function addComment() {
+    const [commentFomr, setCommentForm] = useState({commentText: ""})
 
+    function addComment(event) {
+        if(event.key==="Enter") {
+            event.preventDefault()
+            post.addComment(currentUser, commentFomr.commentText)
+            console.log(post)
+            setCommentForm({commentText: ""})
+        }  
+        localStorage.setItem("users", JSON.stringify(userDatabase));
     }
 
-    function handleChange() {
-
+    function handleChange(event) {
+        const {name, value} = event.target;
+        setCommentForm({[name]: value})
     }
 
     return (
@@ -74,11 +83,29 @@ function PostComponent(props) {
             <div className="comment__contaienr">
                 <div className="comment--input-box">
                     <img src={currentUser.getProfileImg()} alt="profile-img"/>
-                    <textarea type="text"
-                              name="commentText"
-                              value={""}
-                              onChange={handleChange}/>
+                    <textarea className={commentFomr.commentText.length > 40 && "area--plus"}
+                                type="text"
+                                placeholder="Napisz komentarz..."
+                                name="commentText"
+                                value={commentFomr.commentText}
+                                onChange={handleChange}
+                                onKeyDown={(e) => addComment(e)}
+                    />
                 </div>
+                {post.getComments().length > 0 &&
+                    post.getComments().map(comment => (
+                        <div className="comment">
+                            <div className="coment--top">
+                                <img src={comment.author.profileImg} />
+                                <div className="commnet--content">
+                                    <h3>{`${comment.author.name} ${comment.author.lastname}`} </h3>
+                                    <p className="comment--body">{comment.body}</p>
+                                </div>
+                            </div>
+                            <span className="comment--date">{comment.dateOfPublic}</span>
+                        </div>   
+                    ))
+                }
             </div>
         </div>
     )

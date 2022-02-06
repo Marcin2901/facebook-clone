@@ -128,27 +128,85 @@
 }
 
 .comment__contaienr {
-    height: 200px;
+    border-top: 1px solid var(--border-color);
 }
 
 .comment--input-box {
     display: flex;
     gap: .5rem;
     padding: 1rem;
+    position: relative;
 }
 
-.comment--input-box img {
+.comment--input-box img,
+.comment img {
     width: 40px;
     height: 40px;
     object-fit: cover;
     border-radius: 50%;
+    
 }
 
 .comment--input-box textarea {
    flex-grow: 1;
+   font-size: 1rem;
+   background-color: rgb(240, 242, 245);
+   color: #050505;
    resize: none;
-
+   height: 40px;
+   border: none;
+   outline: none;
+   padding: .6rem 1rem;
+   border-radius: 1.5rem;
+   
 }
+
+.area--plus {
+    height: 120px !important;
+}
+
+.comment--input-box textarea::placeholder {
+    color: #333030;
+}
+
+.comment {
+    padding: .5rem 1rem;
+}
+
+.coment--top {
+    display: flex;
+    gap: .5rem;
+}
+
+.commnet--content {
+    background-color: rgb(240, 242, 245); ;
+    flex-grow: 1;
+    border-radius: .5rem;
+    padding: .3rem .5rem;
+}
+
+.commnet--content h3 {
+    font-size: .9rem;
+}
+
+.comment--body {
+    font-size: 1rem;
+}
+
+.comment--date {
+    display: block;
+    font-size: .7rem;
+    color: var(--therd-text-color);
+    margin-left: 3.5rem;
+}
+
+
+
+
+
+
+
+
 
 
 

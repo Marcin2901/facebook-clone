@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-
+import Comment from './Comment';
 class Post {
 
     author;
@@ -54,7 +54,7 @@ class Post {
         return this.comments;
     }
 
-    addCommentToPost(author, body) {
+    addComment(author, body) {
         this.comments.push(new Comment(author, body));
     }
 
