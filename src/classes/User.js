@@ -22,10 +22,11 @@ class User {
     images = [];
     friends = [];
     notifications = []
+    messages = [];
 
     constructor(name, lastname, dateOfBirth, sex, email, password,
                 profileImg=defaultPicture, wasLoged=false, hasAccess=false, posts=[],
-                id=uuid(), friends=[], notifications=[]) {
+                id=uuid(), friends=[], notifications=[], messages=[]) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -40,6 +41,7 @@ class User {
         this.images.push(profileImg);
         this.friends = friends;
         this.notifications = notifications;
+        this.messages=messages;
     }
 
     addPost(body, img=false, dateOfPublic=new Date(), userId=this.getId(), author=this.getFullName()) {

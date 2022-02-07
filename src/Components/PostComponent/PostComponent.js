@@ -31,6 +31,7 @@ function PostComponent(props) {
     }
 
     const [commentFomr, setCommentForm] = useState({commentText: ""})
+    const [showComments, setShowComments] = useState(false)
 
     function addComment(event) {
         if(event.key==="Enter") {
@@ -38,8 +39,9 @@ function PostComponent(props) {
             post.addComment(currentUser, commentFomr.commentText)
             console.log(post)
             setCommentForm({commentText: ""})
+            setShowComments(true)
+            localStorage.setItem("users", JSON.stringify(userDatabase));
         }  
-        localStorage.setItem("users", JSON.stringify(userDatabase));
     }
 
     function handleChange(event) {
@@ -64,7 +66,9 @@ function PostComponent(props) {
                 <div className="post--comments">
                      <span className="post--likes"><i className="fas fa-thumbs-up"></i>{post.getLikes().length}</span>
                      <div className="post--quantity">
-                        <span className="post--quantity-value">{post.getComments().length} komentarzy</span>
+                        <span className="post--quantity-value" onClick={() => setShowComments(prevStete => !prevStete)}>
+                            {post.getComments().length} komentarzy
+                        </span>
                         <span className="post--quantity-value">{post.getShareQuantity()} udostępnień</span>
                      </div>
                 </div>
@@ -74,7 +78,7 @@ function PostComponent(props) {
                          >
                         <i className={!isLikedByUser ? "far fa-thumbs-up" : "fas fa-thumbs-up"}></i> Lubie to!
                     </div>
-                    <div className="post--opt-item" onClick={addComment}>
+                    <div className="post--opt-item" onClick={() => setShowComments(prevStete => !prevStete)}>
                         <i className="far fa-comment-alt"></i> Komentarz
                     </div>
                     <div className="post--opt-item"><i className="fas fa-share"></i> Udostępnij</div>
@@ -92,7 +96,8 @@ function PostComponent(props) {
                                 onKeyDown={(e) => addComment(e)}
                     />
                 </div>
-                {post.getComments().length > 0 &&
+                {showComments && (
+                post.getComments().length > 0 &&
                     post.getComments().map(comment => (
                         <div className="comment">
                             <div className="coment--top">
@@ -105,7 +110,8 @@ function PostComponent(props) {
                             <span className="comment--date">{comment.dateOfPublic}</span>
                         </div>   
                     ))
-                }
+                
+                )}
             </div>
         </div>
     )

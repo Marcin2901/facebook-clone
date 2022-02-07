@@ -23,12 +23,27 @@ if(!JSON.parse(localStorage.getItem("users"))) {
         new User("Anita", "Dąbrowska", 2000, false, "anita@gmail.com", "anita")
 ]
     for(let user1 of users) {
+        // wybrany urzytkownik
+        const sara = users[0];
         for(let user2 of users) {
             if(user1 === user2) continue
             user1.friends.push(user2.id);
+            //sara wysyła do wszystkich wiadomość
+            user1.name==="Sara" && user1.messages.push({userId: user2.id, ourMessages: [{fromUserId: user1.id, text: "sprawdzam tylko czy wiadomości się wysyłają"},
+                                                                 {fromUserId: user2.id, text: "Jak tam?"},
+                                                                 {fromUserId: user2.id, text: "Hej"},
+                                                                 {fromUserId: user1.id, text: "Cześć"}]})
+            //wszyscy dostają wiadomość od sary                                                     
+            user1.name!=="Sara" && user1.messages.length < 1 && user1.messages.push({userId: sara.id, ourMessages: [{fromUserId: sara.id, text: "sprawdzam tylko czy wiadomości się wysyłają"},
+                                                                {fromUserId: user1.id, text: "Jak tam?"},
+                                                                {fromUserId: user1.id, text: "Hej"},
+                                                                {fromUserId: sara.id, text: "Cześć"}]})
+
         }
     }
     
+  
+
    const postDatabase = getData();
     postDatabase.then(data => {
         for(let user of users) {
@@ -48,7 +63,7 @@ if(!JSON.parse(localStorage.getItem("users"))) {
                                         user.posts.map(post => new Post(post.author, post.body, post.userId,
                                                                         post.dateOfPublic, post.img, post.likes,
                                                                         post.comments, post.id )),
-                                         user.id, user.friends)));
+                                         user.id, user.friends, [], user.messages)));
 }
 
 export default users;

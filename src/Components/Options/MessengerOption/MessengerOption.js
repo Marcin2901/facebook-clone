@@ -3,10 +3,20 @@ import "../Option.css";
 import "./MessengerOption.css";
 import { UserContext } from "../../../hooks/Context/UserContextProvider";
 import SearchBar from "../../SearchBar/SearchBar";
+import FacebookItem from "../../FacebookItem/FacebookItem";
+import userDatabase from "../../../DemoDatabase/userDatabase";
+import { MessengerOpenContext } from "../../../hooks/Context/MessengerOpenContextProvider";
 
-function MessengerOption() {
+function MessengerOption(props) {
 
     const user = useContext(UserContext);
+    const {openMessenger, setSelectUserMessages} = useContext(MessengerOpenContext);
+
+    function handleClick(messageUser) {
+        openMessenger()
+        props.closeAllOption()
+        setSelectUserMessages(messageUser);
+    }
 
     return (
         <div className="option__container messenger__container">
@@ -20,26 +30,22 @@ function MessengerOption() {
                 </div>
             </header>
             <SearchBar linkTo={"messages"}/>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
-            <h2>Marcin</h2>
+            {user.messages.length > 0 &&
+                user.messages.map(message => {
+                    
+                    const messageUser = userDatabase.find(currentUser => currentUser.id === message.userId);
+                   return (
+                    //zapakuj itema w link otwierający MessangerComponent z konkretym userem
+                    <div onClick={() => handleClick(messageUser)}>
+                        <FacebookItem img={messageUser.profileImg} 
+                                    text={`${messageUser.name} ${messageUser.lastname}`} 
+                                    alternativeText={"Tutaj wklej ostatnią wiadomość z tblicy"}
+                                    size="big"
+                        />
+                    </div>
+                    )
+            })
+            }
         </div>
     )
 }

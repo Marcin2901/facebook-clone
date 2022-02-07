@@ -32,7 +32,16 @@ function Navbar() {
         notifications: false,
         account: false,
         [id]: !prevState[id]
-      }))
+      }))    
+  }
+
+  function closeAllOption() {
+      setOpenOption({
+        menu: false,
+        messenger: false,
+        notifications: false,
+        account: false,
+      })
   }
  
 
@@ -98,7 +107,7 @@ function Navbar() {
                       <span className='tooltiptext'>Messenger</span>
                   </div>
                   <i className="fab fa-facebook-messenger"></i>
-                  {openOption.messenger && <MessengerOption />}
+                  {openOption.messenger && <MessengerOption openOption={openOption} closeAllOption={closeAllOption}/>}
               </div>
               <div  className={`nav--opt notifications ${openOption.notifications && "active"}`}>
                   <div id="notifications" className='nav--opt__click-area tooltip' onClick={(e) => handleOption(e)}>

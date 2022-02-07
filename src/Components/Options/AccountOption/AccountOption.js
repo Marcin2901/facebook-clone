@@ -4,10 +4,12 @@ import "./AccountOption.css";
 import {Link} from "react-router-dom";
 import FacebookItem from "../../FacebookItem/FacebookItem";
 import {UserContext} from "../../../hooks/Context/UserContextProvider";
+import { MessengerOpenContext } from "../../../hooks/Context/MessengerOpenContextProvider";
 
 function AccountOption() {
 
     const user = useContext(UserContext);
+    const {closeMessenger} = useContext(MessengerOpenContext);
 
     return (
         <div className="option__container account__container">
@@ -36,7 +38,7 @@ function AccountOption() {
                  <FacebookItem icon={<i class="fas fa-moon"></i>} text={"Wyświetlanie i ułatwienie dostępu"}/>
                  <i class="fas fa-chevron-right"></i>
            </div>
-           <Link to={"/"}>
+           <Link to={"/"} onClick={closeMessenger}>
                <FacebookItem icon={<i class="fas fa-sign-out-alt"></i>} text={"Wyloguj się"}/>
            </Link>
            <small>Facebook &copy; 2022</small>
