@@ -2,13 +2,15 @@
 class Comment {
 
     author;
+    authorImg;
     body;
     dateOfPublic;
     dateOfEdit;
     likes;
 
     constructor(author, body) {
-        this.author = author;
+        this.author = `${author.name} ${author.lastname}`;
+        this.authorImg = author.profileImg;
         this.body = body;
         this.dateOfPublic = this.getDate();
         this.likes=0;

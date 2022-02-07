@@ -55,7 +55,7 @@ class Post {
     }
 
     addComment(author, body) {
-        this.comments.push(new Comment(author, body));
+        this.comments.unshift(new Comment(author, body));
     }
 
     editCommentForPost(commentId, body) {

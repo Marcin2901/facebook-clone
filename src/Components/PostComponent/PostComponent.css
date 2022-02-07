@@ -200,6 +200,7 @@
 
 .comment--body {
     font-size: 1rem;
+    max-width: 400px;
 }
 
 .comment--date {

@@ -22,7 +22,6 @@ function PostComponent(props) {
         if(!isLikedByUser) {
             post.addLike(currentUser.id)
             setIsLikedByUser(post.getLikes().find(likeId => likeId === currentUser.id));
-            console.log(userId)
         }  else {
             post.subtractLike(currentUser.id)
             setIsLikedByUser(post.getLikes().find(likeId => likeId === currentUser.id));
@@ -37,7 +36,6 @@ function PostComponent(props) {
         if(event.key==="Enter") {
             event.preventDefault()
             post.addComment(currentUser, commentFomr.commentText)
-            console.log(post)
             setCommentForm({commentText: ""})
             setShowComments(true)
             localStorage.setItem("users", JSON.stringify(userDatabase));
@@ -101,9 +99,9 @@ function PostComponent(props) {
                     post.getComments().map(comment => (
                         <div className="comment">
                             <div className="coment--top">
-                                <img src={comment.author.profileImg} />
+                                <img src={comment.authorImg} />
                                 <div className="commnet--content">
-                                    <h3>{`${comment.author.name} ${comment.author.lastname}`} </h3>
+                                    <h3>{comment.author} </h3>
                                     <p className="comment--body">{comment.body}</p>
                                 </div>
                             </div>

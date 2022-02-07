@@ -16,6 +16,11 @@
     border-radius: .5rem .5rem 0 0;
 }
 
+.messenger--item-header .item:hover {
+    background-color: #fff;
+    cursor: default;
+}
+
 .messenger--item .item span {
     font-size: .8rem;
     display: block;
@@ -90,7 +95,11 @@
     font-size: 1.6rem;
 }
 
-
+.no--messages {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 120px;
+}
 
 
 

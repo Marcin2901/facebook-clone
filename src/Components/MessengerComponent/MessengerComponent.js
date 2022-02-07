@@ -7,9 +7,9 @@ import userDatabase from "../../DemoDatabase/userDatabase";
 
 function MessengerComponent() {
 
-    const {closeMessenger, selectUserMessages} = useContext(MessengerOpenContext);
+    const {closeMessenger, selectUserMessages, setUpdated} = useContext(MessengerOpenContext);
     const user = useContext(UserContext);
-    const messageIndex =  user.messages.indexOf(user.messages.find(message => message.userId === selectUserMessages.id))
+    let messageIndex =  user.messages.indexOf(user.messages.find(message => message.userId === selectUserMessages.id))
 
     const [messageForm, setMessageForm] = useState({myMessage: ""})
 
@@ -20,11 +20,23 @@ function MessengerComponent() {
 
     function sendMessage(event) {
         if(event.key === "Enter" || event.target.id ==="submit" || event.target.id === "like") {
-            console.log(messageForm)
+            if(messageIndex < 0) {
+                user.messages.push({userId: selectUserMessages.id, ourMessages: []})
+                selectUserMessages.messages.push({userId: user.id, ourMessages: []})
+                messageIndex =  user.messages.indexOf(user.messages.find(message => message.userId === selectUserMessages.id))
+                setUpdated(prevState => [...prevState, selectUserMessages.id]);
+            }
             user.messages[messageIndex].ourMessages.unshift({fromUserId: user.id, text: messageForm.myMessage})
             const selectUserMessageIndex =  selectUserMessages.messages.indexOf(selectUserMessages.messages.find(message => message.userId === user.id))
             selectUserMessages.messages[selectUserMessageIndex].ourMessages.unshift({fromUserId: user.id, text: messageForm.myMessage})
             setMessageForm({myMessage: ""})
+            setUpdated(prevState => [...prevState, user.id]);
+            // ustawienie wiadomości nowej wiadomości na górze listy
+            user.messages.push(user.messages[messageIndex])
+            user.messages.splice(messageIndex, 1)
+            selectUserMessages.messages.push(selectUserMessages.messages[selectUserMessageIndex])
+            selectUserMessages.messages.splice(selectUserMessageIndex, 1)
+
             localStorage.setItem("users", JSON.stringify(userDatabase))
         }
     }
@@ -56,12 +68,13 @@ function MessengerComponent() {
                             </p>
                         ))
                         :
-                        <h4>{`Nie masz jeszcze żadnych wiadomości z ${selectUserMessages.name}`}</h4>
+                        <h4 className="no--messages">{`Nie masz jeszcze żadnych wiadomości z ${selectUserMessages.name}`}</h4>
                     }
                 </div>
                 <div className="messenger--type">
                     <input type={"text"}
                            placeholder="Aa"
+                           autoComplete="off"
                            name="myMessage"
                            value={messageForm.myMessage}
                            onChange={(e) => handleChange(e)}

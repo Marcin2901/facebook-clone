@@ -135,6 +135,7 @@ li.active i {
     cursor: pointer;
     position: relative;
     transition: background-color .3s ease;
+    z-index: 4;
 }
 
 .account i {
@@ -151,7 +152,7 @@ li.active i {
     background-color: transparent;
     height: 100%;
     width: 100%;
-    z-index: 1;
+    z-index: 4
 }
 
 a.active {
@@ -173,3 +174,4 @@ a.active h4{
     right: 50%;
     transform: translateX(50%);
 }
+

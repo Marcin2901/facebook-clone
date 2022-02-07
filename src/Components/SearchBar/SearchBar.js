@@ -4,12 +4,22 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../hooks/Context/UserContextProvider";
 import FacebookItem from "../FacebookItem/FacebookItem";
 import userDatabase from "../../DemoDatabase/userDatabase";
+import {MessengerOpenContext} from "../../hooks/Context/MessengerOpenContextProvider";
 
 function SearchBar(props) {
 
     const user = useContext(UserContext);
     const [searchUsers, setSearchUsers] = useState({searchUser: ""})
     const [foundUsers, setFoundUsers] = useState([])
+
+    const {openMessenger, setSelectUserMessages} = useContext(MessengerOpenContext);
+
+    function handleClick(messageUser) {
+        openMessenger()
+        setSelectUserMessages(messageUser);
+        props.closeAllOption();
+    }
+    
 
     React.useEffect(() => {
         const found = [];
@@ -62,8 +72,8 @@ function SearchBar(props) {
                 />
                 <i className="fas fa-search"></i>
             </div>
-            {searchUsers.searchUser && 
-                <div className='foundUsers__container'>
+            {props.isInNavbar ? searchUsers.searchUser && 
+                <div className='foundUsers__container foundUsers__profile'>
                     <div className='arrow-back' onClick={handleArrowBack}><i className="fas fa-arrow-left"></i></div>
                     {foundUsers.map(currentUser => (
                         <Link to={`/board/${user.id}/${props.linkTo}/${currentUser.id}`}>
@@ -74,6 +84,20 @@ function SearchBar(props) {
                                           size={!props.isInNavbar && "big"}/>
                         </Link>
                     ))}
+                </div>
+                : searchUsers.searchUser && 
+                <div className='foundUsers__container foundUsers__messages'>
+                    <div className='arrow-back' onClick={handleArrowBack}><i className="fas fa-arrow-left"></i></div>
+                    {foundUsers.map(currentUser => (
+                        <div onClick={() => handleClick(currentUser)}>
+                            <FacebookItem key={currentUser.id}
+                                img={currentUser.getProfileImg()}
+                                text={currentUser.getFullName()}
+                                alternativeText={!props.isInNavbar && "zobacz wiadomośći"}
+                                size={!props.isInNavbar && "big"}/>        
+                        </div>
+                    ))}
+                    <span className="foundUsers__messages--info">Znalezione wiadomości</span>
                 </div>
             }
         </div>

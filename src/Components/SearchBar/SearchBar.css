@@ -53,6 +53,7 @@
     box-shadow: 2px 10px 10px  #CFD1D5;
     transition: all 1s ease-in-out;
     animation: appear .5s ease-in-out;
+    z-index: 1;
 }
 
 
@@ -81,6 +82,46 @@
         transform: translateX(-300px);
     }
 }
+
+.foundUsers__profile {
+  max-height: 600px;
+  overflow: auto;
+}
+
+.foundUsers__profile::-webkit-scrollbar {
+    width: 10px;
+    background-color: #fff;
+    border-radius: 1rem;
+  }
+  
+  .foundUsers__profile::-webkit-scrollbar-thumb {
+      border-radius: 1rem;
+      background-color: #fff;
+  }
+
+.foundUsers__profile:hover::-webkit-scrollbar-thumb {
+    background-color: #aaacb3;
+}
+
+.foundUsers__messages {
+    min-height: 80vh;
+    position: absolute;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid #aaacb3;
+    border-radius: 0rem;
+    box-shadow: 2px 2px 10px red;
+}
+
+.foundUsers__messages--info {
+    position: absolute;
+    bottom: 2%;
+    width: 100%;
+    text-align: center;
+    color: #666870;
+
+}
+
+
 
 .arrow-back {
     height: 36px;

@@ -10,13 +10,15 @@ import { MessengerOpenContext } from "../../../hooks/Context/MessengerOpenContex
 function MessengerOption(props) {
 
     const user = useContext(UserContext);
-    const {openMessenger, setSelectUserMessages} = useContext(MessengerOpenContext);
+    const {openMessenger, setSelectUserMessages, updated, setUpdated} = useContext(MessengerOpenContext);
 
     function handleClick(messageUser) {
         openMessenger()
         props.closeAllOption()
         setSelectUserMessages(messageUser);
+        setUpdated(prevState => [...prevState].filter(ids => ids !== messageUser.id))   
     }
+
 
     return (
         <div className="option__container messenger__container">
@@ -29,23 +31,26 @@ function MessengerOption(props) {
                     <i class="far fa-sticky-note tooltip"><span className="tooltiptext">Nowa wiadomość</span></i>
                 </div>
             </header>
-            <SearchBar linkTo={"messages"}/>
+            <SearchBar closeAllOption={props.closeAllOption}/>
+            <div className="messages-users_constainer">
             {user.messages.length > 0 &&
                 user.messages.map(message => {
-                    
+                   
                     const messageUser = userDatabase.find(currentUser => currentUser.id === message.userId);
+                 
                    return (
                     //zapakuj itema w link otwierający MessangerComponent z konkretym userem
-                    <div onClick={() => handleClick(messageUser)}>
+                    <div onClick={() => handleClick(messageUser)} className={updated.find(ids => ids === messageUser.id) && "new-message"}>
                         <FacebookItem img={messageUser.profileImg} 
                                     text={`${messageUser.name} ${messageUser.lastname}`} 
-                                    alternativeText={"Tutaj wklej ostatnią wiadomość z tblicy"}
+                                    alternativeText={"Zobacz wiadomości"}
                                     size="big"
                         />
                     </div>
                     )
             })
             }
+            </div>
         </div>
     )
 }

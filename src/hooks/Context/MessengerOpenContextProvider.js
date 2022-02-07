@@ -13,10 +13,12 @@ function MessengerOpenContextProvider(props) {
     }
 
     const [selectUserMessages, setSelectUserMessages] = useState({});
+    
+    const [updated, setUpdated] = useState([]);
 
     return (
         <MessengerOpenContext.Provider 
-            value={{isMessengerOpen, openMessenger, closeMessenger, selectUserMessages, setSelectUserMessages}}>
+            value={{isMessengerOpen, openMessenger, closeMessenger, selectUserMessages, setSelectUserMessages, updated, setUpdated}}>
                 {props.children}
         </MessengerOpenContext.Provider>
     )
