@@ -29,7 +29,9 @@ function PostComponent(props) {
         localStorage.setItem("users", JSON.stringify(userDatabase));
     }
 
+    //formularz nowego komentarza
     const [commentFomr, setCommentForm] = useState({commentText: ""})
+    // state umożliwiający otwieranie komentarzy w konkretnym poście
     const [showComments, setShowComments] = useState(false)
 
     function addComment(event) {
@@ -38,21 +40,34 @@ function PostComponent(props) {
             post.addComment(currentUser, commentFomr.commentText)
             setCommentForm({commentText: ""})
             setShowComments(true)
-            userDatabase.forEach(customer => customer.addNotification(currentUser, 1, post))
+            //dodawanie powiadomień po dodaniu komentarza
+            //*props.watchedUser => właściciel odwiedzananego profilu, * currentUser => profil zalogowanego usera
+            userDatabase.forEach(customer => (
+                customer.addNotification(currentUser, 1, post, props.watchedUser ? props.watchedUser.id : currentUser.id)))
             localStorage.setItem("users", JSON.stringify(userDatabase));
         }  
     }
 
+    //uzupełniania formularz komentarza
     function handleChange(event) {
         const {name, value} = event.target;
         setCommentForm({[name]: value})
     }
 
+    //header uzależniony czy piszemy na swojej czy kogoś tablicy
+    function getHeaderText() {
+        return `${!props.watchedUser ?
+                   post.getAuthor() :
+                   post.getAuthor() === props.watchedUser.getFullName() ?
+                    post.getAuthor() :
+                    post.getAuthor() + " ➜ " + props.watchedUser.getFullName()}`
+    }
+
     return (
-        <div className="post">
+        <div className="post" id={post.id}>
             <div className="post--content">
-                <FacebookItem img={user.getProfileImg()} text={post.getAuthor()}
-                              alternativeText={<span className="post--date">{post.getDate().toString().slice(0, 10)}</span>}
+                <FacebookItem img={user.getProfileImg()} text={getHeaderText()}
+                              alternativeText={<span className="post--date">{post.dateOfPublic}</span>}
                               size={"big"} />
                 <p className="post--text">{post.getBody()}</p>
             </div>

@@ -9,6 +9,8 @@ function CreatePostComponent(props) {
 
   const user = useContext(UserContext); 
   const {pathname} = useLocation()
+  const {watchedUser} = props;
+
   const [postForm, setPostForm] = useState({
       postText: "",
       postImg: false
@@ -23,14 +25,31 @@ function CreatePostComponent(props) {
   }
 
   function addPost() {
-      props.watchedUser ? 
-      props.watchedUser.addPost(postForm.postText, postForm.postImg, new Date(), user.getId(), user.getFullName())
+      //dodawanie posta *watchedUser => do tablicy obserwowanego usera *user do tablicy zalogowanego usera
+      watchedUser ? 
+      watchedUser.addPost(postForm.postText, postForm.postImg, getDate(), user.getId(), user.getFullName())
       :
-      user.addPost(postForm.postText, postForm.postImg, new Date(), user.getId(), user.getFullName());
-
-      userDatabase.forEach(currentUser => currentUser.addNotification(user, 0, user.getAllPosts()[0], props.watchedUser ? props.watchedUser.id : user.id));
+      user.addPost(postForm.postText, postForm.postImg, getDate(), user.getId(), user.getFullName());
+      
+      //dodawanie powiadomień o nowym poście *watchedUser => w tablicy obserwowanego usera *user w tablicy zalogowanego usera
+      //                                     *watcherUser.id => po wysłąniu posta wysyłamy też id właściciela tablicy
+      userDatabase.forEach(currentUser => (
+          currentUser.addNotification(user, 0, watchedUser ?
+                              watchedUser.getAllPosts()[0] : user.getAllPosts()[0], watchedUser ? watchedUser.id : user.id)));
       localStorage.setItem("users", JSON.stringify(userDatabase));
-  }
+  } 
+
+  //przenieś wszystkie getDate() do contextu
+  function getDate() {
+    const date = new Date()
+    const year = date.getFullYear();
+    const month = date.getMonth() < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`
+    const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
+    const hour = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`
+    const minute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`
+    const formatedDate = `${year}-${month}-${day}  ${hour}:${minute}`
+    return formatedDate;
+}
 
  
   

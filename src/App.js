@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import LoginSection from "./Page/LoginSection/LoginSection";
 import Board from "./Page/Board/Board";
 import RegistrationForm from "./Page/RegistrationForm/RegistrationFrom";
@@ -15,7 +15,7 @@ function App() {
 
  
   const location = useLocation()
-  const {isMessengerOpen, closeMessenger} = useContext(MessengerOpenContext);
+  const {isMessengerOpen} = useContext(MessengerOpenContext);
 
   return (
     <div className="app">
@@ -39,7 +39,7 @@ function App() {
                   <ResetPasswordSection />
                </Route>
                <Route path="/board/:userId">
-                  <UserContextProvider userId={location.pathname.replace(/\/board\//, "").replace(/\/.+[\s\S]/,"")}>
+                  <UserContextProvider userId={location.pathname.replace(/\/board\//, "").replace(/\/.+[\s\S]/,"")}> 
                          <Board/>
                          {isMessengerOpen && <MessengerComponent />}
                   </UserContextProvider>

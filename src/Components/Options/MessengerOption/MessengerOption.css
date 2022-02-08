@@ -2,6 +2,8 @@
     height: 90vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    scrollbar-color: #aaacb3 #fff;
+    scrollbar-width: thin;
 }
 
 /* do scrolbara dla wszystkich na przyszłość */

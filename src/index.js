@@ -6,13 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from "react-router-dom";
 import {SaveDataContextProvider} from "./hooks/Context/SaveDataContextProvider"
 import {MessengerOpenContextProvider} from "./hooks/Context/MessengerOpenContextProvider";
+import {ScrollToContextProvider} from "./hooks/Context/ScrollToContextProvider"
 
 ReactDOM.render(
   <SaveDataContextProvider>
     <MessengerOpenContextProvider>
-      <Router>
-          <App />
-      </Router>
+      <ScrollToContextProvider>
+         <Router>
+            <App />
+         </Router>
+        </ScrollToContextProvider>
     </MessengerOpenContextProvider>
   </SaveDataContextProvider>
   ,

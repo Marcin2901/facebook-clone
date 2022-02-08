@@ -1,4 +1,4 @@
-
+import { v4 as uuid } from 'uuid';
 
 class Notification {
 
@@ -26,6 +26,7 @@ class Notification {
          this.type = type;
          this.target  = target;
          this.boardOwnerId = boardOwnerId;
+         this.id = uuid();
   }
 
     getDate() {

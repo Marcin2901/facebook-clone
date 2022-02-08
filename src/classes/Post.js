@@ -33,6 +33,9 @@ class Post {
         return this.dateOfPublic
     }
 
+ 
+
+
     getBody() {
         return this.body;
     }

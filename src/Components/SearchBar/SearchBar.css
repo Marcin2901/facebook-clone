@@ -86,6 +86,8 @@
 .foundUsers__profile {
   max-height: 600px;
   overflow: auto;
+  scrollbar-color: #aaacb3 #fff;
+  scrollbar-width: thin;
 }
 
 .foundUsers__profile::-webkit-scrollbar {

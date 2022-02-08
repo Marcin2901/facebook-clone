@@ -45,9 +45,10 @@ class User {
         this.messages=messages;
     }
 
-    addPost(body, img=false, dateOfPublic=new Date(), userId=this.getId(), author=this.getFullName()) {
+    addPost(body, img=false, dateOfPublic, userId=this.getId(), author=this.getFullName()) {
         this.posts.unshift(new Post(author, body, userId, dateOfPublic, img));
     }
+
 
     getAllPosts() {
         return this.posts;

@@ -4,7 +4,7 @@ import getData from "./postsDemoDatabase/postDatabase";
 
     let users;
 
-
+// Zestaw początkowych użytkowników którzy zostaną dodani do localStorage
 
 if(!JSON.parse(localStorage.getItem("users"))) {
      users = [
@@ -22,6 +22,7 @@ if(!JSON.parse(localStorage.getItem("users"))) {
         new User("Rafał", "Nowak", 1995, true, "rafal@gmail.com", "rafal"),
         new User("Anita", "Dąbrowska", 2000, false, "anita@gmail.com", "anita")
 ]
+    //dodawanie znajomych i testu wiadomości
     for(let user1 of users) {
         // wybrany urzytkownik
         const sara = users[0];
@@ -42,8 +43,7 @@ if(!JSON.parse(localStorage.getItem("users"))) {
         }
     }
     
-  
-
+    //dodawanie przykładowych postów dla urzytkowników z postDemoDatabase
    const postDatabase = getData();
     postDatabase.then(data => {
         for(let user of users) {
@@ -57,7 +57,7 @@ if(!JSON.parse(localStorage.getItem("users"))) {
  
 } else {
    users = JSON.parse(localStorage.getItem("users"))
-   // users.forEach( user => user.posts.map(post => new Post(post.author, post.body, post.userId, post.dateOfPublic, post.img, post.likes, post.comments, post.id )))
+   //konwersja pobranych z localStorage użytkowników na obiekty żeby mieć dostęp do metod klasy User
    users = users.map(user => ( new User(user.name, user.lastname, user.dateOfBirth, user.sex, user.email,
                                         user.password, user.profileImg, user.wasLoged, user.hasAccess,
                                         user.posts.map(post => new Post(post.author, post.body, post.userId,

@@ -5,6 +5,7 @@ import {Link, useParams} from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import PostComponent from "../../Components/PostComponent/PostComponent"
 import CreatePostComponent from '../../Components/CreatePostComponent/CreatePostComponent';
+import {ScrollToContext} from "../../hooks/Context/ScrollToContextProvider";
 
 
 
@@ -12,8 +13,10 @@ function ProfilePage() {
     
     const user = useContext(UserContext);
     const {findUserId} = useParams()
+
+    //właściciel obserwowanego profilu
     const watchedUser = userDatabase.find(currentUser => currentUser.id === findUserId && user.id !== findUserId)
-  
+
     const [developProfile, setDevelopProfile] = useState({
         changeProfileImg: false,
         changeBackgroundImg: false,
@@ -36,6 +39,20 @@ function ProfilePage() {
         // }
     }, [])
 
+    const {scrollElemId, setScrollElemId} = useContext(ScrollToContext);
+    
+    //ustawianie OY na post z powiadomień
+    React.useEffect(() => {
+        if(scrollElemId) {
+            const scrollElem =  document.getElementById(scrollElemId);
+            window.scrollTo(0, scrollElem.offsetTop - 120);
+            setScrollElemId(null);
+        }
+    }, [scrollElemId])
+
+
+    
+
 // dodać możliwość zmiany zdjęcia profilowego i w tle
 //obsługa nawigacji
 //dopracjuj pozycje sticky dla aside w 67 linijce lub w css
@@ -49,7 +66,7 @@ function ProfilePage() {
                 <header className='profile--header'>
                     <div className='profile--header__hero'>
                         <div className='profile-img--box'> 
-                            <img src={watchedUser ? watchedUser.getProfileImg() : user.getProfileImg()} />
+                            <img src={watchedUser ? watchedUser.getProfileImg() : user.getProfileImg()} alt={"user img"}/>
                             {!watchedUser &&
                             <button className='profile-img--btn'><i className="fas fa-camera"></i></button>
                             }
@@ -114,9 +131,9 @@ function ProfilePage() {
                             </div>
                             <div className='image--container'>
                                 { watchedUser ? 
-                                  watchedUser.getAllImages().map((img, index) => <img key={index} className='img--aside' src={img} />)
+                                  watchedUser.getAllImages().map((img, index) => <img key={index} className='img--aside' src={img} alt={"user img"}/>)
                                   :
-                                  user.getAllImages().map((img, index) => <img key={index} className='img--aside' src={img} />)
+                                  user.getAllImages().map((img, index) => <img key={index} className='img--aside' src={img} alt={"user img"}/>)
                                 }
                             </div>
                         </div>
@@ -138,7 +155,7 @@ function ProfilePage() {
                                         user.getAllFriends().includes(currentUser.id)
                                     )).map(friend => (
                                             <div key={friend.id} className='friend-tile'>
-                                                 <img src={friend.getProfileImg()} />
+                                                 <img src={friend.getProfileImg()} alt={"friend img"} />
                                                  <h5>{friend.getFullName()}</h5>
                                             </div>
                                         ))
@@ -149,7 +166,7 @@ function ProfilePage() {
                     <div className='profile--main__content'>
                         <div className='post-creator'>
                             <div className='post-creator__top'>
-                                <img src={user.getProfileImg()} />
+                                <img src={user.getProfileImg()} alt={"prifile img"} />
                                 <div className='post-creator__btn' onClick={() => setDevelopProfile(prevState => ({...prevState, createPost: true }))}>
                                     {watchedUser ? `Napisz co myślisz na temat: ${watchedUser.getName()}...` : "Co słychać ?"}
                                 </div>
@@ -169,12 +186,12 @@ function ProfilePage() {
                         { watchedUser ? 
                           watchedUser.getAllPosts().length > 0 && 
                           watchedUser.getAllPosts().map(post => (
-                              <PostComponent key={post.getId()} post={post}  />
+                              <PostComponent key={post.getId()} post={post} watchedUser={watchedUser}  />
                               ))
                           :
                           user.getAllPosts().length > 0 && 
                           user.getAllPosts().map(post => (
-                             <PostComponent key={post.getId()} post={post}  />
+                             <PostComponent key={post.getId()} post={post} watchedUser={watchedUser} />
                           ))
                         }
                     </div>
