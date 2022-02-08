@@ -42,7 +42,7 @@ function MessengerComponent() {
     }
 
     function sendLike(event) {
-        messageForm.myMessage =  <i class="fas fa-thumbs-up like"></i>
+        messageForm.myMessage =  "👍🏻"
         sendMessage(event);
     }
 

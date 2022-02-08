@@ -26,8 +26,10 @@ function CreatePostComponent(props) {
       props.watchedUser ? 
       props.watchedUser.addPost(postForm.postText, postForm.postImg, new Date(), user.getId(), user.getFullName())
       :
-      user.addPost(postForm.postText, postForm.postImg, new Date(), user.getId(), user.getFullName())
-      localStorage.setItem("users", JSON.stringify(userDatabase))
+      user.addPost(postForm.postText, postForm.postImg, new Date(), user.getId(), user.getFullName());
+
+      userDatabase.forEach(currentUser => currentUser.addNotification(user, 0, user.getAllPosts()[0], props.watchedUser ? props.watchedUser.id : user.id));
+      localStorage.setItem("users", JSON.stringify(userDatabase));
   }
 
  

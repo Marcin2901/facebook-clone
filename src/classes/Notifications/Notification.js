@@ -1,4 +1,4 @@
-import NotificationType from "./NotificationType";
+
 
 class Notification {
 
@@ -7,45 +7,37 @@ class Notification {
     notificationBody;
     notificationDate;
     alreadyRead;
+    type;
+    target;
+    boardOwnerId;
 
-    birthText = `${this.notificationOwner.getFullName()} ${this.notificationDate === new Date() ?
-                 "ma dziś urodziny. Prześlij życzenia" : "miał urodziny, dnia: " + this.notificationDate.getDate()}`;
-    groupText = `${this.notificationOwner.getFullName()} dodał post na grupie [NAZWA_GRUPY]`
-    postText = `${this.notificationOwner.getFullName()} dodał nowy post na osi czasu`
-    commentText = `${this.notificationOwner.getFullName()} skomentował [TWÓJ POST] : [POST UŻYTKOWNIKA ...] `
-    inviteText = `${this.notificationOwner.getFullName()} wysłał Ci zaproszenie do grona znajomych`             
-                 
-    notificationType = [
-                        new NotificationType("birth", this.birthText , `<i class="fas fa-birthday-cake"></i>`),
-                        new NotificationType("group", this.groupText, `<i class="fas fa-users"></i>`),
-                        new NotificationType("post", this.postText, `<i class="fas fa-address-card"></i>`),
-                        new NotificationType("comment", this.commentText, `<i class="fas fa-comment-dots"></i>`),
-                        new NotificationType("invite", this.inviteText, `<i class="far fa-handshake"></i>`)
+    notificationType = [ 
+                          { text: ` nowy post na osi czasu`, icon: `<i class="fas fa-address-card"></i>`},
+                          { text: ` [TWÓJ POST] : [POST UŻYTKOWNIKA ...] `, icon: `<i class="fas fa-comment-dots"></i>`},
+                          { text: ` zaproszenie do grona znajomych` , icon: `<i class="far fa-handshake"></i>`}
                        ]
 
-    constructor(notificationOwner, type) {
-         this.notificationOwner = notificationOwner;
-         this.notificationImage = this.notificationOwner.getProfileImage();
-         this.notificationDate = new Date();
+    constructor(notificationOwner, type, target, boardOwnerId) {
+         this.notificationOwner = notificationOwner.getFullName();
+         this.notificationImage = notificationOwner.getProfileImg();
+         this.notificationDate = this.getDate();
          this.notificationBody = this.notificationType[type];
          this.alreadyRead = false;
+         this.type = type;
+         this.target  = target;
+         this.boardOwnerId = boardOwnerId;
   }
 
-  getNotificationImage() {
-    return this.notificationImage;
-  }
-
-  getNotificationBody() {
-    return this.notificationBody;
-  }
-
-  getNotificationDate() {
-    return this.notificationDate;
-  }
-
-  isAlreadyRead() {
-      return this.alreadyRead;
-  }
+    getDate() {
+        const date = new Date()
+        const year = date.getFullYear();
+        const month = date.getMonth() < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`
+        const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
+        const hour = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`
+        const minute = date.getMinutes() < 10 ? `0${date.getMinutes}` : `${date.getMinutes()}`
+        const formatedDate = `${year}-${month}-${day}  ${hour}:${minute}`
+        return formatedDate;
+    }
 
 }
 

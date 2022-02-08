@@ -38,6 +38,7 @@ function PostComponent(props) {
             post.addComment(currentUser, commentFomr.commentText)
             setCommentForm({commentText: ""})
             setShowComments(true)
+            userDatabase.forEach(customer => customer.addNotification(currentUser, 1, post))
             localStorage.setItem("users", JSON.stringify(userDatabase));
         }  
     }
@@ -99,7 +100,7 @@ function PostComponent(props) {
                     post.getComments().map(comment => (
                         <div className="comment">
                             <div className="coment--top">
-                                <img src={comment.authorImg} />
+                                <img src={comment.authorImg} alt={`${comment.author}`} />
                                 <div className="commnet--content">
                                     <h3>{comment.author} </h3>
                                     <p className="comment--body">{comment.body}</p>

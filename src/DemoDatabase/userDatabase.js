@@ -63,7 +63,7 @@ if(!JSON.parse(localStorage.getItem("users"))) {
                                         user.posts.map(post => new Post(post.author, post.body, post.userId,
                                                                         post.dateOfPublic, post.img, post.likes,
                                                                         post.comments, post.id )),
-                                         user.id, user.friends, [], user.messages)));
+                                         user.id, user.friends, user.notifications, user.messages)));
 }
 
 export default users;

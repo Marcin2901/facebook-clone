@@ -3,6 +3,7 @@ import Post from "./Post";
 // import Comment from "./Comment";
 import { v4 as uuid } from 'uuid';
 import defaultPicture from "../DemoDatabase/profile-img.jpg";
+import Notification from "./Notifications/Notification";
 
 class User {
 
@@ -105,8 +106,8 @@ class User {
         return this.friends;
     }
 
-    addNotification(notification) {
-        this.notifications.push(notification);
+    addNotification(notificationOwner, type, target, boardOwnerId=null) {
+        this.notifications.unshift(new Notification(notificationOwner, type, target, boardOwnerId));
     }
 
     getAllNotifications() {
