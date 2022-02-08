@@ -175,3 +175,18 @@ a.active h4{
     transform: translateX(50%);
 }
 
+.nav--opt-update {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    color: #fff;
+    font-weight: 900;
+    font-size: .9rem;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}

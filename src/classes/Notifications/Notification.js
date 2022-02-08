@@ -12,9 +12,9 @@ class Notification {
     boardOwnerId;
 
     notificationType = [ 
-                          { text: ` nowy post na osi czasu`, icon: `<i class="fas fa-address-card"></i>`},
-                          { text: ` [TWÓJ POST] : [POST UŻYTKOWNIKA ...] `, icon: `<i class="fas fa-comment-dots"></i>`},
-                          { text: ` zaproszenie do grona znajomych` , icon: `<i class="far fa-handshake"></i>`}
+                          { text: ` nowy post na osi czasu`, icon: `fas fa-address-card`},
+                          { text: ` [TWÓJ POST] : [POST UŻYTKOWNIKA ...] `, icon: `fas fa-comment-dots`},
+                          { text: ` zaproszenie do grona znajomych` , icon: `far fa-handshake`}
                        ]
 
     constructor(notificationOwner, type, target, boardOwnerId) {

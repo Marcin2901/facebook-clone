@@ -96,6 +96,7 @@ function NotificationsOption() {
                                           size={"big"}
                             />
                             {!notification.alreadyRead && <span className="notification-new"></span>}
+                            <span className="notification-icon">{<i className={`${notification.notificationBody.icon}`}></i>}</span>
                             </Link>
                         </div>
                 )) :

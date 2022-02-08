@@ -105,6 +105,10 @@ function Navbar() {
               <div  className={`nav--opt messenger ${openOption.messenger && "active"}`}>
                   <div id="messenger" className='nav--opt__click-area tooltip'  onClick={(e) => handleOption(e)}>
                       <span className='tooltiptext'>Messenger</span>
+                      {
+                          document.querySelectorAll('.new-message').length > 0 &&
+                          <sapn className="nav--opt-update">{document.querySelectorAll('.new-message').length}</sapn>
+                      }
                   </div>
                   <i className="fab fa-facebook-messenger"></i>
                   {openOption.messenger && <MessengerOption openOption={openOption} closeAllOption={closeAllOption}/>}
@@ -112,6 +116,10 @@ function Navbar() {
               <div  className={`nav--opt notifications ${openOption.notifications && "active"}`}>
                   <div id="notifications" className='nav--opt__click-area tooltip' onClick={(e) => handleOption(e)}>
                        <span className='tooltiptext'>Powiadomienia</span>
+                       {
+                           user.notifications.filter(notification => !notification.alreadyRead).length > 0 &&
+                           <sapn className="nav--opt-update">{user.notifications.filter(notification => !notification.alreadyRead).length}</sapn>
+                       }
                   </div>
                   <i className="fas fa-bell"></i>
                   {openOption.notifications && <NotificationsOption />}
