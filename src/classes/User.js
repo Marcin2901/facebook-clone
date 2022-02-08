@@ -1,9 +1,10 @@
 
 import Post from "./Post";
-// import Comment from "./Comment";
+import Message from "./Message";
+import Notification from "./Notifications/Notification";
 import { v4 as uuid } from 'uuid';
 import defaultPicture from "../DemoDatabase/profile-img.jpg";
-import Notification from "./Notifications/Notification";
+
 
 class User {
 
@@ -62,6 +63,56 @@ class User {
     removeMyPost(post) {
         //czy ten co usuwa to właściciel posta?
     }
+
+    addMessenger(userOneId, userTwo, alreadyReadObj) {
+        const messenger = new Message(userOneId, userTwo.id, alreadyReadObj)
+        this.messages.push(messenger);
+        userTwo.messages.push(messenger);
+    }
+
+    getMessengerId(userOneId, userTwoId) {
+        const findMessenger = this.messages.find(messenger =>( messenger.userOneId===userOneId || messenger.userOneId===userTwoId ) && (messenger.userTwoId===userTwoId || messenger.userTwoId===userOneId))
+        if(findMessenger) {
+            return findMessenger.messengerId
+        } 
+        return null;
+    }
+
+    addMessageToMessenger(userOneId, userTwoId, text) {
+        const messengerId  = this.getMessengerId(userOneId, userTwoId)
+        const findMessenger = this.messages.find(message => message.messengerId === messengerId);
+        findMessenger.messagesArray.unshift({userOneId, text});
+    }
+
+    getMessagesFromMessenger(userOneId, userTwoId) {
+        const messengerId  = this.getMessengerId(userOneId, userTwoId)
+        if(messengerId === null)  return null;
+        const findMessenger = this.messages.find(message => message.messengerId === messengerId);
+        return findMessenger;
+    }
+
+    //*userOneId => user dla którego sprawdzamy
+    //*userTwoId => user potrzebny do znalezienia odpowiedniego messengera
+    isMessagesAlreadyRead(userOneId, userTwoId) {
+        const findMessenger = this.getMessagesFromMessenger(userOneId, userTwoId)
+        const currentUser = findMessenger.alreadyRead.filter(set => set.userId === userOneId);
+        return currentUser[0].isRead
+    }
+
+    setIsReadToTrue(userOneId, userTwoId) {
+        const findMessenger = this.getMessagesFromMessenger(userOneId, userTwoId)
+        const currentUser = findMessenger.alreadyRead.filter(set => set.userId === userOneId);
+        currentUser[0].isRead = true;
+    }
+
+    setIsReadToFalse(userOneId, userTwoId) {
+        const findMessenger = this.getMessagesFromMessenger(userOneId, userTwoId)
+        console.log("Messenger")
+        console.log(findMessenger)
+        const currentUser = findMessenger.alreadyRead.filter(set => set.userId === userTwoId);
+        currentUser[0].isRead = false;
+    }
+
 
     addComment(postId, body) {
         this.posts.find(post => post.id === postId).addComment(this.name, body);

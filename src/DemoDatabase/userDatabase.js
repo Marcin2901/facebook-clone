@@ -22,28 +22,23 @@ if(!JSON.parse(localStorage.getItem("users"))) {
         new User("Rafał", "Nowak", 1995, true, "rafal@gmail.com", "rafal"),
         new User("Anita", "Dąbrowska", 2000, false, "anita@gmail.com", "anita")
 ]
+
     //dodawanie znajomych i testu wiadomości
     for(let user1 of users) {
-        // wybrany urzytkownik
-        const sara = users[0];
         for(let user2 of users) {
             if(user1 === user2) continue
             user1.friends.push(user2.id);
-            //sara wysyła do wszystkich wiadomość
-            user1.name==="Sara" && user1.messages.push({userId: user2.id, ourMessages: [{fromUserId: user1.id, text: "sprawdzam tylko czy wiadomości się wysyłają"},
-                                                                 {fromUserId: user2.id, text: "Jak tam?"},
-                                                                 {fromUserId: user2.id, text: "Hej"},
-                                                                 {fromUserId: user1.id, text: "Cześć"}]})
-            //wszyscy dostają wiadomość od sary                                                     
-            user1.name!=="Sara" && user1.messages.length < 1 && user1.messages.push({userId: sara.id, ourMessages: [{fromUserId: sara.id, text: "sprawdzam tylko czy wiadomości się wysyłają"},
-                                                                {fromUserId: user1.id, text: "Jak tam?"},
-                                                                {fromUserId: user1.id, text: "Hej"},
-                                                                {fromUserId: sara.id, text: "Cześć"}]})
-
+            if(user1.name === "Sara") {
+                user1.addMessenger(user1.id, user2, [{userId: user1.id, isRead: true}, {userId: user2.id, isRead: false}]);
+                user1.addMessageToMessenger(user1.id, user2.id, "sprawdzam tylko czy wiadomości się wysyłają");
+                user2.addMessageToMessenger(user2.id, user1.id, "Jak tam?");
+                user2.addMessageToMessenger(user2.id, user1.id, "Hej");
+                user1.addMessageToMessenger(user1.id, user2.id, "Cześć");
+            }
         }
     }
     
-    //dodawanie przykładowych postów dla urzytkowników z postDemoDatabase
+   //dodawanie przykładowych postów dla urzytkowników z postDemoDatabase
    const postDatabase = getData();
     postDatabase.then(data => {
         for(let user of users) {

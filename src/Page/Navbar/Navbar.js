@@ -1,10 +1,9 @@
 import React, {useState, useContext} from 'react';
-import {Link, useLocation, useParams} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import "./Navbar.css";
 import {UserContext} from "../../hooks/Context/UserContextProvider";
 import SearchBar from "../../Components/SearchBar/SearchBar"
 import FacebookItem from "../../Components/FacebookItem/FacebookItem";
-import userDatabase from "../../DemoDatabase/userDatabase";
 import MenuOption from "../../Components/Options/MenuOption/MenuOption";
 import MessengerOption from '../../Components/Options/MessengerOption/MessengerOption';
 import NotificationsOption from '../../Components/Options/NotificationsOption/NotificationsOption';
@@ -106,8 +105,8 @@ function Navbar() {
                   <div id="messenger" className='nav--opt__click-area tooltip'  onClick={(e) => handleOption(e)}>
                       <span className='tooltiptext'>Messenger</span>
                       {
-                          document.querySelectorAll('.new-message').length > 0 &&
-                          <sapn className="nav--opt-update">{document.querySelectorAll('.new-message').length}</sapn>
+                        user.messages.filter(message => message.alreadyRead.find(set => set.userId === user.id && set.isRead === false)).length > 0 &&
+                        <sapn className="nav--opt-update">{user.messages.filter(message => message.alreadyRead.find(set => set.userId === user.id && set.isRead === false)).length}</sapn>
                       }
                   </div>
                   <i className="fab fa-facebook-messenger"></i>

@@ -10,13 +10,23 @@ import { MessengerOpenContext } from "../../../hooks/Context/MessengerOpenContex
 function MessengerOption(props) {
 
     const user = useContext(UserContext);
-    const {openMessenger, setSelectUserMessages, updated, setUpdated} = useContext(MessengerOpenContext);
+    const {openMessenger, setSelectUserMessages} = useContext(MessengerOpenContext);
 
     function handleClick(messageUser) {
         openMessenger()
         props.closeAllOption()
+       // messageUser.getMessagesFromMessenger(user.id, messageUser.id).alreadyRead = false;
+        user.setIsReadToTrue(user.id, messageUser.id);
         setSelectUserMessages(messageUser);
-        setUpdated(prevState => [...prevState].filter(ids => ids !== messageUser.id))   
+        localStorage.setItem("users", JSON.stringify(userDatabase));
+        // to skasuj jak zaimplementujesz alreadyRead
+        // setUpdated(prevState => [...prevState].filter(ids => ids !== messageUser.id))   
+    }
+
+    // user => zalogowany user dla którego sprawdzamy czy wiadomość jest przeczytana
+    // messageUser => user z którym piszemy -> potrzebny do zlokalizowania messengera
+    function checkIfMessageIsRead(messageUser) {
+       return !user.isMessagesAlreadyRead(user.id, messageUser.id);
     }
 
 
@@ -33,14 +43,16 @@ function MessengerOption(props) {
             </header>
             <SearchBar closeAllOption={props.closeAllOption}/>
             <div className="messages-users_constainer">
+                {/* [messages] => {Messenger} : [messagesArra], id, userOneId, userTwoId */}
             {user.messages.length > 0 &&
                 user.messages.map(message => {
-                   
-                    const messageUser = userDatabase.find(currentUser => currentUser.id === message.userId);
+                    //user z którym piszemy
+                    // const messageUser = userDatabase.find(currentUser => currentUser.id === message.userId);
+                    const messageUserSide = message.userOneId === user.id ? "userTwoId" : "userOneId";
+                    const messageUser = userDatabase.find(currentUser => currentUser.id === message[messageUserSide]);
                  
                    return (
-                    //zapakuj itema w link otwierający MessangerComponent z konkretym userem
-                    <div onClick={() => handleClick(messageUser)} className={updated.find(ids => ids === messageUser.id) && "new-message"}>
+                    <div onClick={() => handleClick(messageUser)} className={checkIfMessageIsRead(messageUser) && "new-message"}>
                         <FacebookItem img={messageUser.profileImg} 
                                     text={`${messageUser.name} ${messageUser.lastname}`} 
                                     alternativeText={"Zobacz wiadomości"}

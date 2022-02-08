@@ -7,37 +7,37 @@ import userDatabase from "../../DemoDatabase/userDatabase";
 
 function MessengerComponent() {
 
-    const {closeMessenger, selectUserMessages, setUpdated} = useContext(MessengerOpenContext);
+    const {closeMessenger, selectUserMessages} = useContext(MessengerOpenContext);
+    //zalogowany user
     const user = useContext(UserContext);
-    let messageIndex =  user.messages.indexOf(user.messages.find(message => message.userId === selectUserMessages.id))
+    // w nowszej wersji możemy pobrać obiekt messengera z konkretnym userem podając id userów
+    // (1 obiekt)-{Messenger} : [messagesArray], userOneId(to user), userTwoId(to selectUser), alreadyRead=false
+    let messenger = user.getMessagesFromMessenger(user.id, selectUserMessages.id);
+    
 
+    //formularz dla nowej wiadomości
     const [messageForm, setMessageForm] = useState({myMessage: ""})
-
+    //obsługa formularza
     function handleChange(event) {
         const {name, value} = event.target
         setMessageForm({[name]: value});
     }
 
+
     function sendMessage(event) {
         if(event.key === "Enter" || event.target.id ==="submit" || event.target.id === "like") {
-            if(messageIndex < 0) {
-                user.messages.push({userId: selectUserMessages.id, ourMessages: []})
-                selectUserMessages.messages.push({userId: user.id, ourMessages: []})
-                messageIndex =  user.messages.indexOf(user.messages.find(message => message.userId === selectUserMessages.id))
-                setUpdated(prevState => [...prevState, selectUserMessages.id]);
+            if(!messenger) {
+                user.addMessenger(user.id, selectUserMessages, [{userId: user.id, isRead: true}, {userId: selectUserMessages.id, isRead: false}]);
+                messenger = user.getMessagesFromMessenger(user.id, selectUserMessages.id);
             }
-            user.messages[messageIndex].ourMessages.unshift({fromUserId: user.id, text: messageForm.myMessage})
-            const selectUserMessageIndex =  selectUserMessages.messages.indexOf(selectUserMessages.messages.find(message => message.userId === user.id))
-            selectUserMessages.messages[selectUserMessageIndex].ourMessages.unshift({fromUserId: user.id, text: messageForm.myMessage})
-            setMessageForm({myMessage: ""})
-            setUpdated(prevState => [...prevState, user.id]);
-            // ustawienie wiadomości nowej wiadomości na górze listy
-            user.messages.push(user.messages[messageIndex])
-            user.messages.splice(messageIndex, 1)
-            selectUserMessages.messages.push(selectUserMessages.messages[selectUserMessageIndex])
-            selectUserMessages.messages.splice(selectUserMessageIndex, 1)
-
-            localStorage.setItem("users", JSON.stringify(userDatabase))
+            user.addMessageToMessenger(user.id, selectUserMessages.id, messageForm.myMessage);
+            user.setIsReadToFalse(user.id, selectUserMessages.id);
+            setMessageForm({myMessage: ""});
+            const messengerIndex = user.messages.indexOf(user.messages.find(message => message.messengerId === messenger.messengerId));
+            user.messages.splice(messengerIndex, 1);
+            user.messages.push(messenger);
+      
+            localStorage.setItem("users", JSON.stringify(userDatabase));
         }
     }
 
@@ -60,10 +60,12 @@ function MessengerComponent() {
                                   alternativeText={<span>Aktywny(a)</span>}/>
                 </header>
                 <div className="messenger__content">
-                    {
-                        messageIndex >= 0 && user.messages[messageIndex].ourMessages.length > 0 ? 
-                        user.messages[messageIndex].ourMessages.map(message => (
-                            <p className={message.fromUserId === selectUserMessages.id ? "message-left" : "message-right"}>
+                    {console.log("Jebany Mesenger")}
+                    {console.log(user.messages)}
+                    {/* Logika wyświetlania wiadomości */}
+                    {messenger ? 
+                        messenger.messagesArray.map(message => (
+                            <p className={message.userOneId === selectUserMessages.id ? "message-left" : "message-right"}>
                                 {message.text}
                             </p>
                         ))
