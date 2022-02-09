@@ -1,0 +1,155 @@
+.friends--page__offers {
+    display: flex;
+    width: 100%;
+}
+
+.friends--page__offers main {
+    width: 100%;
+}
+
+.friends--page__offers--content {
+    width: 100%;
+}
+
+.friends--page__offers {
+    display: flex;
+    width: 100%;
+}
+
+.friends--page__offers main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+.friends--page__offers--content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    
+}
+
+.friends--page__offers--content img {
+    width: 120px;
+}
+
+.friends--page__offers--content h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.3rem;
+    color: rgb(101, 103, 107);
+}
+
+.offers--aside {
+    width: 360px;
+    height: calc(100vh - 56px);
+    background-color: #fff;
+}
+
+.offers--aside .item {
+    padding: 1rem 0 4rem;
+}
+
+.offers--aside .item h4 {
+    transform: translateY(-15px);
+}
+
+.offers--aside__header {
+    height: 100px;
+    display: flex;
+    gap: 1rem;
+    padding: .5rem 0;
+}
+
+.offers--aside__header--arrow-back {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+}
+
+.offers--aside__header--arrow-back i {
+    font-size: 1.2rem;
+    padding: .5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.offers--aside__header--arrow-back i:hover {
+    background-color: #dddfe2;
+}
+
+.offers--aside__header--content span {
+    font-size: .9rem;
+    color: #777980;
+}
+
+.offers--aside__header--content h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+}
+
+.invitatons--aside__content {
+    height: calc(100% - 100px);
+    overflow: auto;
+    padding: .5rem .5rem .5rem 1rem;
+    border-top: 2px solid #dddfe2;
+}
+
+.invitatons--aside__content::-webkit-scrollbar {
+    width: 10px;
+    background-color: #fff;
+    border-radius: 1rem;
+  }
+  
+.invitatons--aside__content::-webkit-scrollbar-thumb {
+      border-radius: 1rem;
+      background-color: #fff;
+  }
+
+.invitatons--aside__content:hover::-webkit-scrollbar-thumb {
+    background-color: #aaacb3;
+}
+
+.invitatons--aside__content span {
+    font-size: .9rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.offers--item {
+    position: relative;
+}
+
+.offers--aside__mian--btns {
+    width: 75%;
+    position: absolute;
+    top: 35%;
+    left: 22%;
+}
+
+.offers--aside__mian--btns button {
+    font-size: .9rem;
+    padding: .5rem 1rem;
+    width: 100%;
+    margin: .25rem;
+}
+
+.agree-offers--btn {
+    background-color: var(--primary-color);
+    
+}
+
+.agree-offers--btn:hover {
+    background-color: var(--primary-color-m);
+}
+
+.delete-offers--btn {
+    background-color: #dddfe6;
+    color: #050505;   
+}
+
+.delete-offers--btn:hover {
+    background-color: #bbbed5;
+}
