@@ -1,0 +1,14 @@
+.friends--page {
+    display: flex;
+}
+
+.friends--page main {
+    max-width: calc(100% - 360px);
+    width: 100%;
+    padding: 2rem;
+}
+
+.friends--page .component--aside-header {
+    margin-bottom: 1rem;
+}
+

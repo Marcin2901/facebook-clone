@@ -5,7 +5,6 @@
     scrollbar-color: #aaacb3 #fff;
     scrollbar-width: thin;
 }
-
 /* do scrolbara dla wszystkich na przyszłość */
 .messenger__container::-webkit-scrollbar {
     width: 10px;

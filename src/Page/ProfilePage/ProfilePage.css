@@ -221,7 +221,7 @@
     padding: 2rem;
 }
 
-main {
+.profile--page main {
     display: flex;
     justify-content: space-between;
     max-width: 900px;

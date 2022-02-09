@@ -10,6 +10,7 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 import VideoPage from '../VideoPage/VideoPage';
 import MarketPlacePage from "../MarketPlacePage/MarketPlacePage"
 import GroupPage from "../GroupPage/GroupPage";
+import FriendsPage from '../FriendsPage/FriendsPage';
 
 function Board() {
 
@@ -46,6 +47,9 @@ function Board() {
                 </Route>
                 <Route path={`/board/${currentUser.id}/profile/:findUserId`}>
                      <ProfilePage />
+                </Route>
+                <Route path={`/board/${currentUser.id}/friends`} >
+                     <FriendsPage />
                 </Route>
             </Switch>
         </div>

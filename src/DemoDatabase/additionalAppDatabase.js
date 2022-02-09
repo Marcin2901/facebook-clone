@@ -1,7 +1,8 @@
 export default  [
     {
         name: "Znajomi",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png"
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png",
+        link: "friends"
     },
     {
         name: "Grupy",

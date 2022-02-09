@@ -1,0 +1,10 @@
+.friends--page__main {
+    width: 100%;
+}
+
+.users--container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}

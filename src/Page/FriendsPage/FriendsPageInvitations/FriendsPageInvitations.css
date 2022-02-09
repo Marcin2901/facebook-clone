@@ -1,0 +1,31 @@
+.friends--page__invitations {
+    display: flex;
+    width: 100%;
+}
+
+.friends--page__invitations main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+.friends--page__invitations--content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    
+}
+
+.friends--page__invitations--content img {
+    width: 120px;
+}
+
+.friends--page__invitations--content h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.3rem;
+    color: rgb(101, 103, 107);
+}
+
+
+
