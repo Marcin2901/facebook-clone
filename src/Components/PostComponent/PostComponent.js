@@ -1,5 +1,6 @@
 import React, {useContext, useState} from "react";
 import "./PostComponent.css";
+import {useHistory} from "react-router-dom";
 import FacebookItem from "../FacebookItem/FacebookItem";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import {UserContext} from "../../hooks/Context/UserContextProvider";
@@ -34,16 +35,18 @@ function PostComponent(props) {
     // state umożliwiający otwieranie komentarzy w konkretnym poście
     const [showComments, setShowComments] = useState(false)
 
+    const history = useHistory();
+
     function addComment(event) {
         if(event.key==="Enter") {
             event.preventDefault()
             post.addComment(currentUser, commentFomr.commentText)
             setCommentForm({commentText: ""})
-            setShowComments(true)
             //dodawanie powiadomień po dodaniu komentarza
             //*props.watchedUser => właściciel odwiedzananego profilu, * currentUser => profil zalogowanego usera
             userDatabase.forEach(customer => (
                 customer.addNotification(currentUser, 1, post, props.watchedUser ? props.watchedUser.id : currentUser.id)))
+                setShowComments(true)
             localStorage.setItem("users", JSON.stringify(userDatabase));
         }  
     }

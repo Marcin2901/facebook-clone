@@ -43,6 +43,7 @@ function Navbar() {
       })
   }
  
+ 
 
   return (
       <nav className='nav'>
@@ -106,7 +107,7 @@ function Navbar() {
                       <span className='tooltiptext'>Messenger</span>
                       {
                         user.messages.filter(message => message.alreadyRead.find(set => set.userId === user.id && set.isRead === false)).length > 0 &&
-                        <sapn className="nav--opt-update">{user.messages.filter(message => message.alreadyRead.find(set => set.userId === user.id && set.isRead === false)).length}</sapn>
+                        <span className="nav--opt-update">{user.messages.filter(message => message.alreadyRead.find(set => set.userId === user.id && set.isRead === false)).length}</span>
                       }
                   </div>
                   <i className="fab fa-facebook-messenger"></i>
@@ -117,7 +118,7 @@ function Navbar() {
                        <span className='tooltiptext'>Powiadomienia</span>
                        {
                            user.notifications.filter(notification => !notification.alreadyRead).length > 0 &&
-                           <sapn className="nav--opt-update">{user.notifications.filter(notification => !notification.alreadyRead).length}</sapn>
+                           <span className="nav--opt-update">{user.notifications.filter(notification => !notification.alreadyRead).length}</span>
                        }
                   </div>
                   <i className="fas fa-bell"></i>

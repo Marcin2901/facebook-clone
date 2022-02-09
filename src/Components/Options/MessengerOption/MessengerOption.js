@@ -26,7 +26,7 @@ function MessengerOption(props) {
     // user => zalogowany user dla którego sprawdzamy czy wiadomość jest przeczytana
     // messageUser => user z którym piszemy -> potrzebny do zlokalizowania messengera
     function checkIfMessageIsRead(messageUser) {
-       return !user.isMessagesAlreadyRead(user.id, messageUser.id);
+       return !user.isMessagesAlreadyRead(user.id, messageUser.id) ? "new-message" : ""
     }
 
 
@@ -52,7 +52,7 @@ function MessengerOption(props) {
                     const messageUser = userDatabase.find(currentUser => currentUser.id === message[messageUserSide]);
                  
                    return (
-                    <div onClick={() => handleClick(messageUser)} className={checkIfMessageIsRead(messageUser) && "new-message"}>
+                    <div onClick={() => handleClick(messageUser)} className={checkIfMessageIsRead(messageUser)}>
                         <FacebookItem img={messageUser.profileImg} 
                                     text={`${messageUser.name} ${messageUser.lastname}`} 
                                     alternativeText={"Zobacz wiadomości"}

@@ -17,7 +17,7 @@ function FriendsPage() {
     const items = [{elem: <FacebookItem icon={<i class="fas fa-user-friends icon--item"></i>} text="Strona główna"/>, ending: "friends"},
                    {elem: <FacebookItem icon={<i class="fas fa-user-plus icon--item"></i>} text="Zaproszenia do grona znajomych"/>, ending: "friends/invitations"},
                    {elem: <FacebookItem icon={<i class="fas fa-user-plus icon--item"></i>} text="Propozycje"/>, ending: "friends/offers"},
-                   {elem: <FacebookItem icon={<i class="fas fa-user-plus icon--item"></i>} text="Wszyscy znajomi"/>, ending: ""},
+                   {elem: <FacebookItem icon={<i class="fas fa-user-plus icon--item"></i>} text="Wszyscy znajomi"/>, ending: "friends/all"},
                    {elem: <FacebookItem icon={<i class="fas fa-gift icon--item"></i>} text="Urodziny"/>, ending: "friends/birthday"}]
 
     return (

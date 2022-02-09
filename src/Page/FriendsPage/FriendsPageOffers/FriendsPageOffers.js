@@ -14,7 +14,7 @@ function FriendsPageOffers() {
                     </div>
 
     const offersElem = userDatabase.map(user => (
-        <div className="invitation--item">
+        <div className="offers--item">
             <Link>
                 <FacebookItem img={user.getProfileImg()} text={user.getFullName()} size={"big"}/>
             </Link>

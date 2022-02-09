@@ -34,9 +34,12 @@ function MessengerComponent() {
             user.setIsReadToFalse(user.id, selectUserMessages.id);
             setMessageForm({myMessage: ""});
             const messengerIndex = user.messages.indexOf(user.messages.find(message => message.messengerId === messenger.messengerId));
+            const selectUserMessengerIndex = selectUserMessages.messages.indexOf(selectUserMessages.messages.find(message => message.messengerId === messenger.messengerId));
             user.messages.splice(messengerIndex, 1);
             user.messages.push(messenger);
-      
+            selectUserMessages.messages.splice(selectUserMessengerIndex, 1);
+            selectUserMessages.messages.push(messenger);
+         
             localStorage.setItem("users", JSON.stringify(userDatabase));
         }
     }

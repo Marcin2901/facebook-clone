@@ -8,6 +8,8 @@ function SaveDataContextProvider(props) {
         localStorage.setItem(dataName, JSON.stringify(dataValue));
     }
 
+    
+
     return (
         <SaveDataContext.Provider value={{saveData, usersDataName: USERS_DATABASE_NAME}}>
             {props.children}
