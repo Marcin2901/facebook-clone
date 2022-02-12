@@ -1,12 +1,12 @@
 import React, {useContext, useState} from 'react';
 import "./ProfilePage.css";
 import { UserContext } from '../../hooks/Context/UserContextProvider';
-import {Link, useParams} from "react-router-dom";
+import {Link, Switch, Route, useParams} from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import PostComponent from "../../Components/PostComponent/PostComponent"
 import CreatePostComponent from '../../Components/CreatePostComponent/CreatePostComponent';
 import {ScrollToContext} from "../../hooks/Context/ScrollToContextProvider";
-
+import ProfilePagePosts from './ProfilePagePosts/ProfilePagePosts';
 
 
 function ProfilePage() {
@@ -23,21 +23,21 @@ function ProfilePage() {
         createPost: false
     })
 
-    const [scrollDirection, setScrollDirection] = useState(false)
-    React.useEffect(() => {
-        // zapewnia że strona nie będzie się scrolować do dołu 
-        //to niżej do usunięcia!
-        window.scrollTo(0, 0);
-        // true jeśli scroll up i false jeśli scroll down
-        window.addEventListener('scroll', () => {(window.onscroll = function(e) {
-            setScrollDirection(this.oldScroll > this.scrollY);
-            this.oldScroll = this.scrollY;
-          })})
-          //ogarnij to czyszczenie
-        // return function cleanup() {
-        //         window.removeEventListener("scroll");
-        // }
-    }, [])
+    // const [scrollDirection, setScrollDirection] = useState(false)
+    // React.useEffect(() => {
+    //     // zapewnia że strona nie będzie się scrolować do dołu 
+    //     //to niżej do usunięcia!
+    //     window.scrollTo(0, 0);
+    //     // true jeśli scroll up i false jeśli scroll down
+    //     window.addEventListener('scroll', () => {(window.onscroll = function(e) {
+    //         setScrollDirection(this.oldScroll > this.scrollY);
+    //         this.oldScroll = this.scrollY;
+    //       })})
+    //       //ogarnij to czyszczenie
+    //     // return function cleanup() {
+    //     //         window.removeEventListener("scroll");
+    //     // }
+    // }, [])
 
     const {scrollElemId, setScrollElemId} = useContext(ScrollToContext);
     
@@ -84,11 +84,19 @@ function ProfilePage() {
                     <nav className='profile--header__nav'>
                         <ul className='profile__nav--ul'>
                             {/* tutaj też pamiętaj żeby rozóżnić czy bierzesz info o sobie czy o obserwowanym profilu */}
-                            <li className='active'>Posty</li>
-                            <li>Informacje</li>
-                            <li>Znajomi<span className='friends-quantity'>0</span></li>
-                            <li>Zdjęcia</li>
-                            <li>Więcej <i className="fas fa-sort-down"></i></li>
+                            <Link to={!watchedUser ? `/board/${user.id}/profile` : `/board/${watchedUser.id}/profile/`}>
+                                 <li className='active'>Posty</li>
+                            </Link>
+                            <Link to={!watchedUser ? `/board/${user.id}/profile/info` : `/board/${watchedUser.id}/profile/info`}>
+                                 <li>Informacje</li>
+                            </Link>
+                            <Link to={!watchedUser ? `/board/${user.id}/profile/friends` : `/board/${watchedUser.id}/profile/friends`}>
+                                 <li>Znajomi<span className='friends-quantity'>0</span></li>
+                            </Link>
+                            <Link to={!watchedUser ? `/board/${user.id}/profile/photos` : `/board/${watchedUser.id}/profile/photos`}>
+                                 <li>Zdjęcia</li>
+                            </Link>
+                                 <li>Więcej <i className="fas fa-sort-down"></i></li>
                         </ul>
                         <div className='profile__nav--buttons'>
                             {  watchedUser ?
@@ -109,93 +117,21 @@ function ProfilePage() {
 
             <div className='profile__main--container'>  
 
-                <main className='profile--main'>       
-                    <aside className='profile--main__aside' style={{top: scrollDirection ? "50px" : "50px"}}>
-                        <div className='presentation__aside'>
-                            <h2>Prezentacja</h2>
-                            {!watchedUser &&
-                            <>
-                                <div className='presentation--box'>Edytuj szczegóły</div>
-                                <div className='presentation--box'>Dodaj hobby</div>
-                                <div className='presentation--box'>Dodaj wyróżnione</div>
-                            </>
-                            }
-                        </div>
-                        <div className='images__aside'>
-                            <div className='flex-2'>
-                                <h2>Zdjęcia</h2>
-                                {/* dodaj ścieżke */}
-                                <Link to="/">
-                                    <p className='aside--link'>Zobacz wszystkie zdjęcie</p>
-                                </Link>
-                            </div>
-                            <div className='image--container'>
-                                { watchedUser ? 
-                                  watchedUser.getAllImages().map((img, index) => <img key={index} className='img--aside' src={img} alt={"user img"}/>)
-                                  :
-                                  user.getAllImages().map((img, index) => <img key={index} className='img--aside' src={img} alt={"user img"}/>)
-                                }
-                            </div>
-                        </div>
-                        <div className='friends__aside'>
-                            <div className='flex-2'>
-                                <h2>Znajomi</h2>
-                                {/* dodaj ścieżke */}
-                                <Link to="/">
-                                    <p className='aside--link'>Pokaż wszystkich znajomych</p>
-                                </Link>
-                            </div>
-                            <div className='friends__aside--container'>
-                             
-                                {   
-                                    userDatabase.filter(currentUser => (
-                                        watchedUser ? 
-                                        watchedUser.getAllFriends().includes(currentUser.id)
-                                        :
-                                        user.getAllFriends().includes(currentUser.id)
-                                    )).map(friend => (
-                                            <div key={friend.id} className='friend-tile'>
-                                                 <img src={friend.getProfileImg()} alt={"friend img"} />
-                                                 <h5>{friend.getFullName()}</h5>
-                                            </div>
-                                        ))
-                                }
-                            </div>
-                        </div>
-                    </aside>
-                    <div className='profile--main__content'>
-                        <div className='post-creator'>
-                            <div className='post-creator__top'>
-                                <img src={user.getProfileImg()} alt={"prifile img"} />
-                                <div className='post-creator__btn' onClick={() => setDevelopProfile(prevState => ({...prevState, createPost: true }))}>
-                                    {watchedUser ? `Napisz co myślisz na temat: ${watchedUser.getName()}...` : "Co słychać ?"}
-                                </div>
-                            </div>
-                            <div className='post-creator__bottom'>
-                                <div className='post-creator__opt' onClick={() => setDevelopProfile(prevState => ({...prevState, createPost: true }))}>
-                                    <i className="fas fa-photo-video"></i>Zdjęcie/film
-                                </div>
-                                <div className='post-creator__opt' onClick={() => setDevelopProfile(prevState => ({...prevState, createPost: true }))}>
-                                    <i className="fas fa-user-tag"></i>Oznacz znajomych
-                                </div>
-                                <div className='post-creator__opt' onClick={() => setDevelopProfile(prevState => ({...prevState, createPost: true }))}>
-                                    <i className="fas fa-flag"></i>Wydarzenie z życia
-                                </div>
-                            </div>
-                        </div>
-                        { watchedUser ? 
-                          watchedUser.getAllPosts().length > 0 && 
-                          watchedUser.getAllPosts().map(post => (
-                              <PostComponent key={post.getId()} post={post} watchedUser={watchedUser}  />
-                              ))
-                          :
-                          user.getAllPosts().length > 0 && 
-                          user.getAllPosts().map(post => (
-                             <PostComponent key={post.getId()} post={post} watchedUser={watchedUser} />
-                          ))
-                        }
-                    </div>
-                </main>
+                    <Switch>
+                        <Route exact path={!watchedUser ? `/board/${user.id}/profile` : `/board/${watchedUser.id}/profile`}>
+                            <ProfilePagePosts user={user} watchedUser={watchedUser} setDevelopProfile={setDevelopProfile}/>
+                        </Route>
+                        <Route path={!watchedUser ? `/board/${user.id}/profile/info` : `/board/${watchedUser.id}/profile/info`}>
+                            {/* <ProfilePageInfo /> */}
+                        </Route>    
+                        <Route path={!watchedUser ? `/board/${user.id}/profile/friends` : `/board/${watchedUser.id}/profile/friends`}>
+                            {/* <ProfilePageFriends /> */}
+                        </Route>
+                        <Route path={!watchedUser ? `/board/${user.id}/profile/photos` : `/board/${watchedUser.id}/profile/photos`}>
+                            {/* <ProfilePagePhotos /> */}
+                        </Route>
+                    </Switch>
+                
             </div> 
         </section>
         
