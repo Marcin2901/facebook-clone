@@ -13,3 +13,7 @@
     text-align: center;
     margin-bottom: 2rem;
 }
+
+.group--page main {
+    width: calc(100% - 360px);
+}

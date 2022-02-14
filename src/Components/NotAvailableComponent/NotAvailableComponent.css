@@ -3,4 +3,5 @@
     box-shadow: var(--border-shadow);
     border-radius: .5rem;
     padding: 2rem;
+    margin: 0 auto;
 }

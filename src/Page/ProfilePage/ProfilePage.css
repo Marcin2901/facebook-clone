@@ -388,16 +388,11 @@
     color: #3baad5
 }
 
-/* Content Posts */
-/* Później przenieść do PostComponent */
+.friends-quantity {
+    margin-left: .5rem;
+}
 
-/* .post {
-    height: 350px;
-    background-color: #fff;
-    box-shadow: 2px 2px 10px 1px #bbbdc1;
-    border-radius: .5rem;
-    margin: 2rem 0;
-} */
+
 
 
 

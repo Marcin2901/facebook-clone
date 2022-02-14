@@ -1,0 +1,19 @@
+.profile--page__photos {
+    width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+.photos--container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.photos--container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;   
+}

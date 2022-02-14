@@ -1,18 +1,22 @@
 import React, {useContext, useState} from 'react';
 import "./ProfilePage.css";
 import { UserContext } from '../../hooks/Context/UserContextProvider';
-import {Link, Switch, Route, useParams} from "react-router-dom";
+import {Link, Switch, Route, useParams, useLocation} from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import PostComponent from "../../Components/PostComponent/PostComponent"
 import CreatePostComponent from '../../Components/CreatePostComponent/CreatePostComponent';
 import {ScrollToContext} from "../../hooks/Context/ScrollToContextProvider";
 import ProfilePagePosts from './ProfilePagePosts/ProfilePagePosts';
+import ProfilePageInfo from "./ProfilePageInfo/ProfilePageInfo";
+import ProfilePageFriends from './ProfilePageFriends/ProfilePageFriends';
+import ProfilePagePhotos from './ProfilePagePhotos/ProfilePagePhotos';
 
 
 function ProfilePage() {
     
     const user = useContext(UserContext);
     const {findUserId} = useParams()
+    const location = useLocation();
 
     //właściciel obserwowanego profilu
     const watchedUser = userDatabase.find(currentUser => currentUser.id === findUserId && user.id !== findUserId)
@@ -22,22 +26,6 @@ function ProfilePage() {
         changeBackgroundImg: false,
         createPost: false
     })
-
-    // const [scrollDirection, setScrollDirection] = useState(false)
-    // React.useEffect(() => {
-    //     // zapewnia że strona nie będzie się scrolować do dołu 
-    //     //to niżej do usunięcia!
-    //     window.scrollTo(0, 0);
-    //     // true jeśli scroll up i false jeśli scroll down
-    //     window.addEventListener('scroll', () => {(window.onscroll = function(e) {
-    //         setScrollDirection(this.oldScroll > this.scrollY);
-    //         this.oldScroll = this.scrollY;
-    //       })})
-    //       //ogarnij to czyszczenie
-    //     // return function cleanup() {
-    //     //         window.removeEventListener("scroll");
-    //     // }
-    // }, [])
 
     const {scrollElemId, setScrollElemId} = useContext(ScrollToContext);
     
@@ -50,8 +38,17 @@ function ProfilePage() {
         }
     }, [scrollElemId])
 
-
-    
+    function isActive(urlEnding) {
+       
+        if(location.pathname === `/board/${user.id}/profile${urlEnding}`
+        ) {
+            return "active";
+        } 
+        else if(watchedUser && location.pathname === `/board/${user.id}/profile/${watchedUser.id}${urlEnding}`) {
+            return "active";
+        }
+        return "";
+    }
 
 // dodać możliwość zmiany zdjęcia profilowego i w tle
 //obsługa nawigacji
@@ -84,17 +81,25 @@ function ProfilePage() {
                     <nav className='profile--header__nav'>
                         <ul className='profile__nav--ul'>
                             {/* tutaj też pamiętaj żeby rozóżnić czy bierzesz info o sobie czy o obserwowanym profilu */}
-                            <Link to={!watchedUser ? `/board/${user.id}/profile` : `/board/${watchedUser.id}/profile/`}>
-                                 <li className='active'>Posty</li>
+                            <Link to={!watchedUser ? `/board/${user.id}/profile` :
+                                                     `/board/${user.id}/profile/${watchedUser.id}`}>
+                                 <li  className={isActive("")}>Posty</li>
                             </Link>
-                            <Link to={!watchedUser ? `/board/${user.id}/profile/info` : `/board/${watchedUser.id}/profile/info`}>
-                                 <li>Informacje</li>
+                            <Link to={!watchedUser ? `/board/${user.id}/profile/info` :
+                                                     `/board/${user.id}/profile/${watchedUser.id}/info`}
+                            >
+                                 <li className={isActive("/info")}>Informacje</li>
                             </Link>
-                            <Link to={!watchedUser ? `/board/${user.id}/profile/friends` : `/board/${watchedUser.id}/profile/friends`}>
-                                 <li>Znajomi<span className='friends-quantity'>0</span></li>
+                            <Link to={!watchedUser ? `/board/${user.id}/profile/friends` :
+                                                     `/board/${user.id}/profile/${watchedUser.id}/friends`}
+                            >
+                                 <li className={isActive("/friends")}>
+                                     Znajomi <span className='friends-quantity'>{user.getAllFriends().length}</span>
+                                </li>
                             </Link>
-                            <Link to={!watchedUser ? `/board/${user.id}/profile/photos` : `/board/${watchedUser.id}/profile/photos`}>
-                                 <li>Zdjęcia</li>
+                            <Link to={!watchedUser ? `/board/${user.id}/profile/photos` :
+                                                     `/board/${user.id}/profile/${watchedUser.id}/photos`}>
+                                 <li className={isActive("/photos")}>Zdjęcia</li>
                             </Link>
                                  <li>Więcej <i className="fas fa-sort-down"></i></li>
                         </ul>
@@ -102,10 +107,18 @@ function ProfilePage() {
                             {  watchedUser ?
                                 <>
                                 <button className='btn edit--btn'><i class="fas fa-user-friends"></i>Znajomi</button>
-                                <button className='rel--btn btn login--btn'><span className='plus-icon--bg'><i class="fab fa-facebook-messenger"></i></span>Wyślij wiadomość</button>
+                                <button className='rel--btn btn login--btn'>
+                                    <span className='plus-icon--bg'>
+                                        <i class="fab fa-facebook-messenger"></i>
+                                    </span>Wyślij wiadomość
+                                </button>
                                 </> :
                                 <>
-                                <button className='rel--btn btn login--btn'><span className='plus-icon--bg'><i className="fas fa-plus"></i></span>Utwórz relację</button>
+                                <button className='rel--btn btn login--btn'>
+                                    <span className='plus-icon--bg'>
+                                        <i className="fas fa-plus"></i>
+                                    </span>Utwórz relację
+                                </button>
                                 <button className='btn edit--btn'><i className="fas fa-pen"></i>Edytuj profil</button>
                                 </>
                             }
@@ -118,17 +131,24 @@ function ProfilePage() {
             <div className='profile__main--container'>  
 
                     <Switch>
-                        <Route exact path={!watchedUser ? `/board/${user.id}/profile` : `/board/${watchedUser.id}/profile`}>
-                            <ProfilePagePosts user={user} watchedUser={watchedUser} setDevelopProfile={setDevelopProfile}/>
-                        </Route>
-                        <Route path={!watchedUser ? `/board/${user.id}/profile/info` : `/board/${watchedUser.id}/profile/info`}>
-                            {/* <ProfilePageInfo /> */}
+                     
+                        <Route path={!watchedUser ? `/board/${user.id}/profile/info` :
+                                                    `/board/${user.id}/profile/${watchedUser.id}/info`}>
+                            <ProfilePageInfo />
                         </Route>    
-                        <Route path={!watchedUser ? `/board/${user.id}/profile/friends` : `/board/${watchedUser.id}/profile/friends`}>
-                            {/* <ProfilePageFriends /> */}
+                        <Route path={!watchedUser ? `/board/${user.id}/profile/friends` :
+                                                    `/board/${user.id}/profile/${watchedUser.id}/friends`}>
+                            <ProfilePageFriends />
                         </Route>
-                        <Route path={!watchedUser ? `/board/${user.id}/profile/photos` : `/board/${watchedUser.id}/profile/photos`}>
-                            {/* <ProfilePagePhotos /> */}
+                        <Route path={!watchedUser ? `/board/${user.id}/profile/photos` :
+                                                    `/board/${user.id}/profile/${watchedUser.id}/photos`}>
+                            <ProfilePagePhotos />
+                        </Route>
+                        <Route  path={!watchedUser ? `/board/${user.id}/profile` :
+                                                     `/board/${user.id}/profile/${watchedUser.id}`}>
+                            <ProfilePagePosts user={user}
+                                              watchedUser={watchedUser} 
+                                              setDevelopProfile={setDevelopProfile}/>
                         </Route>
                     </Switch>
                 
