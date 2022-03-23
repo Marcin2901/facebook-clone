@@ -37,3 +37,12 @@
     margin-left: .5rem;
     margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 600px) {
+    .create--menu {
+        display: none;
+    }
+    .menu__container {
+        width: 400px;
+    }
+}

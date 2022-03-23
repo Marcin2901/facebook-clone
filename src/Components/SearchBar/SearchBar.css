@@ -31,6 +31,24 @@
     z-index: 2;
 }
 
+@media screen and (max-width: 1260px) {
+    .search-input input {
+        width: 150px;
+      
+    }
+
+    .search-input input::placeholder {
+        font-size: .7rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .search-input input {
+        width: 180px;
+      
+    }
+}
+
 .search-input input:focus {
     padding: 0 1rem 0 1rem;
 }

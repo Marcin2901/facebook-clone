@@ -1,6 +1,4 @@
-.profile--page {
 
-}
 
 .edit--btn {
     font-size: .9rem;
@@ -112,7 +110,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 900px;
+    max-width: 900px;
     padding: .4rem .2rem;
     border-top: 1px solid #bbbdc1;
     margin: 0 auto;
@@ -257,9 +255,7 @@
     border-radius: .5rem;
 }
 
-.presentation__aside {
 
-}
 
 .presentation--box {
     background-color: #F0F2F5;
@@ -304,7 +300,7 @@
 /* Content */
 
 .profile--main__content {
-    width: 500px;
+    max-width: 500px;
 }
 
 /* Content - Post Creator */
@@ -392,6 +388,26 @@
     margin-left: .5rem;
 }
 
+@media screen and (max-width: 900px) {
+    .profile--main__aside {
+        display: none;
+    }
+    .profile--main__content {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .profile__nav--buttons {
+        display: none;
+    }
+    .profile--header__nav {
+        display: none;
+    }
+     .post-creator__opt {
+        font-size: .6rem !important;
+    } 
+}
 
 
 

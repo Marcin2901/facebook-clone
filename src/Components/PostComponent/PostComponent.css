@@ -99,7 +99,6 @@
     justify-content: space-around;
     padding: .5rem 1rem;
     border-top: 1px solid var(--border-color);
-    
 }
 
 .post--opt-item {
@@ -211,6 +210,11 @@
     margin-left: 3.5rem;
 }
 
+@media screen and (max-width: 500px) {
+    .post--opt-item {
+       font-size: .9rem;
+    }
+}
 
 
 

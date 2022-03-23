@@ -47,6 +47,14 @@
     display: flex;
     padding: 0;
     height: 56px;
+    z-index: 0;
+    position: relative;
+}
+
+@media screen and (max-width: 1050px) {
+    .nav__main--ul {
+        display: none;
+    }
 }
 
 .nav__main--ul  li {
@@ -190,3 +198,10 @@ a.active h4{
     align-items: center;
     border-radius: 50%;
 }
+
+@media screen and (max-width: 550px) {
+    .my-profile {
+        display: none;
+    }
+}
+

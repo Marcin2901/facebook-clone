@@ -50,15 +50,10 @@ function ProfilePage() {
         return "";
     }
 
-// dodać możliwość zmiany zdjęcia profilowego i w tle
-//obsługa nawigacji
-//dopracjuj pozycje sticky dla aside w 67 linijce lub w css
 
     return (
         <section className='profile--page'>
             {developProfile.createPost && <CreatePostComponent watchedUser={watchedUser}/>}
-            {/* {developProfile.changeProfileImg && <SetProfileImgComponent />}
-            {developProfile.changeBackgroundImg && <SetBackgroundImgComponent />} */}
             <div className='profile__header--container'>
                 <header className='profile--header'>
                     <div className='profile--header__hero'>
@@ -80,7 +75,6 @@ function ProfilePage() {
 
                     <nav className='profile--header__nav'>
                         <ul className='profile__nav--ul'>
-                            {/* tutaj też pamiętaj żeby rozóżnić czy bierzesz info o sobie czy o obserwowanym profilu */}
                             <Link to={!watchedUser ? `/board/${user.id}/profile` :
                                                      `/board/${user.id}/profile/${watchedUser.id}`}>
                                  <li  className={isActive("")}>Posty</li>

@@ -86,7 +86,7 @@ function Navbar() {
           </div>
           <div className='nav__menu'>
               <Link to={`/board/${user.id}/profile`}
-                    className={`${location.pathname === `/board/${user.id}/profile` && "active"}`}
+                    className={`${location.pathname === `/board/${user.id}/profile` && "active"} my-profile`}
               >
                   <FacebookItem img={user.getProfileImg()} text={user.getName()} size="small"
                                 />

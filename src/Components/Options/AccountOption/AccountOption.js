@@ -14,10 +14,12 @@ function AccountOption() {
     return (
         <div className="option__container account__container">
            <div className="account--opt">
+                 <Link  to={`/board/${user.id}/profile`}>
                  <FacebookItem img={user.getProfileImg()} 
                                text={user.getFullName()}
                                alternativeText={<span className="account--opt-span">Zobacz swój profil</span>}
                  />
+                 </Link>
            </div>
            <div className="account--opt">
                  <FacebookItem icon={<i class="fas fa-info-circle"></i>}
