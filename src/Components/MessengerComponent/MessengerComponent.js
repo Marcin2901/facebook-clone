@@ -5,7 +5,7 @@ import { UserContext } from "../../hooks/Context/UserContextProvider";
 import FacebookItem from "../FacebookItem/FacebookItem";
 import userDatabase from "../../DemoDatabase/userDatabase";
 
-function MessengerComponent() {
+function MessengerComponent(props) {
 
     const {closeMessenger, selectUserMessages} = useContext(MessengerOpenContext);
     //zalogowany user
@@ -51,7 +51,7 @@ function MessengerComponent() {
 
 
     return (
-        <div className="messenger__box">
+        <div className={`${props.isComponent ? "messenger__box messenger__comp" : "messenger__box"}`}>
             <div className="messenger--item">
                 <div className="exit" onClick={closeMessenger}>
                     <span className="line line-1"></span>

@@ -20,20 +20,22 @@ export default  [
         link: "videos"
     },
     {
+        name: "Messenger",
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/YF1bztyGuX-.png",
+        link: "messenger"
+    },
+    {
+        name: "Pogoda",
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/kULMG0uFcEQ.png",
+        link: "weather"
+    },
+    {
         name: "Wspomnienia",
         icon: "https://static.xx.fbcdn.net/rsrc.php/v3/y7/r/AYj2837MmgX.png"
     },
     {
         name: "Zapisane",
         icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yr/r/2uPlV4oORjU.png"
-    },
-    {
-        name: "Messenger",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/YF1bztyGuX-.png"
-    },
-    {
-        name: "Pogoda",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/kULMG0uFcEQ.png"
     },
     {
         name: "Wydarzenia",

@@ -1,0 +1,33 @@
+.messenger--page {
+    height: calc(100vh - 60px);
+    display: flex;
+    gap: .25rem;
+    position: relative;
+    z-index: 5;
+}
+
+.messenger--page .messenger__container {
+    position: static;
+    width: 400px;
+    height: 100%;
+}
+
+.messenger--page .messenger__container {
+    min-width: 330px;
+}
+
+.messenger--page__right-col {
+    width: 400px;
+    height: 100%;
+    background-color: #fff;
+    flex-shrink: 10;
+}
+
+@media screen and (max-width: 750px) {
+    .messenger__comp {
+        width: 120% !important;
+    }
+    .messenger--page .messenger__container {
+        display: none;
+    }
+}

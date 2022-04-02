@@ -14,7 +14,7 @@ function MessengerOption(props) {
 
     function handleClick(messageUser) {
         openMessenger()
-        props.closeAllOption()
+        !props.messComp && props.closeAllOption()
        // messageUser.getMessagesFromMessenger(user.id, messageUser.id).alreadyRead = false;
         user.setIsReadToTrue(user.id, messageUser.id);
         setSelectUserMessages(messageUser);

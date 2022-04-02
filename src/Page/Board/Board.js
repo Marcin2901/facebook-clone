@@ -11,6 +11,8 @@ import VideoPage from '../VideoPage/VideoPage';
 import MarketPlacePage from "../MarketPlacePage/MarketPlacePage"
 import GroupPage from "../GroupPage/GroupPage";
 import FriendsPage from '../FriendsPage/FriendsPage';
+import MessengerPage from '../MessengerPage/MessengerPage';
+import WeatherForecast from '../WeatherForecast/WeatherForecast';
 
 function Board() {
 
@@ -50,6 +52,12 @@ function Board() {
                 </Route>
                 <Route path={`/board/${currentUser.id}/friends`} >
                      <FriendsPage />
+                </Route>
+                <Route path={`/board/${currentUser.id}/messenger`}>
+                    <MessengerPage />
+                </Route>
+                <Route path={`/board/${currentUser.id}/weather`}>
+                    <WeatherForecast />
                 </Route>
             </Switch>
         </div>
