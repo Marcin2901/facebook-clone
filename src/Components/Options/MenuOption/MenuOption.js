@@ -1,16 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
 import "../Option.css";
 import "./MenuOption.css";
 import FacebookItem from "../../FacebookItem/FacebookItem";
-import SearchBar from "../../SearchBar/SearchBar";
 import additionalAppDatabase  from "../../../DemoDatabase/additionalAppDatabase";
 import {Link} from "react-router-dom";
+import {UserContext} from "../../../hooks/Context/UserContextProvider";
 
 function MenuOption() {
 
+    const user = useContext(UserContext);
 
     const appElems = additionalAppDatabase.map((app, index) => (
-        <Link to={"dadaj linki do bazy danych"}>
+        <Link to={`/board/${user.id}/${app.link}`}>
              <FacebookItem key={index} img={app.icon} text={app.name} />
         </Link>
     ))
