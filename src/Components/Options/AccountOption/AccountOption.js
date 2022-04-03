@@ -22,26 +22,26 @@ function AccountOption() {
                  </Link>
            </div>
            <div className="account--opt">
-                 <FacebookItem icon={<i class="fas fa-info-circle"></i>}
+                 <FacebookItem icon={<i className="fas fa-info-circle"></i>}
                                text={"Przekaż opinię"} 
                                alternativeText={<span className="account--opt-span">Pomóż mi ulepszyć Facebooka</span>}
                  />
                  
            </div>
            <div className="account--set">
-                 <FacebookItem icon={<i class="fas fa-cog"></i>} text={"Ustawienia i prywantość"} />
-                 <i class="fas fa-chevron-right"></i>
+                 <FacebookItem icon={<i className="fas fa-cog"></i>} text={"Ustawienia i prywantość"} />
+                 <i className="fas fa-chevron-right"></i>
            </div>
            <div className="account--set">
-                 <FacebookItem icon={<i class="fas fa-question-circle"></i>} text={"Pomoc i wsparcie"}/>
-                 <i class="fas fa-chevron-right"></i>
+                 <FacebookItem icon={<i className="fas fa-question-circle"></i>} text={"Pomoc i wsparcie"}/>
+                 <i className="fas fa-chevron-right"></i>
            </div>
            <div className="account--set">
-                 <FacebookItem icon={<i class="fas fa-moon"></i>} text={"Wyświetlanie i ułatwienie dostępu"}/>
-                 <i class="fas fa-chevron-right"></i>
+                 <FacebookItem icon={<i className="fas fa-moon"></i>} text={"Wyświetlanie i ułatwienie dostępu"}/>
+                 <i className="fas fa-chevron-right"></i>
            </div>
            <Link to={"/"} onClick={closeMessenger}>
-               <FacebookItem icon={<i class="fas fa-sign-out-alt"></i>} text={"Wyloguj się"}/>
+               <FacebookItem icon={<i className="fas fa-sign-out-alt"></i>} text={"Wyloguj się"}/>
            </Link>
            <small>Facebook &copy; 2022</small>
         </div>

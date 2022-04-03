@@ -21,7 +21,6 @@ function getRandomImageNumber() {
     return Math.floor(Math.random() * 1000);
 }
 
-
 async function getPosts() {
     const res = await fetch("https://goquotes-api.herokuapp.com/api/v1/random?count=65");
     const data = await res.json()

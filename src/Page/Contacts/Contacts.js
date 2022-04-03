@@ -7,20 +7,18 @@ import {MessengerOpenContext} from "../../hooks/Context/MessengerOpenContextProv
 
 function Contacts() {
 
-  const user = useContext(UserContext); 
-  const friends = userDatabase.filter(currentUser => user.getAllFriends().includes(currentUser.id))
-//   friends.map(friend => console.log(friend.messages))
+    const user = useContext(UserContext); 
+    const friends = userDatabase.filter(currentUser => user.getAllFriends().includes(currentUser.id))
 
- const {openMessenger, setSelectUserMessages} = useContext(MessengerOpenContext);
+    const {openMessenger, setSelectUserMessages} = useContext(MessengerOpenContext);
 
-function handleClick(messageUser) {
-    openMessenger()
-    setSelectUserMessages(messageUser);
-}
+    function handleClick(messageUser) {
+        openMessenger()
+        setSelectUserMessages(messageUser);
+    }
 
-
-  const activeFriends = friends.map(friend => (
-                            <div onClick={() => handleClick(friend)}>
+    const activeFriends = friends.map(friend => (
+                            <div key={friend.id} onClick={() => handleClick(friend)}>
                                 <FacebookItem img={friend.getProfileImg()} text={friend.getFullName()} />
                             </div>
                         ))
@@ -30,9 +28,9 @@ function handleClick(messageUser) {
         <div className='contacts--header'>
             <h3>Kontakty</h3>
             <div className='contacts--opt'>
-                <i class="fas fa-video"></i>
-                <i class="fas fa-search"></i>
-                <i class="fas fa-ellipsis-h"></i>
+                <i className="fas fa-video"></i>
+                <i className="fas fa-search"></i>
+                <i className="fas fa-ellipsis-h"></i>
             </div>
         </div>
             <div className='contacts__content'>

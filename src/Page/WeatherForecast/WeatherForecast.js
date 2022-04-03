@@ -7,8 +7,6 @@ function WeatherForecast() {
     const [currentForecast, setCurrentForecast] = useState();
     const [citys, setCitys] = useState();
     const [cityName, setCityName] = useState("");
-    const [error, setError] = useState(false);
-
     const date = new Date().getDay();
 
     useEffect(() => {
@@ -35,13 +33,9 @@ function WeatherForecast() {
             if(citys.filter(currentCity => currentCity.city.name === data.city.name).length === 0)
             setCitys(prevState => [...prevState, data]);
             setCityName("");
-            setError(false);
         })
-        .catch(() => setError(true))
+        .catch((error) => console.log(error))
     }
-    console.log( "kurwa")
-    console.log(currentForecast)
-    console.log(error)
 
     function handleChange(event) {
         console.log(event.target.value)
@@ -59,14 +53,13 @@ function WeatherForecast() {
 
     return (
         <div className="weather--forecast">
-            {/* dodać state dla inputa i funkcje wyszukiwania dla buttona i onclicka dla facebookItema - czyli tylko zmiana currentForecast*/}
             <div className="weather--forecast__aside">
                 <h2>Pogoda</h2>
                 <input type="text" value={cityName} onChange={(e) => handleChange(e)} placeholder="Wyszukaj miejscowości"/>
                 <button onClick={getForecast} >Szukaj</button>
                 <h3>Miasta</h3>
                 {citys &&
-                citys.map(city => <div onClick={() => setCurrentForecast(city)}><FacebookItem key={city.city.id} size="big"
+                citys.map((city, index) => <div key={index} onClick={() => setCurrentForecast(city)}><FacebookItem key={city.city.id} size="big"
                                          img={`http://openweathermap.org/img/wn/${city.list[0].weather[0].icon}@2x.png`}
                                          text={city.city.name}/></div>)
                 }  
@@ -77,44 +70,41 @@ function WeatherForecast() {
                     {currentForecast.cod !== "404" ?
                     <div className="weather--header">
                         <h1 className="weather-title">Pogoda w: {currentForecast.city.name}</h1>
-                        {/* <span className="weather-data">{currentForecast.list[0].dt_txt}</span> */}
                         <div className="weather-ditals">
                             <span className="temperature">{currentForecast.list[0].main.temp} &#8451;</span>
                             <div>
                                 <p>odczuwalna: <span className="bold">{currentForecast.list[0].main.feels_like}</span></p>
                                 <p>{currentForecast.list[0].weather[0].description}</p>
-                                {/* <p>Najwyższa dzisiaj: <span className="bold">{currentForecast.list[0].main.temp_max}</span></p> */}
                             </div>
                         </div>
                         <div className="weather-houers--forecast">
                             <div className="weather-houer">
-                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[0].weather[0].icon}@2x.png`} />
+                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[0].weather[0].icon}@2x.png`} alt={"example"}/>
                                 <span className="bold">{currentForecast.list[0].main.temp} &#8451;</span>
                                 <span className="bold">00:00</span>
                             </div>
-                            {/* 00 03 06 09 12 15 18 21 */}
                             <div className="weather-houer">
-                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[2].weather[0].icon}@2x.png`} />
+                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[2].weather[0].icon}@2x.png`} alt={"example"}/>
                                 <span className="bold">{currentForecast.list[2].main.temp} &#8451;</span>
                                 <span className="bold">06:00</span>
                             </div>
                             <div className="weather-houer">
-                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[3].weather[0].icon}@2x.png`} />
+                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[3].weather[0].icon}@2x.png`} alt={"example"}/>
                                 <span className="bold">{currentForecast.list[3].main.temp} &#8451;</span>
                                 <span className="bold">12:00</span>
                             </div>
                             <div className="weather-houer">
-                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[4].weather[0].icon}@2x.png`} />
+                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[4].weather[0].icon}@2x.png`} alt={"example"}/>
                                 <span className="bold">{currentForecast.list[4].main.temp} &#8451;</span>
                                 <span className="bold">15:00</span>
                             </div>
                             <div className="weather-houer">
-                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[5].weather[0].icon}@2x.png`} />
+                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[5].weather[0].icon}@2x.png`} alt={"example"}/>
                                 <span className="bold">{currentForecast.list[5].main.temp} &#8451;</span>
                                 <span className="bold">18:00</span>
                             </div>
                             <div className="weather-houer">
-                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[6].weather[0].icon}@2x.png`} />
+                                <img src={`http://openweathermap.org/img/wn/${currentForecast.list[6].weather[0].icon}@2x.png`} alt={"example"}/>
                                 <span className="bold">{currentForecast.list[6].main.temp} &#8451;</span>
                                 <span className="bold">21:00</span>
                             </div>
@@ -123,6 +113,7 @@ function WeatherForecast() {
                             <div className="weather-day--item">
                                 <img className="weather-day--img"
                                      src={`http://openweathermap.org/img/wn/${currentForecast.list[7].weather[0].icon}@2x.png`} 
+                                     alt={"example"}
                                 />
                                 <div className="weather-day--info">
                                     <div className="weather-day--header">
@@ -135,6 +126,7 @@ function WeatherForecast() {
                             <div className="weather-day--item">
                                 <img className="weather-day--img"
                                      src={`http://openweathermap.org/img/wn/${currentForecast.list[15].weather[0].icon}@2x.png`} 
+                                     alt={"example"}
                                 />
                                 <div className="weather-day--info">
                                     <div className="weather-day--header">
@@ -147,6 +139,7 @@ function WeatherForecast() {
                             <div className="weather-day--item">
                                 <img className="weather-day--img"
                                      src={`http://openweathermap.org/img/wn/${currentForecast.list[23].weather[0].icon}@2x.png`} 
+                                     alt={"example"}
                                 />
                                 <div className="weather-day--info">
                                     <div className="weather-day--header">
@@ -159,6 +152,7 @@ function WeatherForecast() {
                             <div className="weather-day--item">
                                 <img className="weather-day--img"
                                      src={`http://openweathermap.org/img/wn/${currentForecast.list[31].weather[0].icon}@2x.png`} 
+                                     alt={"example"}
                                 />
                                 <div className="weather-day--info">
                                     <div className="weather-day--header">
@@ -172,23 +166,11 @@ function WeatherForecast() {
                     </div> :
                     <h1 className="error">Nie znaleziono podanego miasta</h1>
                     }
-                
-                
-               
-                {/* <h1>info: {currentForecast.list[0].weather[0].description}</h1> */}
-                {/* <h1>ikona: {currentForecast.list[0].weather[0].icon}</h1> */}
-                {/* <img src={`http://openweathermap.org/img/wn/${currentForecast.list[0].weather[0].icon}@2x.png`} /> */}
                 </div>
             }
             </div>
         </div>
     )
 }
- {/* <h1>{currentForecast.list[0].dt_txt}</h1>
-            <h1>odczuwalna: {currentForecast.list[0].main.feels_like}</h1>
-            <h1>temperatura: {currentForecast.list[0].main.temp}</h1>
-            <h1>info: {currentForecast.list[0].weather[0].description}</h1>
-            <h1>ikona: {currentForecast.list[0].weather[0].icon}</h1> */}
-// 5 13 21 29
 
 export default WeatherForecast;

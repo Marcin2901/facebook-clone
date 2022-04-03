@@ -11,8 +11,6 @@ import AccountOption from '../../Components/Options/AccountOption/AccountOption'
 
 function Navbar() {
 
-    
-
   const user = useContext(UserContext);
   const location = useLocation()
 
@@ -42,8 +40,6 @@ function Navbar() {
         account: false,
       })
   }
- 
- 
 
   return (
       <nav className='nav'>

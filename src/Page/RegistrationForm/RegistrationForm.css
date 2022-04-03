@@ -35,7 +35,6 @@
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #dddfe2;
-
 }
 
 .registration--form input {
@@ -78,7 +77,6 @@
     width: 48%;
     height: 40px;
     border: 1px solid #ccd0d5;
-
 }
 
 .registration--text {
@@ -123,4 +121,3 @@
 .line-2 {
     transform: translateY(-50%) rotate(-45deg);
 }
-

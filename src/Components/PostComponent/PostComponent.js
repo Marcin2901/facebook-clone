@@ -1,6 +1,5 @@
 import React, {useContext, useState} from "react";
 import "./PostComponent.css";
-import {useHistory} from "react-router-dom";
 import FacebookItem from "../FacebookItem/FacebookItem";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import {UserContext} from "../../hooks/Context/UserContextProvider";
@@ -8,12 +7,12 @@ import {UserContext} from "../../hooks/Context/UserContextProvider";
 function PostComponent(props) {
     
     const {post} = props
-    //to ID usera do którego należy post
+    //ID usera do którego należy post
     const userId = post.userId;
-    //to user do którego należy post
+    //user do którego należy post
     const user = userDatabase.find(currentUser => currentUser.id === userId);
 
-    //to user który jest zalogowany
+    //user który jest zalogowany
     const currentUser = useContext(UserContext);
 
     //tablica obiektu konkretnego posta która zawira id userów którzy polajkowali
@@ -35,15 +34,11 @@ function PostComponent(props) {
     // state umożliwiający otwieranie komentarzy w konkretnym poście
     const [showComments, setShowComments] = useState(false)
 
-    const history = useHistory();
-
     function addComment(event) {
         if(event.key==="Enter") {
             event.preventDefault()
             post.addComment(currentUser, commentFomr.commentText)
             setCommentForm({commentText: ""})
-            //dodawanie powiadomień po dodaniu komentarza
-            //*props.watchedUser => właściciel odwiedzananego profilu, * currentUser => profil zalogowanego usera
             userDatabase.forEach(customer => (
                 customer.addNotification(currentUser, 1, post, props.watchedUser ? props.watchedUser.id : currentUser.id)))
                 setShowComments(true)
@@ -104,7 +99,7 @@ function PostComponent(props) {
             <div className="comment__contaienr">
                 <div className="comment--input-box">
                     <img src={currentUser.getProfileImg()} alt="profile-img"/>
-                    <textarea className={commentFomr.commentText.length > 40 && "area--plus"}
+                    <textarea className={commentFomr.commentText.length > 40 ? "area--plus" : undefined}
                                 type="text"
                                 placeholder="Napisz komentarz..."
                                 name="commentText"
@@ -115,8 +110,8 @@ function PostComponent(props) {
                 </div>
                 {showComments && (
                 post.getComments().length > 0 &&
-                    post.getComments().map(comment => (
-                        <div className="comment">
+                    post.getComments().map((comment, index) => (
+                        <div key={index} className="comment">
                             <div className="coment--top">
                                 <img src={comment.authorImg} alt={`${comment.author}`} />
                                 <div className="commnet--content">

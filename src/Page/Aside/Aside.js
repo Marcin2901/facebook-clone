@@ -10,8 +10,8 @@ function Aside() {
     const user = useContext(UserContext)
 
     const appElems = additionalAppDatabase.map((app, index) => (
-        <Link to={`/board/${user.id}/${app.link}`}>
-            <FacebookItem key={index} img={app.icon} text={app.name} />
+        <Link to={`/board/${user.id}/${app.link}`} key={index}>
+            <FacebookItem img={app.icon} text={app.name} />
         </Link>
     ))
 

@@ -13,7 +13,6 @@ import { MessengerOpenContext } from "./hooks/Context/MessengerOpenContextProvid
 
 function App() {
 
- 
   const location = useLocation()
   const {isMessengerOpen} = useContext(MessengerOpenContext);
 
@@ -54,6 +53,3 @@ function App() {
 }
 
 export default App;
-
-
-// dokoćczyć formularz rejestracji - data urodzenia i płeć

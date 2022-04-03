@@ -1,6 +1,6 @@
 import React from "react";
 import "./FriendsPageInvitationsAside.css";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import userDatabase from "../../../../DemoDatabase/userDatabase";
 import FacebookItem from "../../../../Components/FacebookItem/FacebookItem";
 
@@ -14,10 +14,8 @@ function FriendsPageInvitationsAside() {
                     </div>
 
     const invitationsElem = userDatabase.map(user => (
-        <div className="invitation--item">
-            <Link>
-                <FacebookItem img={user.getProfileImg()} text={user.getFullName()} size={"big"}/>
-            </Link>
+        <div key={user.id} className="invitation--item">
+            <FacebookItem img={user.getProfileImg()} text={user.getFullName()} size={"big"}/>
             {btnsElem}
         </div>
     ))
@@ -26,7 +24,7 @@ function FriendsPageInvitationsAside() {
         <aside className="invitations--aside">
             <header className="invitations--aside__header">
                 <div className="invitations--aside__header--arrow-back">
-                     <i class="fas fa-arrow-left" onClick={() => history.goBack()}></i>
+                     <i className="fas fa-arrow-left" onClick={() => history.goBack()}></i>
                 </div>
                 <div className="invitations--aside__header--content">
                     <span>Znajomi</span>

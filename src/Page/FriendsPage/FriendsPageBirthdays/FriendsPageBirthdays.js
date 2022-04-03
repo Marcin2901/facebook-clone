@@ -11,16 +11,12 @@ function FriendsPageBirthdays() {
     const birthElem = user.getAllFriends().map(friendId => {
         const currentFriend = userDatabase.find(currentUser => currentUser.id === friendId)
       return  (
-        <><FacebookItem img={currentFriend.getProfileImg()} text={currentFriend.getFullName()}
-                      alternativeText={"tutaj pobierz date urodzenia"} size={"big"}/><hr /></>
+        <div key={friendId}><FacebookItem  img={currentFriend.getProfileImg()} text={currentFriend.getFullName()}
+                      alternativeText={"tutaj pobierz date urodzenia"} size={"big"}/><hr /></div>
     )})
 
     return (
         <div className="friends--page__birthdays">
-            {/* warunek jeśli ktoś z tablicy user.getAllFriends() ma urodiiny */}
-            {false && 
-                <div></div>
-            }
             <div className="friends-birth__container">
                 <h3>Nadchodzące urodziny</h3>
                 {birthElem}

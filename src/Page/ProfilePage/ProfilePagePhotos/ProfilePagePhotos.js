@@ -9,7 +9,7 @@ function ProfilePagePhotos() {
         <div className="profile--page__photos">
             <h2>Zdjecia</h2>
             <div className="photos--container">
-                <img src={user.getProfileImg()} />
+                <img src={user.getProfileImg()} alt={"example"}/>
             </div>
         </div>
     )

@@ -12,8 +12,6 @@
     z-index: 10;
 }
 
-
-
 /* NAV SEARCH */
 
 .nav svg {
@@ -37,11 +35,7 @@
    position: relative;
 }
 
-
-
-
 /* NAV UL */
-
 .nav__main--ul {
     list-style: none;
     display: flex;
@@ -98,7 +92,6 @@ li.active i {
     background-color: #fff;
     cursor: unset;
 }
-
 
 /* nav-menu */
 .nav__menu {
@@ -204,4 +197,3 @@ a.active h4{
         display: none;
     }
 }
-

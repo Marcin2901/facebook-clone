@@ -3,14 +3,12 @@ import "./ProfilePage.css";
 import { UserContext } from '../../hooks/Context/UserContextProvider';
 import {Link, Switch, Route, useParams, useLocation} from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
-import PostComponent from "../../Components/PostComponent/PostComponent"
 import CreatePostComponent from '../../Components/CreatePostComponent/CreatePostComponent';
 import {ScrollToContext} from "../../hooks/Context/ScrollToContextProvider";
 import ProfilePagePosts from './ProfilePagePosts/ProfilePagePosts';
 import ProfilePageInfo from "./ProfilePageInfo/ProfilePageInfo";
 import ProfilePageFriends from './ProfilePageFriends/ProfilePageFriends';
 import ProfilePagePhotos from './ProfilePagePhotos/ProfilePagePhotos';
-
 
 function ProfilePage() {
     
@@ -38,8 +36,7 @@ function ProfilePage() {
         }
     }, [scrollElemId])
 
-    function isActive(urlEnding) {
-       
+    function isActive(urlEnding) {     
         if(location.pathname === `/board/${user.id}/profile${urlEnding}`
         ) {
             return "active";
@@ -49,7 +46,6 @@ function ProfilePage() {
         }
         return "";
     }
-
 
     return (
         <section className='profile--page'>
@@ -100,10 +96,10 @@ function ProfilePage() {
                         <div className='profile__nav--buttons'>
                             {  watchedUser ?
                                 <>
-                                <button className='btn edit--btn'><i class="fas fa-user-friends"></i>Znajomi</button>
+                                <button className='btn edit--btn'><i className="fas fa-user-friends"></i>Znajomi</button>
                                 <button className='rel--btn btn login--btn'>
                                     <span className='plus-icon--bg'>
-                                        <i class="fab fa-facebook-messenger"></i>
+                                        <i className="fab fa-facebook-messenger"></i>
                                     </span>Wyślij wiadomość
                                 </button>
                                 </> :

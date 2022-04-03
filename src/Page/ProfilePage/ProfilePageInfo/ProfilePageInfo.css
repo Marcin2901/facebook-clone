@@ -64,7 +64,6 @@ h2 {
     margin-top: 2rem;
 }
 
-
 .info__friends--content {
     display: flex;
     flex-wrap: wrap;
@@ -90,15 +89,12 @@ h2 {
     
 }
 
-
-
 .info__friends .friend--tile img {
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: .5rem;
 }
-
 
 .friend--tile__text h4 {
    font-size: 1.2rem;
@@ -120,35 +116,3 @@ h2 {
 .all-friends--btn:hover {
     background-color: #ccced5;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

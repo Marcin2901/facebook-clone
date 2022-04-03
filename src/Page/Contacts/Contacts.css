@@ -75,7 +75,6 @@
     z-index: 1000;
 }
 
-
 .contacts__container::-webkit-scrollbar {
     width: 10px;
     background-color: transparent;
@@ -108,21 +107,3 @@
         display: none;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

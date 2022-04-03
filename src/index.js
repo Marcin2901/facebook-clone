@@ -23,7 +23,3 @@ ReactDOM.render(
 );
 
 reportWebVitals();
-
-// to co na kartce + ustawic scrollY na 0 przy przeładowaniu strony + weather app, duży messenger i prototypy
-// wszystkich rzeczy z listy po lewej, możeliwość dodawania znajomych i segregacja postów po dacie na 
-//profilu i na głównej tablicy

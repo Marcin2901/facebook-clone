@@ -15,12 +15,9 @@ function MessengerOption(props) {
     function handleClick(messageUser) {
         openMessenger()
         !props.messComp && props.closeAllOption()
-       // messageUser.getMessagesFromMessenger(user.id, messageUser.id).alreadyRead = false;
         user.setIsReadToTrue(user.id, messageUser.id);
         setSelectUserMessages(messageUser);
-        localStorage.setItem("users", JSON.stringify(userDatabase));
-        // to skasuj jak zaimplementujesz alreadyRead
-        // setUpdated(prevState => [...prevState].filter(ids => ids !== messageUser.id))   
+        localStorage.setItem("users", JSON.stringify(userDatabase)); 
     }
 
     // user => zalogowany user dla którego sprawdzamy czy wiadomość jest przeczytana
@@ -36,23 +33,20 @@ function MessengerOption(props) {
                 <h2>Messenger</h2>
                 <div className="messenger--header__content">
                     <i className="fas fa-ellipsis-h tooltip"><span className="tooltiptext">Opcje</span></i>
-                    <i class="fas fa-arrows-alt tooltip"><span className="tooltiptext">Pokaż wszystko w Messengerze</span></i>
-                    <i class="fas fa-video tooltip"><span className="tooltiptext">Utwórz nowy pokój</span></i>
-                    <i class="far fa-sticky-note tooltip"><span className="tooltiptext">Nowa wiadomość</span></i>
+                    <i className="fas fa-arrows-alt tooltip"><span className="tooltiptext">Pokaż wszystko w Messengerze</span></i>
+                    <i className="fas fa-video tooltip"><span className="tooltiptext">Utwórz nowy pokój</span></i>
+                    <i className="far fa-sticky-note tooltip"><span className="tooltiptext">Nowa wiadomość</span></i>
                 </div>
             </header>
             <SearchBar closeAllOption={props.closeAllOption}/>
             <div className="messages-users_constainer">
-                {/* [messages] => {Messenger} : [messagesArra], id, userOneId, userTwoId */}
             {user.messages.length > 0 &&
-                user.messages.map(message => {
-                    //user z którym piszemy
-                    // const messageUser = userDatabase.find(currentUser => currentUser.id === message.userId);
+                user.messages.map((message, index) => {
                     const messageUserSide = message.userOneId === user.id ? "userTwoId" : "userOneId";
                     const messageUser = userDatabase.find(currentUser => currentUser.id === message[messageUserSide]);
                  
                    return (
-                    <div onClick={() => handleClick(messageUser)} className={checkIfMessageIsRead(messageUser)}>
+                    <div key={index} onClick={() => handleClick(messageUser)} className={checkIfMessageIsRead(messageUser)}>
                         <FacebookItem img={messageUser.profileImg} 
                                     text={`${messageUser.name} ${messageUser.lastname}`} 
                                     alternativeText={"Zobacz wiadomości"}

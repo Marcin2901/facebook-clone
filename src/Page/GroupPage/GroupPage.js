@@ -11,9 +11,9 @@ function GroupPage() {
 
     const user = useContext(UserContext);
 
-    const items = [{elem: <FacebookItem icon={<i class="fas fa-chart-line icon--item"></i>} text={"Twoje Aktywności"} />, ending: "groups"},
-                   {elem: <FacebookItem icon={<i class="fas fa-compass icon--item"></i>} text={"Odkryj"} />, ending: "groups/discovery"},
-                   {elem: <FacebookItem icon={<i class="fas fa-bell icon--item"></i>} text={"Twoje powiadomienia"} />, ending: "groups/notification"}]
+    const items = [{elem: <FacebookItem icon={<i className="fas fa-chart-line icon--item"></i>} text={"Twoje Aktywności"} />, ending: "groups"},
+                   {elem: <FacebookItem icon={<i className="fas fa-compass icon--item"></i>} text={"Odkryj"} />, ending: "groups/discovery"},
+                   {elem: <FacebookItem icon={<i className="fas fa-bell icon--item"></i>} text={"Twoje powiadomienia"} />, ending: "groups/notification"}]
 
     return (
         <section className="group--page">
@@ -32,7 +32,6 @@ function GroupPage() {
                 </Switch>
             </main>
         </section>
-
     )
 }
 

@@ -78,7 +78,6 @@
     cursor: pointer;
 }
 
-
 ::placeholder {
     color: #aaacb0;
 }
@@ -98,8 +97,6 @@
     padding-bottom: 1.5rem;
     margin-bottom: 1.5rem;
 }
-
-
 
 input {
     height: 45px;
@@ -156,7 +153,6 @@ input {
     background-color: #36a420;
 }
 
-
 .warning {
     font-size: 1rem;
     font-weight: 500;
@@ -178,4 +174,3 @@ input {
     border-radius: .5rem;
     margin: .5rem;
 }
-

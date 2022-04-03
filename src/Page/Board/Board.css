@@ -1,6 +1,5 @@
 .container__content {
     background-color: #F0F2F5;
-    /* usuń height */
     min-height: calc(100vh - 56px);
     margin-top: 56px;
 }

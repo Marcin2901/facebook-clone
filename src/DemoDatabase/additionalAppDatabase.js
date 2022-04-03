@@ -1,4 +1,4 @@
-export default  [
+const additionals =  [
     {
         name: "Znajomi",
         icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png",
@@ -44,5 +44,6 @@ export default  [
         icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/9-o1e6LN_TX.png",
         link: "events"
     },
-
 ]
+
+export default additionals;

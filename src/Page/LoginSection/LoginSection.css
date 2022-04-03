@@ -7,7 +7,6 @@
    padding: 10px 20px;
 }
 
-
 /* AVATAR */
 .login__content {
     align-self: flex-start;
@@ -18,7 +17,6 @@
     width: 200px;
     object-fit: cover;
     margin-left: -1.2rem;
-
 }
 
 h2 {
@@ -50,7 +48,6 @@ h2 {
     margin-bottom: 1rem;
     transition: box-shadow .3s ease-in-out;
     cursor: pointer;
-    
 }
 
 .avatar:hover {
@@ -137,7 +134,6 @@ a {
 
 /* FORM */
 
-
 .ad-text {
     text-align: center;
     margin-top: 2rem;
@@ -151,7 +147,6 @@ a {
     text-decoration: underline;
     cursor: pointer;
 }
-
 
 /* Media */
 @media screen and (max-width: 850px) {
@@ -183,6 +178,3 @@ a {
         justify-content: center;
     }
 }
-
-
-

@@ -16,18 +16,17 @@ function ProfilePageFriends() {
                     {user.getAllFriends().map((friendId, index) => {
                         const friend = userDatabase.find(currentUser => currentUser.id === friendId)              
                         return (
-                            <div className="friend--tile">
-                            <img src={`${friend.getProfileImg()}`} />
-                            <div className="friend--tile__text">
-                                <h4>{friend.getFullName()}</h4>
-                                <span>Zobacz profil na facebooku</span>
-                            </div>
+                            <div key={index} className="friend--tile">
+                                <img src={`${friend.getProfileImg()}`} alt={"example"}/>
+                                <div className="friend--tile__text">
+                                    <h4>{friend.getFullName()}</h4>
+                                    <span>Zobacz profil na facebooku</span>
+                                </div>
                             </div>
                         )
                         
                     })}
                  </div>
-        
             </div>
         </div>
     )

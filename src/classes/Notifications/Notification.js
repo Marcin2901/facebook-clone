@@ -39,9 +39,6 @@ class Notification {
         const formatedDate = `${year}-${month}-${day}  ${hour}:${minute}`
         return formatedDate;
     }
-
 }
-
-
 
 export default Notification;

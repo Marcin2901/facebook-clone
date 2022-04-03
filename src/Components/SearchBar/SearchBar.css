@@ -5,7 +5,6 @@
     position: relative;
 }
 
-
 .search-input {
     position: relative;
 }
@@ -34,7 +33,6 @@
 @media screen and (max-width: 1260px) {
     .search-input input {
         width: 150px;
-      
     }
     .search-input input::placeholder {
         font-size: .7rem;
@@ -59,8 +57,6 @@
 .search-input input:focus ~ .fa-search {
     opacity: 0;
 }
-
-
 
 .foundUsers__container {
     position: absolute;
@@ -115,12 +111,12 @@
     width: 10px;
     background-color: #fff;
     border-radius: 1rem;
-  }
+}
   
-  .foundUsers__profile::-webkit-scrollbar-thumb {
-      border-radius: 1rem;
-      background-color: #fff;
-  }
+.foundUsers__profile::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #fff;
+}
 
 .foundUsers__profile:hover::-webkit-scrollbar-thumb {
     background-color: #aaacb3;
@@ -140,10 +136,7 @@
     width: 100%;
     text-align: center;
     color: #666870;
-
 }
-
-
 
 .arrow-back {
     height: 36px;
@@ -161,7 +154,6 @@
 .arrow-back i {
     font-size: 1.2rem;
     color: #5f656d;
-
 }
 
 .arrow-back:hover {

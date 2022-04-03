@@ -18,8 +18,7 @@ function SearchBar(props) {
         openMessenger()
         setSelectUserMessages(messageUser);
         props.closeAllOption();
-    }
-    
+    }    
 
     React.useEffect(() => {
         const found = [];
@@ -37,12 +36,12 @@ function SearchBar(props) {
         setSearchUsers(prevState => ({[name]: value}));
     }
 
-  function handleArrowBack() {
-    setTimeout(() => {
-        setSearchUsers({searchUser: ""})
-    }, 500);
-    document.querySelector('.foundUsers__container').classList.add("hide")
-  }
+    function handleArrowBack() {
+        setTimeout(() => {
+            setSearchUsers({searchUser: ""})
+        }, 500);
+        document.querySelector('.foundUsers__container').classList.add("hide")
+    }
 
 
    return (
@@ -76,9 +75,8 @@ function SearchBar(props) {
                 <div className='foundUsers__container foundUsers__profile'>
                     <div className='arrow-back' onClick={handleArrowBack}><i className="fas fa-arrow-left"></i></div>
                     {foundUsers.map(currentUser => (
-                        <Link to={`/board/${user.id}/${props.linkTo}/${currentUser.id}`}>
-                            <FacebookItem key={currentUser.id}
-                                          img={currentUser.getProfileImg()}
+                        <Link to={`/board/${user.id}/${props.linkTo}/${currentUser.id}`} key={currentUser.id}>
+                            <FacebookItem img={currentUser.getProfileImg()}
                                           text={currentUser.getFullName()}
                                           alternativeText={!props.isInNavbar && "zobacz wiadomośći"}
                                           size={!props.isInNavbar && "big"}/>
@@ -89,8 +87,8 @@ function SearchBar(props) {
                 <div className='foundUsers__container foundUsers__messages'>
                     <div className='arrow-back' onClick={handleArrowBack}><i className="fas fa-arrow-left"></i></div>
                     {foundUsers.map(currentUser => (
-                        <div onClick={() => handleClick(currentUser)}>
-                            <FacebookItem key={currentUser.id}
+                        <div key={currentUser.id} onClick={() => handleClick(currentUser)}>
+                            <FacebookItem 
                                 img={currentUser.getProfileImg()}
                                 text={currentUser.getFullName()}
                                 alternativeText={!props.isInNavbar && "zobacz wiadomośći"}

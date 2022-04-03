@@ -14,7 +14,6 @@ function MessengerComponent(props) {
     // (1 obiekt)-{Messenger} : [messagesArray], userOneId(to user), userTwoId(to selectUser), alreadyRead=false
     let messenger = user.getMessagesFromMessenger(user.id, selectUserMessages.id);
     
-
     //formularz dla nowej wiadomości
     const [messageForm, setMessageForm] = useState({myMessage: ""})
     //obsługa formularza
@@ -22,7 +21,6 @@ function MessengerComponent(props) {
         const {name, value} = event.target
         setMessageForm({[name]: value});
     }
-
 
     function sendMessage(event) {
         if(event.key === "Enter" || event.target.id ==="submit" || event.target.id === "like") {
@@ -49,7 +47,6 @@ function MessengerComponent(props) {
         sendMessage(event);
     }
 
-
     return (
         <div className={`${props.isComponent ? "messenger__box messenger__comp" : "messenger__box"}`}>
             <div className="messenger--item">
@@ -63,12 +60,10 @@ function MessengerComponent(props) {
                                   alternativeText={<span>Aktywny(a)</span>}/>
                 </header>
                 <div className="messenger__content">
-                    {console.log("Jebany Mesenger")}
-                    {console.log(user.messages)}
                     {/* Logika wyświetlania wiadomości */}
                     {messenger ? 
-                        messenger.messagesArray.map(message => (
-                            <p className={message.userOneId === selectUserMessages.id ? "message-left" : "message-right"}>
+                        messenger.messagesArray.map((message, index) => (
+                            <p key={index} className={message.userOneId === selectUserMessages.id ? "message-left" : "message-right"}>
                                 {message.text}
                             </p>
                         ))
@@ -86,8 +81,8 @@ function MessengerComponent(props) {
                            onKeyDown={(e) => sendMessage(e)}
                     />
                     <div className="messenger--type-icons">
-                         <i id="like" class="fas fa-thumbs-up" onClick={(e) => sendLike(e)}></i>
-                         <i id="submit" class="fas fa-paper-plane" onClick={(e) => sendMessage(e)}></i>
+                         <i id="like" className="fas fa-thumbs-up" onClick={(e) => sendLike(e)}></i>
+                         <i id="submit" className="fas fa-paper-plane" onClick={(e) => sendMessage(e)}></i>
                     </div>
                 </div>
 

@@ -11,8 +11,8 @@ function MenuOption() {
     const user = useContext(UserContext);
 
     const appElems = additionalAppDatabase.map((app, index) => (
-        <Link to={`/board/${user.id}/${app.link}`}>
-             <FacebookItem key={index} img={app.icon} text={app.name} />
+        <Link to={`/board/${user.id}/${app.link}`} key={index}>
+             <FacebookItem img={app.icon} text={app.name} />
         </Link>
     ))
 
@@ -26,16 +26,16 @@ function MenuOption() {
                 </div>
                 <div className="create--menu">
                     <h3>Utwórz</h3>
-                    <FacebookItem icon={<i class="far fa-clipboard"></i>} text={"Opublikuj"}/>
-                    <FacebookItem icon={<i class="fas fa-book-open"></i>} text={"Relacja"}/>
-                    <FacebookItem icon={<i class="fas fa-hourglass-start"></i>} text={"Wydarzenie z życia"}/>
-                    <FacebookItem icon={<i class="far fa-address-card"></i>} text={"Post w grupie"}/>
-                    <FacebookItem icon={<i class="far fa-flag"></i>} text={"Strona"}/>
-                    <FacebookItem icon={<i class="fas fa-bullhorn"></i>} text={"Rekalama"}/>
-                    <FacebookItem icon={<i class="fas fa-users"></i>} text={"Grupa"}/>
-                    <FacebookItem icon={<i class="fas fa-calendar-plus"></i>} text={"Zdarzenie"}/>
-                    <FacebookItem icon={<i class="fas fa-cart-plus"></i>} text={"Ogłoszenie w Marketplace"}/>
-                    <FacebookItem icon={<i class="fas fa-coins"></i>} text={"Zbiórka pieniędzy"}/>
+                    <FacebookItem icon={<i className="far fa-clipboard"></i>} text={"Opublikuj"}/>
+                    <FacebookItem icon={<i className="fas fa-book-open"></i>} text={"Relacja"}/>
+                    <FacebookItem icon={<i className="fas fa-hourglass-start"></i>} text={"Wydarzenie z życia"}/>
+                    <FacebookItem icon={<i className="far fa-address-card"></i>} text={"Post w grupie"}/>
+                    <FacebookItem icon={<i className="far fa-flag"></i>} text={"Strona"}/>
+                    <FacebookItem icon={<i className="fas fa-bullhorn"></i>} text={"Rekalama"}/>
+                    <FacebookItem icon={<i className="fas fa-users"></i>} text={"Grupa"}/>
+                    <FacebookItem icon={<i className="fas fa-calendar-plus"></i>} text={"Zdarzenie"}/>
+                    <FacebookItem icon={<i className="fas fa-cart-plus"></i>} text={"Ogłoszenie w Marketplace"}/>
+                    <FacebookItem icon={<i className="fas fa-coins"></i>} text={"Zbiórka pieniędzy"}/>
                 </div>
             </div>
         </div>

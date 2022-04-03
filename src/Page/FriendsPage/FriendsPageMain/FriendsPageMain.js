@@ -6,7 +6,7 @@ import UserTileComponent from "../../../Components/UserTileComponent/UserTileCom
 function FriendsPageMain() {
 
     const userTilesElems = userDatabase.map(user => (
-        <UserTileComponent imgSrc={user.getProfileImg()} name={user.getFullName()}/>
+        <UserTileComponent key={user.id} imgSrc={user.getProfileImg()} name={user.getFullName()}/>
     ))
 
     return (

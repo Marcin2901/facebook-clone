@@ -14,7 +14,6 @@
     font-size: .9rem;
 }
 
-
 .account--set {
     position: relative;
     display: flex;
@@ -44,4 +43,3 @@ small {
     text-align: center;
     margin-top: .5rem;
 }
-

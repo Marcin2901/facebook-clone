@@ -11,10 +11,10 @@ function MarketPlacePage() {
 
   const user = useContext(UserContext);
 
-  const items = [{elem: <FacebookItem icon={<i class="fas fa-store icon--item"></i>} text={"Przeglądaj wszystkie"}/>, ending: "marketplace"},
-                 {elem: <FacebookItem icon={<i class="fas fa-bell icon--item"></i>} text={"Powiadomienia"}/>, ending: "marketplace/notification"},
-                 {elem: <FacebookItem icon={<i class="fas fa-shopping-basket icon--item"></i>} text={"Kupno"}/>, ending: "marketplace/purchase"},
-                 {elem: <FacebookItem icon={<i class="fas fa-balance-scale-left icon--item"></i>} text={"Sprzedaż"}/>, ending: "marketplace/sale"}]
+  const items = [{elem: <FacebookItem icon={<i className="fas fa-store icon--item"></i>} text={"Przeglądaj wszystkie"}/>, ending: "marketplace"},
+                 {elem: <FacebookItem icon={<i className="fas fa-bell icon--item"></i>} text={"Powiadomienia"}/>, ending: "marketplace/notification"},
+                 {elem: <FacebookItem icon={<i className="fas fa-shopping-basket icon--item"></i>} text={"Kupno"}/>, ending: "marketplace/purchase"},
+                 {elem: <FacebookItem icon={<i className="fas fa-balance-scale-left icon--item"></i>} text={"Sprzedaż"}/>, ending: "marketplace/sale"}]
 
   return (
       <section className='marketplace'>

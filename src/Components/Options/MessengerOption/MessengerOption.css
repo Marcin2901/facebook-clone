@@ -21,9 +21,6 @@
     background-color: #aaacb3;
 }
 
-/* koniec scrollbara */
-
-
 .messenger--header {
     display: flex;
     justify-content: space-between;
@@ -88,22 +85,3 @@
     border-radius: 50%;
     box-shadow: 0px 0px 5px var(--primary-color);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -9,7 +9,7 @@ import userDatabase from "../../DemoDatabase/userDatabase";
 function MessengerPage() {
 
     const user = useContext(UserContext);
-    const {openMessenger,selectUserMessaged, setSelectUserMessages} = useContext(MessengerOpenContext);
+    const {selectUserMessaged, setSelectUserMessages} = useContext(MessengerOpenContext);
     useEffect(() => {
         if(!selectUserMessaged) {
             if(user.id === userDatabase[0].id) {

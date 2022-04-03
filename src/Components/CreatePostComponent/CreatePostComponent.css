@@ -13,8 +13,6 @@
     z-index: 5;
 }
 
-
-
 .create-post--content {
     width: 500px;
     padding: .5rem;
@@ -96,35 +94,3 @@
 .public-post--btn:hover {
     background-color: var(--primary-color-m);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

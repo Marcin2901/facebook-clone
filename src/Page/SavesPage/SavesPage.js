@@ -7,7 +7,7 @@ function SavesPage() {
         <AsideComponent title="Zapisane"  items={[]}/>
         <div className="page__content">
             <div className="page--box">
-                <img src="https://www.facebook.com/images/goodwill/throwback/permalink/tetra/tetra_home_header-2x.png"/>
+                <img src="https://www.facebook.com/images/goodwill/throwback/permalink/tetra/tetra_home_header-2x.png" alt={"example"}/>
                 <h3>Nie masz żadnych zapisanych plików</h3>
                 <p>Wszystkie zapisane przez Ciebie pliku będą wyświetlane na tej stronie</p>
             </div>

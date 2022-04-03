@@ -6,11 +6,7 @@
 
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
-    font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
-
+  font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,16 +22,13 @@ code {
   --secondary-color: #42b72a;
   --secondary-color-m: #259310;
   --background-color: #f0f2f5;
-  /* tak jak search input */
   --grey-background-color: #F0F2F5;  
-  /* tak jak ikony po prawej w navie */
   --grey-background-color-m: #dddfe2;
   --text-color: #050505;
   --firs-text-color: #777980;
   --second-text-colr: #606770;
   --therd-text-color: #4b4f56;
   --border-color: #bbbdc1;
-
   --border-shadow: 0px 0px 10px 1px #CFD1D5;
 }
 
@@ -58,7 +51,6 @@ code {
   right: 20%;
   opacity: 0;
   transition: opacity .3s ease-in-out;
-  
 }
 
 .tooltip:hover .tooltiptext {
@@ -92,4 +84,3 @@ code {
   box-shadow: 0px 0px 15px 1px orange;
   padding: .5rem 1rem;
 }
-

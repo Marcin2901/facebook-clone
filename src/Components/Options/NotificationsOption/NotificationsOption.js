@@ -52,8 +52,6 @@ function NotificationsOption() {
         }
     }
 
-
-
     const {setScrollElemId} = useContext(ScrollToContext);
 
     return ( 
@@ -63,7 +61,6 @@ function NotificationsOption() {
                 <i className="fas fa-ellipsis-h"></i>
             </header>
             <div className="notifications--buttons"> 
-            {/* dodaj onClicki na przycisku w sumie to nie onClicki tylko nwm Link i zmana active czy coś */}
                 <button className="notif--btn btn active">Wszystkie</button>
                 <button className="notif--btn btn">Nieprzeczytane</button>
             </div>
@@ -74,19 +71,16 @@ function NotificationsOption() {
                     Wyświetl wszystko
                 </Link>
             </div>
-            {/* wygląd  powiadomienia */}
 
             <div className="notifications__content">
                 { user.getAllNotifications().length > 0 ?
-                    user.getAllNotifications().map(notification => (
+                    user.getAllNotifications().map((notification, index) => (
 
-                        <div className={notification.alreadyRead ? "notification" : "notification new-notification"}
+                        <div key={index} className={notification.alreadyRead ? "notification" : "notification new-notification"}
                              onClick={() => {
                                  notification.alreadyRead = true
                                  localStorage.setItem("users", JSON.stringify(userDatabase))
                                  setScrollElemId(notification.target.id)
-                                 console.log("jestem tu")
-                                 console.log(notification.target.id)
                                 }}
                         >
                             <Link to={`/board/${user.id}/profile/${notification.boardOwnerId}`}>

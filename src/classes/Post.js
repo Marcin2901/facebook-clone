@@ -33,9 +33,6 @@ class Post {
         return this.dateOfPublic
     }
 
- 
-
-
     getBody() {
         return this.body;
     }
@@ -81,8 +78,6 @@ class Post {
     getShareQuantity() {
         return this.shareQuantity;
     }
-
-
 }
 
 export default Post;

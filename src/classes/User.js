@@ -1,10 +1,8 @@
-
 import Post from "./Post";
 import Message from "./Message";
 import Notification from "./Notifications/Notification";
 import { v4 as uuid } from 'uuid';
 import defaultPicture from "../DemoDatabase/profile-img.jpg";
-
 
 class User {
 
@@ -50,18 +48,12 @@ class User {
         this.posts.unshift(new Post(author, body, userId, dateOfPublic, img));
     }
 
-
     getAllPosts() {
         return this.posts;
     }
 
-    //to są obiekty więc u urzotkownika powinny się referencyjnie aktualizować
     editMyPost(postId, body) {
         this.posts.find(post => post.id === postId).editPost(body);
-    }
-
-    removeMyPost(post) {
-        //czy ten co usuwa to właściciel posta?
     }
 
     addMessenger(userOneId, userTwo, alreadyReadObj) {
@@ -107,23 +99,12 @@ class User {
 
     setIsReadToFalse(userOneId, userTwoId) {
         const findMessenger = this.getMessagesFromMessenger(userOneId, userTwoId)
-        console.log("Messenger")
-        console.log(findMessenger)
         const currentUser = findMessenger.alreadyRead.filter(set => set.userId === userTwoId);
         currentUser[0].isRead = false;
     }
 
-
     addComment(postId, body) {
         this.posts.find(post => post.id === postId).addComment(this.name, body);
-    }
-
-    editComment() {
-
-    }
-
-    removeMyComment() {
-        //czy ten co usuwa to właściciel komentarza?
     }
 
     changePassword(password) {
@@ -173,8 +154,6 @@ class User {
     getId() {
         return this.id;
     }
-
-
 }
 
 export default User;

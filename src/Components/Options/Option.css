@@ -14,11 +14,9 @@
 @keyframes open {
   from {
     opacity: 0;
-    /* transform: translateX(10px); */
   }
   to {
     opacity: 1;
-    /* transform: translateX(0); */
   }
 }
 
@@ -86,5 +84,3 @@
     font-size: 1.5rem;
     font-weight: 700;
 }
-
-

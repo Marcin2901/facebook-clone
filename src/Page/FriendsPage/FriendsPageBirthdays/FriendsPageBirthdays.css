@@ -1,12 +1,9 @@
 .friends--page__birthdays {
     display: grid;
     place-items: center;
-    border: 2px solid red;
     width: 100%;
     padding: 2rem;
 }
-
-
 
 .friends-birth__container {
     width: 40%;
@@ -18,6 +15,3 @@
     padding: 1rem;
     border-radius: .5rem;
 }
-/* .friends-birth__container .item {
-    margin-bottom: 1rem;
-} */

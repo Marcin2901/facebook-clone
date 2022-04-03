@@ -8,7 +8,6 @@ import PostComponent from "../../Components/PostComponent/PostComponent";
 
 function MainPage() {
 
-
     const user = useContext(UserContext);
     let watchedUser = null;
     const postsElem = userDatabase.map(currentUser => {

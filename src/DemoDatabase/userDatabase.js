@@ -30,10 +30,10 @@ if(!JSON.parse(localStorage.getItem("users"))) {
             user1.friends.push(user2.id);
             if(user1.name === "Sara") {
                 user1.addMessenger(user1.id, user2, [{userId: user1.id, isRead: true}, {userId: user2.id, isRead: false}]);
-                user1.addMessageToMessenger(user1.id, user2.id, "sprawdzam tylko czy wiadomości się wysyłają");
-                user2.addMessageToMessenger(user2.id, user1.id, "Jak tam?");
+                user1.addMessageToMessenger(user1.id, user2.id, "test nr1");
+                user2.addMessageToMessenger(user2.id, user1.id, "test nr2");
                 user2.addMessageToMessenger(user2.id, user1.id, "Hej");
-                user1.addMessageToMessenger(user1.id, user2.id, "Cześć");
+                user1.addMessageToMessenger(user1.id, user2.id, "Hej");
             }
         }
     }

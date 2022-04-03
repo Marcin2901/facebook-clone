@@ -23,7 +23,6 @@ function ProfilePagePosts(props) {
                         <div className='images__aside'>
                             <div className='flex-2'>
                                 <h2>Zdjęcia</h2>
-                                {/* dodaj ścieżke */}
                                 <Link to="/">
                                     <p className='aside--link'>Zobacz wszystkie zdjęcie</p>
                                 </Link>
@@ -39,13 +38,11 @@ function ProfilePagePosts(props) {
                         <div className='friends__aside'>
                             <div className='flex-2'>
                                 <h2>Znajomi</h2>
-                                {/* dodaj ścieżke */}
                                 <Link to="/">
                                     <p className='aside--link'>Pokaż wszystkich znajomych</p>
                                 </Link>
                             </div>
-                            <div className='friends__aside--container'>
-                             
+                            <div className='friends__aside--container'>             
                                 {   
                                     userDatabase.filter(currentUser => (
                                         watchedUser ? 

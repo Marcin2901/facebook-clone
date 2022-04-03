@@ -1,17 +1,14 @@
 import React, {useContext, useState} from "react" 
 import "./ResetPasswordSection.css";
-import {Link, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import {SaveDataContext} from "../../hooks/Context/SaveDataContextProvider";
 
 
 function ResetPasswordSection() {
-    console.log(userDatabase)
     
     const {saveData, usersDataName} = useContext(SaveDataContext);
-
     const [resetPasswordData, setResetPasswordData] = useState({email: "", verified: false, password1: "", password2: ""});
-    //zmien na statey w obkiet
     const [passwordError, setPasswordError] = useState(false);
     const [isClicked, setIsClicked] = useState(false)
     const [forgetEmail, setForgetEmail] = useState(false)
@@ -61,7 +58,6 @@ function ResetPasswordSection() {
 
     return (
         <section className="reset--section">
-
             <div className="reset__container">
                 <h1>Zresetuj hasło</h1>
                 {( !isClicked || !resetPasswordData.verified ) &&
@@ -93,7 +89,7 @@ function ResetPasswordSection() {
                         </div>
 
                         <div className="user">
-                                <img className="profileImg" src={`${user.getProfileImg()}`} />
+                                <img className="profileImg" src={`${user.getProfileImg()}`} alt={"example"}/>
                                 <h4>{user.getFullName()}</h4>
                                 <h5>Użytkownik Facebooka</h5>
                         </div>
@@ -102,7 +98,7 @@ function ResetPasswordSection() {
                 {passwordError && <h3 className='warning'>Hasła nie są takie same lub mają poniżej 5 znaków</h3>   }
                    
                 <div className="reset--options">
-                    <a onClick={() => setForgetEmail(prevState => !prevState)}>Nie pamiętasz swojego emaila?</a> 
+                    <span onClick={() => setForgetEmail(prevState => !prevState)}>Nie pamiętasz swojego emaila?</span> 
                     {
                         resetPasswordData.verified ?
                       

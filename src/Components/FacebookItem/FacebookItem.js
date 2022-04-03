@@ -5,11 +5,9 @@ function FacebookItem(props) {
 
   const {img, text, size, icon, alternativeText} = props  
 
-  
-
   return (
       <div className={`item ${(size==="small" && "item--small")} ${(size==="big" && "item--big")}`}>
-          {img && <img src={img} /> }
+          {img && <img src={img} alt="example"/> }
           {icon && icon}
           <div className='with-alternative-text'>
                <h4 className='item--text'>{text}</h4>
@@ -20,6 +18,3 @@ function FacebookItem(props) {
 }
 
 export default FacebookItem;
-
-
-// przypomnij sobie jak ustawić domyślne wartości dla size z propsów

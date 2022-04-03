@@ -7,8 +7,8 @@ function AsideComponent(props) {
 
     const user = useContext(UserContext);
 
-    const contentElem = props.items.map(item => (
-            <Link to={`/board/${user.id}/${item.ending}`}>
+    const contentElem = props.items.map((item, index) => (
+            <Link to={`/board/${user.id}/${item.ending}`} key={index}>
                 {item.elem}
             </Link>
     ))
@@ -17,7 +17,7 @@ function AsideComponent(props) {
         <aside className="componetn--aside">
             <div className="component--aside-header">
                 <h1>{props.title}</h1>
-                <i class="fas fa-cog icon--item"></i>
+                <i className="fas fa-cog icon--item"></i>
             </div>
             <div className="componetn--aside__input--wrapper">
                 {props.headerElem}

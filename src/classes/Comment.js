@@ -1,4 +1,3 @@
-
 class Comment {
 
     author;
@@ -35,7 +34,6 @@ class Comment {
     addLike() {
         this.likes ++;
     }
-
 }
 
 export default Comment;

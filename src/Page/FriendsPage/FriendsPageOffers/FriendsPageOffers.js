@@ -1,6 +1,6 @@
 import React from "react";
 import "./FriendsPageOffers.css";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import userDatabase from "../../../DemoDatabase/userDatabase";
 import FacebookItem from "../../../Components/FacebookItem/FacebookItem";
 
@@ -14,10 +14,8 @@ function FriendsPageOffers() {
                     </div>
 
     const offersElem = userDatabase.map(user => (
-        <div className="offers--item">
-            <Link>
-                <FacebookItem img={user.getProfileImg()} text={user.getFullName()} size={"big"}/>
-            </Link>
+        <div key={user.id} className="offers--item">
+            <FacebookItem img={user.getProfileImg()} text={user.getFullName()} size={"big"}/>
             {btnsElem}
         </div> 
         ))
@@ -27,7 +25,7 @@ function FriendsPageOffers() {
             <aside className="offers--aside">
                 <header className="offers--aside__header">
                     <div className="offers--aside__header--arrow-back">
-                        <i class="fas fa-arrow-left" onClick={() => history.goBack()}></i>
+                        <i className="fas fa-arrow-left" onClick={() => history.goBack()}></i>
                     </div>
                     <div className="offers--aside__header--content">
                         <span>Znajomi</span>
@@ -49,7 +47,6 @@ function FriendsPageOffers() {
                 </div>
             </main>
         </div>
-       
     )
 }
 

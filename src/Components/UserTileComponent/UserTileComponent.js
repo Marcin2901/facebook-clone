@@ -8,7 +8,7 @@ function UserTileComponent(props) {
     return (
         <div className="user--tile">
             <div className="user--img">
-                <img src={imgSrc}/>
+                <img src={imgSrc} alt="example"/>
             </div>
             <div className="user--tile__content">
                 <h3>{name}</h3>

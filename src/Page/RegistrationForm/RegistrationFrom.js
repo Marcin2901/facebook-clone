@@ -98,8 +98,7 @@ function RegistrationForm() {
                        value={formData.dateOfBirth}
                        onChange={handleChange}
                        className="dateInput"
-                    //    required
-                       name="Birthdate" />
+                    />
 
                 <h4>Płeć</h4>
                 <div className="radio--fields">

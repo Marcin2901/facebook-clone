@@ -11,10 +11,10 @@ function VideoPage() {
 
     const user = useContext(UserContext);
 
-    const items = [{elem: <FacebookItem icon={<i class="fab fa-youtube icon--item"></i>} text={"Stron główna"}/>, ending: "videos"},
-                   {elem: <FacebookItem icon={<i class="fas fa-video icon--item"></i>} text={"Na żywo"}/>, ending: "videos/liveVideo" },
-                   {elem: <FacebookItem icon={<i class="fas fa-film icon--item"></i>} text={"Programy"}/>, ending: "videos/programs"},
-                   {elem: <FacebookItem icon={<i class="fas fa-bookmark icon--item"></i>} text={"Zapisane filmy"}/>, ending: "videos/saveVideo"}]
+    const items = [{elem: <FacebookItem icon={<i className="fab fa-youtube icon--item"></i>} text={"Stron główna"}/>, ending: "videos"},
+                   {elem: <FacebookItem icon={<i className="fas fa-video icon--item"></i>} text={"Na żywo"}/>, ending: "videos/liveVideo" },
+                   {elem: <FacebookItem icon={<i className="fas fa-film icon--item"></i>} text={"Programy"}/>, ending: "videos/programs"},
+                   {elem: <FacebookItem icon={<i className="fas fa-bookmark icon--item"></i>} text={"Zapisane filmy"}/>, ending: "videos/saveVideo"}]
                    
     return (
         <section className="video">

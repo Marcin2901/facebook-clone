@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
 import "./FriendsPageAll.css";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import userDatabase from "../../../DemoDatabase/userDatabase";
 import FacebookItem from "../../../Components/FacebookItem/FacebookItem";
 import SearchBar from "../../../Components/SearchBar/SearchBar";
 import {UserContext} from "../../../hooks/Context/UserContextProvider";
-
-
 
 function FriendsPageAll() {
 
@@ -14,11 +12,9 @@ function FriendsPageAll() {
     const user = useContext(UserContext);
 
     const allFriendsElem = userDatabase.map(user => (
-    <div className="allFriends--item">
-        <Link>
+    <div key={user.id} className="allFriends--item">
             <FacebookItem img={user.getProfileImg()} text={user.getFullName()} size={"big"}
                           alternativeText={<small>11 wspólnych znajomych</small>}/>
-        </Link>
     </div> 
     ))
 
@@ -27,7 +23,7 @@ function FriendsPageAll() {
             <aside className="allFriends--aside">
                 <header className="allFriends--aside__header">
                     <div className="allFriends--aside__header--arrow-back">
-                        <i class="fas fa-arrow-left" onClick={() => history.goBack()}></i>
+                        <i className="fas fa-arrow-left" onClick={() => history.goBack()}></i>
                     </div>
                     <div className="allFriends--aside__header--content">
                         <span>Znajomi</span>

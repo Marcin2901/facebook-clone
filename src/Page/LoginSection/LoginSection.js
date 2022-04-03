@@ -1,29 +1,20 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext} from 'react';
 import "./LoginSection.css"
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import userDatabase from "../../DemoDatabase/userDatabase";
 import LoginForm from '../LoginForm/LoginForm';
-import {FormDataContext} from "../../hooks/Context/FormDataContextProvider";
 import {SaveDataContext} from "../../hooks/Context/SaveDataContextProvider";
-
-// przerobić TransitionGroup
-// spróbuj później użyć TransitionGroup i CSSTransition na avatarach żeby zrobić fade jak znikają i się pojawiają
 
 function LoginSection() {
 
-    const {formData, handleChange} = useContext(FormDataContext)
     const {saveData, usersDataName} = useContext(SaveDataContext)
-
-    const [refresh, setRefres] = useState(false);
     const [addAccessUser, setAddAccessUser] = useState(false);
 
     function removeAvatar(user) {
-        setRefres(prevState => !prevState);
         user.wasLoged = false;
-        console.log(saveData, usersDataName)
         saveData(usersDataName, userDatabase);
     }
-    // wymyśl coś żeby nie renderować tych pustych diwów z kluczem
+
     const usersElems = userDatabase.map(user => (
         user.wasLoged && user.hasAccess ?
         <div key={user.id} className='avatar--container'>
@@ -61,7 +52,7 @@ function LoginSection() {
     return (
         <section className='login'>
             <div className='login__content'>
-                <img className='fb--logo' src='https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg' />
+                <img className='fb--logo' src='https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg' alt="example"/>
                 <h2>Ostatnie logowania</h2>
                 <p className='login__content--text'>Kliknij zdjęcie avatara aby zalogować się do konta demo lub dodaj nowe</p>
                 <div className='login__content--avatars'>
@@ -84,4 +75,3 @@ function LoginSection() {
 }
 
 export default LoginSection;
-

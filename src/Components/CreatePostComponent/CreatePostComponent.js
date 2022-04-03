@@ -39,20 +39,17 @@ function CreatePostComponent(props) {
       localStorage.setItem("users", JSON.stringify(userDatabase));
   } 
 
-  //przenieś wszystkie getDate() do contextu
   function getDate() {
-    const date = new Date()
-    const year = date.getFullYear();
-    const month = date.getMonth() < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`
-    const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
-    const hour = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`
-    const minute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`
-    const formatedDate = `${year}-${month}-${day}  ${hour}:${minute}`
-    return formatedDate;
-}
+        const date = new Date()
+        const year = date.getFullYear();
+        const month = date.getMonth() < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`
+        const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
+        const hour = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`
+        const minute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`
+        const formatedDate = `${year}-${month}-${day}  ${hour}:${minute}`
+        return formatedDate;
+    }
 
- 
-  
   return (
       <div className='create-post__container'>
           <div className='create-post--content'>
@@ -66,7 +63,7 @@ function CreatePostComponent(props) {
                    </Link>
               </header>
               <FacebookItem img={user.getProfileImg()} text={user.getFullName()}
-                            alternativeText={<><i class="fas fa-globe-europe"></i> Publicznie</>}
+                            alternativeText={<><i className="fas fa-globe-europe"></i> Publicznie</>}
               />
               <textarea className='create-post--text' placeholder='Co słychać'
                         name='postText'
