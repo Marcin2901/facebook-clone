@@ -13,6 +13,9 @@ import GroupPage from "../GroupPage/GroupPage";
 import FriendsPage from '../FriendsPage/FriendsPage';
 import MessengerPage from '../MessengerPage/MessengerPage';
 import WeatherForecast from '../WeatherForecast/WeatherForecast';
+import MemoriesPage from '../MemoriesPage/MemoriesPage';
+import SavesPage from '../SavesPage/SavesPage';
+import EventsPage from '../EventsPage/EventsPage';
 
 function Board() {
 
@@ -58,6 +61,15 @@ function Board() {
                 </Route>
                 <Route path={`/board/${currentUser.id}/weather`}>
                     <WeatherForecast />
+                </Route>
+                <Route path={`/board/${currentUser.id}/memories`}>
+                    <MemoriesPage />
+                </Route>
+                <Route path={`/board/${currentUser.id}/saves`}>
+                    <SavesPage />
+                </Route>
+                <Route path={`/board/${currentUser.id}/events`}>
+                    <EventsPage />
                 </Route>
             </Switch>
         </div>

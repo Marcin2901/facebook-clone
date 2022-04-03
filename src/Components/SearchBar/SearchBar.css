@@ -36,7 +36,6 @@
         width: 150px;
       
     }
-
     .search-input input::placeholder {
         font-size: .7rem;
     }
@@ -44,8 +43,12 @@
 
 @media screen and (max-width: 450px) {
     .search-input input {
-        width: 180px;
-      
+        font-size: .7rem;
+        width: 80px;
+        height: 30px;
+    }
+    .search-input input::placeholder {
+        color: transparent   
     }
 }
 

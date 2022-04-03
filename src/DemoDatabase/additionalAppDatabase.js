@@ -31,15 +31,18 @@ export default  [
     },
     {
         name: "Wspomnienia",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/y7/r/AYj2837MmgX.png"
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/y7/r/AYj2837MmgX.png",
+        link: "memories"
     },
     {
         name: "Zapisane",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yr/r/2uPlV4oORjU.png"
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yr/r/2uPlV4oORjU.png",
+        link: "saves"
     },
     {
         name: "Wydarzenia",
-        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/9-o1e6LN_TX.png"
+        icon: "https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/9-o1e6LN_TX.png",
+        link: "events"
     },
 
 ]
