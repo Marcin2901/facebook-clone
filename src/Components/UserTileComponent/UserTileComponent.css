@@ -50,3 +50,23 @@
 .delete-tile--btn:hover {
     background-color: #cccdd2;
 }
+
+@media screen and (max-width: 860px) {
+    .user--tile {
+        max-width: 160px;
+    }
+    .user--img {
+        height: 160px;
+    }
+    .user--tile__content {
+        padding: .7rem;
+    }
+    
+    .user--tile__content h3 {
+        font-size: 1rem;
+    }
+    
+    .user--tile__content button {
+        font-size: .8rem;
+    }
+}

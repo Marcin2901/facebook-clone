@@ -11,3 +11,26 @@
 .friends--page .component--aside-header {
     margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 1050px) {
+    .friends--page main {
+        max-width: calc(100% - 320px);
+    }
+    .friends--page aside {
+        width: 320px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .friends--page aside {
+        display: none;
+    }
+
+    .friends--page main {
+        max-width: 100%;
+        padding: .5rem;
+    }
+    .users--container {
+        justify-content: center;
+    }
+}

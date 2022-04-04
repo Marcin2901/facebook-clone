@@ -12,21 +12,21 @@ function WeatherForecast() {
     useEffect(() => {
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-                fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${API_KEY}&lang=pl`)
+                fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${API_KEY}&lang=pl`)
                         .then(res => res.json())
                         .then(data => {
                             setCurrentForecast(data);
                             setCitys([data]);
                         });
             }) } else {
-                fetch(`http://api.openweathermap.org/geo/1.0/direct?q=Warsaw&appid=${API_KEY}`)
+                fetch(`https://api.openweathermap.org/geo/1.0/direct?q=Warsaw&appid=${API_KEY}`)
                 .then(res => res.json())
                 .then(data => console.log(data))
             }
     }, [])
 
     function getForecast() {
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric&lang=pl`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric&lang=pl`)
         .then(res => res.json())
         .then(data => {
             setCurrentForecast(data);
